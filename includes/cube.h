@@ -6,12 +6,18 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/09 21:46:37 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/09 22:28:44 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdlib.h>
-# include <unistd.h>
+# include <stdlib.h> //malloc() free() exit()
+# include <unistd.h> //open() close() read() write()
+# include <stdio.h> //perror()
+# include <string.h> //strerror()
+# include <sys/time.h> //gettimeofday()
+# include <math.h>
+# include <fcntl.h>
+
 
 typedef struct s_mlx
 {
