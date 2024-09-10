@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/10 18:54:14 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/10 21:30:38 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sys/time.h> //gettimeofday()
 # include <math.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 # include "../libraries/libft/libft.h"
 # include "../libraries/minilibx-linux/mlx.h"
@@ -44,9 +45,12 @@ typedef struct s_gm
 }	t_gm;
 
 int	main(int argc, char **argv);
+int is_argument_valid(int argc, char **argv);
 
 //free.c
-int err_msg(char *msg, int exit_status);
+int err_msg(char *msg, int int_return);
 
 //init.c
 int	run_mlx(t_gm *game);
+
+//map_parsing.c
