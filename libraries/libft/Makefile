@@ -67,14 +67,14 @@ all: $(NAME)
 
 $(NAME) : $(OBJS) $(PRINTFLIB) $(GNL_LIB)
 #	$(CC) $(CFLAGS) main.c $(OBJS) -o $(NAME)
-	@cp $(PRINTFLIB) $(NAME)
-	@cp  $(GNL_LIB) $(NAME)
-	@ar rc $(NAME) $(OBJS)
+	@cp $(PRINTFLIB) $(NAME)  > /dev/null 2>&1
+	@cp  $(GNL_LIB) $(NAME)  > /dev/null 2>&1
+	@ar rc $(NAME) $(OBJS)  > /dev/null 2>&1
 
 #BONUS =======>>> needs to check
 bonus: $(OBJS) $(OBJSBONUS) $(PRINTFLIB)
-	@cp $(PRINTFLIB) $(NAME)
-	ar rc $(NAME) $(OBJS) $(OBJSBONUS)
+	@cp $(PRINTFLIB) $(NAME)  > /dev/null 2>&1
+	@ar rc $(NAME) $(OBJS) $(OBJSBONUS)  > /dev/null 2>&1
 
 clean:
 	$(RM) $(OBJS) $(OBJSBONUS)
@@ -90,7 +90,7 @@ re: fclean all
 
 #create lib for printf
 $(PRINTFLIB) : $(PRINTFDIR)
-	make -C $(PRINTFDIR)
+	@make -C $(PRINTFDIR)  > /dev/null 2>&1
 
 #create lib for gnl
 $(GNL_LIB) : $(GNL_DIR)

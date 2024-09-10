@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+         #
+#    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/09 22:55:01 by aconceic         ###   ########.fr        #
+#    Updated: 2024/09/10 19:00:02 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ NAME = cube
 OBJ_DIR = ./objs/
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
 SRC_DIR = ./sources/
-SRC = main.c
+SRC = main.c free.c init.c
 
 ### MiniLibX
 ##DIR FOR MLX HAVING IN CONSIDERATION THE OS
@@ -49,11 +49,11 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 ### RULES
-all : $(NAME)
+all : download mlx_compile $(NAME)
 
 mlx_compile :
 	@echo "$(ORANGE)[!]$(RESET) Working on MiniLibX ..."
-	$(MAKE) -C $(MLX_DIR)
+	@$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1
 
 $(OBJ_DIR):
 	@echo "$(ORANGE)[!]$(RESET) Creating directory for objects ..."
@@ -61,38 +61,38 @@ $(OBJ_DIR):
 
 $(NAME) : $(OBJ) $(LIBFT_LIB)
 	@echo "$(ORANGE)[!]$(RESET) Working on project ... "
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_LIB) $(GNL_LIB) $(MLXFLAGS) -o $(NAME)
+	$(GCC) $(CFLAGS) $(OBJ) $(LIBFT_LIB) $(GNL_LIB) $(MLXFLAGS) -o $(NAME) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Ok!$(RESET) "
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 	@echo "$(ORANGE)[!]$(RESET) Creating objects ..."
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(GCC) $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Objects Ok!$(RESET) "
 
 $(LIBFT_LIB) : $(LIBFT_DIR) $(PRINTF_DIR) $(GNL_DIR)
 	@echo "$(ORANGE)[!]$(RESET) Working on LIBFT_LIB ..."
-	make -C $(LIBFT_DIR) bonus
-	make -C $(PRINTF_DIR)
-	make -C $(GNL_DIR)
+	@make -C $(LIBFT_DIR) bonus > /dev/null 2>&1
+	@make -C $(PRINTF_DIR) > /dev/null 2>&1
+	@make -C $(GNL_DIR) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)LIBFT Ok!$(RESET)"
 
 clean:
 	@echo "$(ORANGE)[!]$(RESET) Executing cleaning ..."
-	$(RM) -rf $(OBJ_DIR)
-	$(MAKECLEANC) $(LIBFT_DIR)
-	$(MAKECLEANC) $(MLX_DIR)
+	$(RM) -rf $(OBJ_DIR) > /dev/null 2>&1
+	$(MAKE) clean -C $(LIBFT_DIR) > /dev/null 2>&1
+	$(MAKE) clean -C $(MLX_DIR) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Cleaning Ok!$(RESET)"
 
 fclean:
 	@echo "$(ORANGE)[!]$(RESET) Executing full cleaning..."
-	$(RM) $(NAME)
-	$(RM) -rf $(OBJ_DIR)
-	$(RM) -rf libraries/minilibx-linux
-	make fclean -C $(LIBFT_DIR)
+	$(RM) $(NAME) > /dev/null 2>&1
+	$(RM) -rf $(OBJ_DIR) > /dev/null 2>&1
+	$(RM) -rf libraries/minilibx-linux > /dev/null 2>&1
+	make fclean -C $(LIBFT_DIR) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)full cleaning!$(RESET)"
 
 
-re : fclean download all bonus
+re : fclean download all
 	@echo "$(GREEN)[✔]$(RESET) $(MAGENTA)Refresh Ok!$(RESET) "
 
 download:
