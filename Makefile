@@ -30,7 +30,7 @@ GNL_DIR = $(LIBFT_DIR)get_next_line/
 GNL_LIB = $(GNL_DIR)gnl.a
 
 ### Project
-NAME = cube
+NAME = cub3D
 OBJ_DIR = ./objs/
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
 SRC_DIR = ./sources/

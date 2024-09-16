@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/16 15:39:29 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:47:44 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	main(int argc, char **argv)
 		return (free_game(&game), EXIT_FAILURE);
 	if (parse_map(&game, argc, argv))
 		return (free_game(&game), EXIT_FAILURE);
+	if (run_mlx(&game))
+			return (err_msg("Error Mlx Init", EXIT_FAILURE));
 	
-	//if (run_mlx(&game))
-	//		return (err_msg("Error Mlx Init", EXIT_FAILURE));
-	
+	start_game(&game);
 	free_game(&game);
 	return (0);
 }

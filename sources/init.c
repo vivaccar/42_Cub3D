@@ -59,6 +59,6 @@ int	run_mlx(t_gm *game)
 		return (err_msg("mlx_new_window failed", EXIT_FAILURE));
 	}
 	
-	//mlx_loop(game->mlx->cnt);
+	mlx_loop(game->mlx->cnt);
 	return (EXIT_SUCCESS);
 }

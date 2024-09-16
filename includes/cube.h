@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/16 15:39:40 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:45:46 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,22 @@ typedef struct s_window
 	int	w;
 }	t_window;
 
-typedef	struct s_map
+typedef struct s_map
 {
-	int	fd;
+	int		fd;
+	char	**coordinates;
+	char	*north_texture;
+	char	*south_texture;
+	char	*east_texture;
+	char	*west_texture;
+	char	player_direction;
+    float 	player_position_X;
+    float 	player_position_Y;
+    float 	plane_x;
+    float 	plane_y;
+	// ceiling clr
 }	t_map;
+
 //Main Struc gm = GaMe.
 typedef struct s_gm
 {
