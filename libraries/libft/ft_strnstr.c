@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:37:01 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/20 18:49:38 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:58:22 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Locates the first occurrence of the null-terminated string little in 
+ * the string big, where not more than len characters are searched. 
+ * Characters that appear after a `\0' character are not searched.
+ * @return If little is an empty string, big is returned; 
+ * if little occurs nowhere in big, NULL is returned; 
+ * otherwise a pointer to the first character of the first 
+ * occurrence of little is returned.
+*/
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
@@ -33,11 +42,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	return (NULL);
 }
 /* 
-//Function Description
-//searches for the first occurrence of a substring little in a string big,
-//up to a length len. It returns a pointer to the beginning of the match 
-//or NULL if not found.
-
 #include <stdio.h>
 
 int     main(void)

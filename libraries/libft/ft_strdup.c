@@ -6,12 +6,18 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 11:58:59 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/29 15:45:56 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:51:16 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Allocates sufficient memory for a copy of the string s1, 
+ * does the copy, and returns a pointer to it. The pointer may subsequently 
+ * be used as an argument to the function free(3).
+ * @return The strdup() function returns a pointer to the copied string s1.
+*/
 char	*ft_strdup(const char *s)
 {
 	size_t	length;
@@ -32,9 +38,6 @@ char	*ft_strdup(const char *s)
 	return (cpy);
 }
 /* 
-//Function description
-//ft_strdup duplicates a given string s, allocating memory for the copy,
-//and returns a pointer to the new string. Here's a sample test:
 #include <stdio.h>
 
 int main() {

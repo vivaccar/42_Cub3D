@@ -6,7 +6,7 @@
 #    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/10 19:55:22 by aconceic         ###   ########.fr        #
+#    Updated: 2024/09/16 15:21:16 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ NAME = cube
 OBJ_DIR = ./objs/
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
 SRC_DIR = ./sources/
-SRC = main.c free.c init.c map_parsing.c
+SRC = main.c free.c init.c map_parsing.c\
 
 ### MiniLibX
 ##DIR FOR MLX HAVING IN CONSIDERATION THE OS

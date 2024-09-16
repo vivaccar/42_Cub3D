@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:00:58 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/19 22:30:20 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:56:00 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Compares the first n bytes of strings s1 and s2.
+ * @return An integer less than, equal to, or greater than zero if s1 is found,
+ * respectively, to be less than, to match, or be greater than s2.
+ */
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
@@ -25,10 +30,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		return ((int)(unsigned char)s1[i] - (int)(unsigned char)s2[i]);
 }
 /* 
-//Function Description
-//compares the first n characters of two strings s1 and s2. 
-//It returns zero if they match up to n, or the difference 
-//between the first differing characters.
 #include <stdio.h>
 
 int main() {

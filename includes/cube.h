@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/10 21:30:38 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:39:40 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,30 @@ typedef struct s_window
 	int	w;
 }	t_window;
 
+typedef	struct s_map
+{
+	int	fd;
+}	t_map;
 //Main Struc gm = GaMe.
 typedef struct s_gm
 {
+	int			argc_cpy;
+	char		**argv_cpy;
 	t_mlx		*mlx;
 	t_window	*window;
+	t_map		*map;
 }	t_gm;
 
 int	main(int argc, char **argv);
-int is_argument_valid(int argc, char **argv);
+bool is_argument_valid(t_gm *game);
 
 //free.c
-int err_msg(char *msg, int int_return);
+int		err_msg(char *msg, int int_return);
+void    free_game(t_gm *game);
 
 //init.c
 int	run_mlx(t_gm *game);
+int	init_game_struct(t_gm *game, int argc, char **argv);
 
 //map_parsing.c
+int	parse_map(t_gm *game, int argc, char **argv);

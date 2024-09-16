@@ -6,12 +6,19 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:15:59 by aconceic          #+#    #+#             */
-/*   Updated: 2023/12/20 20:39:05 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:13:35 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Allocates (with malloc(3)) and returns a new element. 
+ * The variable ’content’ is initialized with the value of the 
+ * parameter ’content’. 
+ * The variable ’next’ is initialized to NULL.
+ * @return The new element.
+*/
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;
@@ -23,7 +30,6 @@ t_list	*ft_lstnew(void *content)
 	new->next = NULL;
 	return (new);
 }
-
 /* 
 //function description
 //The ft_lstnew function creates a new linked list node 

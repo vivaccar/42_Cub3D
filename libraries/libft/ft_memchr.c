@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:27:30 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/19 21:47:56 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:40:21 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief The ft_memchr function searches for the first occurrence
+ * of the character c in the first n bytes of the memory block
+ * pointed to by s.
+ * @return A pointer to the matching byte or NULL if the character
+*/
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*str;

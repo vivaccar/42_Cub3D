@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 19:52:31 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/19 22:19:24 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:53:15 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Appends the src string to the dst string, ensuring the total length 
+ * does not exceed size. It returns the length of the resulting string.
+ * @return The length of the resulting string.
+ */
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
@@ -38,11 +43,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[i] = '\0';
 	return (res);
 }
-/* 
-//Func Description
-//Appends the src string to dst, ensuring the total length 
-//does not exceed size. It returns the length of the resulting string.
-
+/*
 #include <stdio.h>
 
 int main() {

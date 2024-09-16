@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:57:06 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/19 20:01:30 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/03/31 19:08:27 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief The function ft_calloc allocates a block of memory for an array with a
+ * specified number of elements (nmemb) of a certain size (size).
+ * @param nmrmb Number of memory Blocks
+ * @param size Size
+ * @return A pointer to the allocated memory
+*/
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t	total_size;

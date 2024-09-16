@@ -6,12 +6,17 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:03:48 by aconceic          #+#    #+#             */
-/*   Updated: 2024/03/20 15:56:47 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/03/31 19:02:03 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Convert ascii to integer
+ * @param nptr ascii to be converted to ingeter
+ * @return The integer equivalent to the ascii paramether
+*/
 int	ft_atoi(const char *nptr)
 {
 	int		signal;
@@ -36,17 +41,3 @@ int	ft_atoi(const char *nptr)
 	number *= signal;
 	return (number);
 }
-
-//Function Description
-//Convert ascii to integer
-/* # include <stdio.h>
-int main(void)
-{
-	char	*test1 = "42";
-	char	*test2 = "-42";
-	char	*test3 = "-2147483647";
-
-	printf("%d\n", ft_atoi(test1));
-	printf("%d\n", ft_atoi(test2));
-	printf("%d\n", ft_atoi(test3));
-} */

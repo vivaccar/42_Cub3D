@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:53:35 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/19 20:19:52 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/03/31 19:14:31 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Verify if an INT is ascii.
+ * @param c int to be checked.
+ * @return 1 for true, 0 for false.
+*/
 int	ft_isascii(int c)
 {
 	if (!(c >= 0 && c <= 127))
@@ -19,26 +24,3 @@ int	ft_isascii(int c)
 	else
 		return (1);
 }
-
-/* 
-//Function Description
-//Verify if a character is ascii
-//returns a positive number if true(1 in this case) and 0 if not
-#include <stdio.h>
-
-int	main(void)
-{
-	char	test = 'A';
-	char	test1 = 'a';
-	char	test2 = '@';
-	char	test3 = '1';
-	char	test4 = 128; //this returns error comp
-	
-	printf("%d\n", ft_isascii(test));
-	printf("%d\n", ft_isascii(test1));
-	printf("%d\n", ft_isascii(test2));
-	printf("%d\n", ft_isascii(test3));
-	printf("%d\n", ft_isascii(test4));
-}
-
- */

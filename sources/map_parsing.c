@@ -6,12 +6,24 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:36:02 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/10 21:30:30 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:43:02 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
 
+/**
+ * @brief Starts the parsing of the map
+ * @return EXIT_ERROR for error. EXIT_SUCESS for ok.
+ */
+int	parse_map(t_gm *game, int argc, char **argv)
+{
+	
+	(void)game;
+	(void)argc;
+	(void)argv;
+	return (EXIT_SUCCESS);
+}
 //The map must be composed of only 6 possible characters: 0 for an empty space,
 //1 for a wall, and N,S,E or W for the player’s start position and spawning
 //orientation

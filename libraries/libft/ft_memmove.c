@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 16:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/19 21:58:02 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:42:45 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief The ft_memmove function copies n bytes from source memory src to
+ * destination memory dest and returns a pointer to dest.
+ * It ensures proper copying even if the memory regions overlap.
+ * @return A pointer to the destination memory.
+ */
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	len;

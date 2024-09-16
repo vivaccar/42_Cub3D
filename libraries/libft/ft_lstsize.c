@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 19:25:45 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/20 14:25:43 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:39:59 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Counts the number of elements in a list.
+ * @return The number of elements in the list.
+*/
 int	ft_lstsize(t_list *lst)
 {
 	int		i;

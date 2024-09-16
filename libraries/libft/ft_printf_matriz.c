@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_print_matriz.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 16:00:49 by aconceic          #+#    #+#             */
-/*   Updated: 2024/05/20 21:44:53 by aconceic         ###   ########.fr       */
+/*   Created: 2024/09/10 21:41:10 by aconceic          #+#    #+#             */
+/*   Updated: 2024/09/16 15:16:57 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Outputs a single character to a specified file descriptor.
- * @param c The character to output.
- * @param fd The file descriptor to output to.
- */
-void	ft_putchar_fd(char c, int fd)
+ * @brief just print an array of chars. 
+ * Support function to help debbuging
+*/
+void	ft_printf_matriz(char **to_print)
 {
-	write(fd, &c, 1);
-}
+	int	i;
 
-//Function description
-//ft_putchar_fd writes a single character c to a specified file descriptor fd. 
-//It's often used to output characters to a specific destination,
-//like a file or console.
+	i = 0;
+	if (!to_print)
+		return ;
+	while (to_print[i])
+	{
+		write(1, "Element ->", 10);
+		write(1, to_print[i], ft_strlen(to_print[i]));
+		write(1, "\n", 1);
+		i ++;
+	}
+}

@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 19:36:12 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/20 14:26:06 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/03/31 19:31:07 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Clears a linked list by iteratively deleting each node and
+ * its associated content using a provided deletion function (del).
+ * @param lst Pointer to the linked list.
+ * @param del function del.
+ * @param void paramether to function del.
+*/
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*current_node;
@@ -29,11 +36,3 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	}
 	*lst = NULL;
 }
-
-//Function Description
-//The ft_lstclear function clears a linked list (lst) 
-//by iteratively deleting each node and its associated 
-//content using a provided deletion function (del). 
-//It ensures proper memory cleanup by freeing both the 
-//node and its content, then sets the list pointer to NULL 
-//to indicate an empty list.

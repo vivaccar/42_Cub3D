@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 14:20:41 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/20 14:26:26 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/03/31 19:37:27 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Returns the last node in a linked list by  
+ * iteratively traversing it and returning the final node.
+ * @param lst Node.
+ * @return Last node on a linked list.
+*/
 t_list	*ft_lstlast(t_list *lst)
 {
 	while (lst)

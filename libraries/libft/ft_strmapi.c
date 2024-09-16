@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:59:00 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/19 22:28:20 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:55:25 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Applies a mapping function f to each character of string s and returns
+ * a new string with the mapped characters. It ensures proper memory allocation.
+ * @return The new string with the mapped characters.
+ */
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	int		i;
@@ -29,11 +34,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	res[i] = '\0';
 	return (res);
 }
-/* 
-//function description
-//applies a mapping function f to each character of string s 
-//and returns a new string with the mapped characters. 
-//It ensures proper memory allocation.
+/*
 #include <stdio.h>
 
 static	char test_func(unsigned int index, char c)

@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:25:23 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/19 20:13:56 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:12:42 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Verify if an INT is a character.
+ * @param c int to be checked.
+ * @return 1024 for true, 0 for false.
+*/
 int	ft_isalpha(int c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
@@ -19,24 +24,3 @@ int	ft_isalpha(int c)
 	else
 		return (0);
 }
-
-/*
-//Function Description
-//Verify if a number is letter
-//returns a positive number if true(1024 in this case) and 0 if not
-#include <stdio.h>
-
-int	main(void)
-{
-	char	test = 'A';
-	char	test1 = 'a';
-	char	test2 = '@';
-	char	test3 = '1';
-	char	test4 = 123;
-	
-	printf("%d\n", ft_isalpha(test));
-	printf("%d\n", ft_isalpha(test1));
-	printf("%d\n", ft_isalpha(test2));
-	printf("%d\n", ft_isalpha(test3));
-	printf("%d\n", ft_isalpha(test4));
-} */

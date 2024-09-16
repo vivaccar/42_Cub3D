@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:30:11 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/19 21:52:31 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:41:19 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief The ft_memcmp function compares two memory blocks
+ * s1 and s2 of size n, returning zero if they are equal,
+ * a negative value if s1 is less than s2, and a positive value if
+ * s1 is greater than s2.
+ * @return The difference between the first different byte.
+*/
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*str_1;

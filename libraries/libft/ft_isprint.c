@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:58:13 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/19 20:53:14 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/03/31 19:15:36 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Verify if an INT is printable
+ * @param c int to be checked.
+ * @return 16384 for true, 0 for false.
+*/
 int	ft_isprint(int c)
 {
 	if (c >= 32 && c < 127)
@@ -19,21 +24,3 @@ int	ft_isprint(int c)
 	else
 		return (0);
 }
-
-/* 
-//Function Description
-//Verify if a character is printable
-//returns a positive number if true(16384 in this case) and 0 if not
-#include <stdio.h>
-
-int	main(void)
-{
-	char	test = 'A';
-	char	test1 = 'a';
-	char	test2 = '\r';
-	
-	printf("%d\n", ft_isprint(test));
-	printf("%d\n", ft_isprint(test1));
-	printf("%d\n", ft_isprint(test2));
-}
- */

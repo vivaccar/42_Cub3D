@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/10 20:30:10 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:32:03 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,15 @@
 */
 int err_msg(char *msg, int int_return)
 {
-    ft_putendl_fd("Error!", STDERR_FILENO);
-    ft_putendl_fd(msg, STDERR_FILENO);
-    return (int_return);
+	ft_putendl_fd("Error!", STDERR_FILENO);
+	ft_putendl_fd(msg, STDERR_FILENO);
+	return (int_return);
+}
+
+void    free_game(t_gm *game)
+{
+	ft_free_matriz(game->argv_cpy);
+	free(game->mlx);//This we will need to destroy after
+	free(game->window);
+	free(game->map);//This we will need to clean inside
 }

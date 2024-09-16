@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_get_time.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 16:00:49 by aconceic          #+#    #+#             */
-/*   Updated: 2024/05/20 21:44:53 by aconceic         ###   ########.fr       */
+/*   Created: 2024/09/10 22:20:10 by aconceic          #+#    #+#             */
+/*   Updated: 2024/09/10 22:22:37 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/**
- * @brief Outputs a single character to a specified file descriptor.
- * @param c The character to output.
- * @param fd The file descriptor to output to.
- */
-void	ft_putchar_fd(char c, int fd)
+size_t	ft_get_time(void)
 {
-	write(fd, &c, 1);
-}
+	struct timeval	current_time;
 
-//Function description
-//ft_putchar_fd writes a single character c to a specified file descriptor fd. 
-//It's often used to output characters to a specific destination,
-//like a file or console.
+	gettimeofday(&current_time, NULL);
+	return ((current_time.tv_sec * 1000) + (current_time.tv_usec / 1000));
+}

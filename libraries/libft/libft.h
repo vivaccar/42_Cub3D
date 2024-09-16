@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:43:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/29 14:26:54 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/10 22:30:03 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-
-//include printf path
-# include "ft_printf/ft_printf.h"
-# include "./get_next_line/get_next_line.h"
+# include <sys/time.h>
 
 /* Checkers */
 int		ft_isalpha(int c);
@@ -75,5 +72,17 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+//expanded
+void	ft_free_matriz(char **dp_char);
+void	ft_printf_matriz(char **to_print);
+int		ft_matrizlen(char **to_count);
+char	**ft_matrizdup(char **to_dup);
+char	*ft_strndup(char *str, int qt);
+int		ft_strlenchr(char *str, char ch);
+int		ft_is_quote_closed(char *input);
+char	*ft_strjoin3(char *s1, char *s2, char *s3, int flag);
+size_t	ft_get_time(void);
+void	ft_usleep(size_t time);
 
 #endif

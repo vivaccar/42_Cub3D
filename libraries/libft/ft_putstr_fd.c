@@ -6,12 +6,15 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:23:01 by aconceic          #+#    #+#             */
-/*   Updated: 2023/12/13 22:43:00 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:13:58 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Outputs the string s to the file descriptor fd.
+ */
 void	ft_putstr_fd(char *s, int fd)
 {
 	unsigned int	i;
