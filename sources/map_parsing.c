@@ -38,3 +38,21 @@ as long as it respects the rules of the map.
 //The map must be composed of only 6 possible characters: 0 for an empty space,
 //1 for a wall, and N,S,E or W for the player’s start position and spawning
 //orientation.
+
+
+/* map structure {
+    char **map;
+    char *north_texture;
+    char *south_texture;
+    char *west_texture;
+    char *east_texture;
+    char *floor_color;
+    char *ceiling_color;
+    char player_direction;
+    double player_position_X;
+    double player_position_Y;
+    double plane_x;
+    double plane_y;
+
+
+    } */

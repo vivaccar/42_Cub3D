@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/10 21:30:38 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:27:47 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,28 @@ typedef struct s_window
 	int	w;
 }	t_window;
 
+typedef struct s_map
+{
+	int		fd;
+	char	**coordinates;
+	char	*north_texture;
+	char	*south_texture;
+	char	*east_texture;
+	char	*west_texture;
+	char	player_direction;
+    float 	player_position_X;
+    float 	player_position_Y;
+    float 	plane_x;
+    float 	plane_y;
+	// ceiling clr
+}	t_map;
+
 //Main Struc gm = GaMe.
 typedef struct s_gm
 {
 	t_mlx		*mlx;
 	t_window	*window;
+	t_map		*map;
 }	t_gm;
 
 int	main(int argc, char **argv);
