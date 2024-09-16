@@ -5,4 +5,4 @@ Repository for the Cub3d project for 42 Porto.
 
 //https://medium.com/@afatir.ahmedfatir/cub3d-tutorial-af5dd31d2fcf
 
-//make re && clear && valgrind --leak-check=full ./cube maps/example.cub
+//make re && clear && valgrind --leak-check=full ./cub3D maps/example.cub

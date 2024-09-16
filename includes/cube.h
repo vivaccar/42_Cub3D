@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/16 15:45:46 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:13:02 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,16 @@ typedef struct s_window
 typedef struct s_map
 {
 	int		fd;
-	char	**coordinates;
-	char	*north_texture;
-	char	*south_texture;
-	char	*east_texture;
-	char	*west_texture;
-	char	player_direction;
-    float 	player_position_X;
-    float 	player_position_Y;
+	char	**matriz;
+	char	*f_color;
+	char	*c_color;
+	char	*ntex;
+	char	*stex;
+	char	*etex;
+	char	*wtex;
+	char	plyr_dir;
+    float 	plyr_x;
+    float 	plyr_y;
     float 	plane_x;
     float 	plane_y;
 	// ceiling clr
@@ -56,23 +58,25 @@ typedef struct s_map
 //Main Struc gm = GaMe.
 typedef struct s_gm
 {
-	int			argc_cpy;
-	char		**argv_cpy;
 	t_mlx		*mlx;
 	t_window	*window;
 	t_map		*map;
 }	t_gm;
 
-int	main(int argc, char **argv);
-bool is_argument_valid(t_gm *game);
+int		main(int argc, char **argv);
+bool	is_argument_valid(t_gm *game, int argc, char **argv);
 
 //free.c
 int		err_msg(char *msg, int int_return);
 void    free_game(t_gm *game);
 
 //init.c
-int	run_mlx(t_gm *game);
-int	init_game_struct(t_gm *game, int argc, char **argv);
+int		run_mlx(t_gm *game);
+int		init_game_struct(t_gm *game);
+void	init_map_struct(t_gm *game);
 
 //map_parsing.c
-int	parse_map(t_gm *game, int argc, char **argv);
+int		parse_map(t_gm *game, int argc, char **argv);
+
+//start_game.c
+void start_game(t_gm *game);
