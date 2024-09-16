@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:43:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/10 22:30:03 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:58:32 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <string.h>
 # include <unistd.h>
 # include <sys/time.h>
+
+#include "get_next_line/get_next_line.h"
+#include "ft_printf/ft_printf.h"
 
 /* Checkers */
 int		ft_isalpha(int c);

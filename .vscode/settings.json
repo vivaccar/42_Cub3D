@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "string.h": "c",
-        "cube.h": "c"
+        "cube.h": "c",
+        "libft.h": "c",
+        "get_next_line.h": "c"
     }
 }

@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/16 16:13:02 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 17:57:22 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ bool	is_argument_valid(t_gm *game, int argc, char **argv);
 //free.c
 int		err_msg(char *msg, int int_return);
 void    free_game(t_gm *game);
+void	free_map(t_map *map);
 
 //init.c
 int		run_mlx(t_gm *game);
@@ -77,6 +78,9 @@ void	init_map_struct(t_gm *game);
 
 //map_parsing.c
 int		parse_map(t_gm *game, int argc, char **argv);
+char	**get_mapfile_info(t_gm *game, char *file_path);
+char	*get_element_info(char *str);
+int		fd_lines_counter(char *file_path);
 
 //start_game.c
 void start_game(t_gm *game);
