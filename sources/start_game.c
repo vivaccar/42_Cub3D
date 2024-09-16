@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/16 16:14:24 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:50:24 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,37 @@
 
 void    start_game(t_gm *game)
 {
-	// init to test 
-	game->map->matriz = ft_calloc(sizeof(char **), 25);
-	int i = 0;
-	game->map->matriz[i] = ft_strdup("1111111111111111111111111");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000111100000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("10000000N0000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1000000000000000000000001");
-	game->map->matriz[i] = ft_strdup("1111111111111111111111111");
+	// initializing main data to start raycasting 
+	game->map->matriz = ft_calloc(sizeof(char *), 25);
+	game->map->matriz[0] = ft_strdup("1111111111111111111111111");
+	game->map->matriz[1] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[2] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[3] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[4] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[5] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[6] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[7] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[9] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[10] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[11] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[12] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[13] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[14] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[15] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[16] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[17] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[18] = ft_strdup("1000000111100000000000001");
+	game->map->matriz[19] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[20] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[21] = ft_strdup("10000000N0000000000000001");
+	game->map->matriz[22] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[23] = ft_strdup("1000000000000000000000001");
+	game->map->matriz[24] = ft_strdup("1111111111111111111111111");
 	game->map->plyr_dir = 'N';
+	game->map->ntex = ft_strdup("textures/test1.xpm");
+	game->map->stex = ft_strdup("textures/test2.xpm");
+	game->map->etex = ft_strdup("textures/test3.xpm");
+	game->map->wtex = ft_strdup("textures/test4.xpm");
 	if (game->map->plyr_dir == 'N')
 	{
 		game->map->plane_x = 0.66;
