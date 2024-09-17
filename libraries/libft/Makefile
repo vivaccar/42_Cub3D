@@ -58,6 +58,9 @@ SRCS = 	ft_atoi.c \
 		ft_strjoin3.c \
 		ft_get_time.c \
 		ft_usleep.c \
+		ft_strchrstr.c \
+		ft_fd_lines_counter.c \
+		ft_err_msg.c \
 
 BONUSSRC = 	ft_lstnew.c \
 			ft_lstadd_front.c \

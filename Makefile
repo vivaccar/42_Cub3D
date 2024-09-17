@@ -6,7 +6,7 @@
 #    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/16 16:09:28 by aconceic         ###   ########.fr        #
+#    Updated: 2024/09/17 16:01:27 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,10 @@ GNL_LIB = $(GNL_DIR)gnl.a
 ### Project
 NAME = cub3D
 OBJ_DIR = ./objs/
-OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
+OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 SRC_DIR = ./sources/
-SRC = main.c free.c init.c map_parsing.c start_game.c\
+SRC = main.c free.c init.c start_game.c\
+	  parsing/map.c parsing/elements.c\
 
 ### MiniLibX
 ##DIR FOR MLX HAVING IN CONSIDERATION THE OS
@@ -55,18 +56,19 @@ mlx_compile :
 	@echo "$(ORANGE)[!]$(RESET) Working on MiniLibX ..."
 	@$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1
 
-$(OBJ_DIR):
-	@echo "$(ORANGE)[!]$(RESET) Creating directory for objects ..."
-	mkdir -p $@
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+#@echo "$(CYAN)[!]$(RESET) Creating object $@ ..."
+	@mkdir -p $(dir $@) > /dev/null 2>&1
+	@$(GCC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ) $(LIBFT_LIB)
 	@echo "$(ORANGE)[!]$(RESET) Working on project ... "
-	$(GCC) $(CFLAGS) $(OBJ) $(LIBFT_LIB) $(GNL_LIB) $(MLXFLAGS) -o $(NAME) > /dev/null 2>&1
+	@$(GCC) $(CFLAGS) $(OBJ) $(LIBFT_LIB) $(GNL_LIB) $(MLXFLAGS) -o $(NAME) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Ok!$(RESET) "
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
-	@echo "$(ORANGE)[!]$(RESET) Creating objects ..."
-	$(GCC) $(CFLAGS) -c $< -o $@
+	#@echo "$(ORANGE)[!]$(RESET) Creating objects ..."
+	@$(GCC) $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Objects Ok!$(RESET) "
 
 $(LIBFT_LIB) : $(LIBFT_DIR) $(PRINTF_DIR) $(GNL_DIR)
@@ -78,17 +80,17 @@ $(LIBFT_LIB) : $(LIBFT_DIR) $(PRINTF_DIR) $(GNL_DIR)
 
 clean:
 	@echo "$(ORANGE)[!]$(RESET) Executing cleaning ..."
-	$(RM) -rf $(OBJ_DIR) > /dev/null 2>&1
-	$(MAKE) clean -C $(LIBFT_DIR) > /dev/null 2>&1
-	$(MAKE) clean -C $(MLX_DIR) > /dev/null 2>&1
+	@$(RM) -rf $(OBJ_DIR) > /dev/null 2>&1
+	@$(MAKE) clean -C $(LIBFT_DIR) > /dev/null 2>&1
+	@$(MAKE) clean -C $(MLX_DIR) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Cleaning Ok!$(RESET)"
 
 fclean:
 	@echo "$(ORANGE)[!]$(RESET) Executing full cleaning..."
-	$(RM) $(NAME) > /dev/null 2>&1
-	$(RM) -rf $(OBJ_DIR) > /dev/null 2>&1
-	$(RM) -rf libraries/minilibx-linux > /dev/null 2>&1
-	make fclean -C $(LIBFT_DIR) > /dev/null 2>&1
+	@$(RM) $(NAME) > /dev/null 2>&1
+	@$(RM) -rf $(OBJ_DIR) > /dev/null 2>&1
+	@$(RM) -rf libraries/minilibx-linux > /dev/null 2>&1
+	@make fclean -C $(LIBFT_DIR) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)full cleaning!$(RESET)"
 
 
@@ -99,3 +101,5 @@ download:
 	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz
 	@tar -xzf minilibx-linux.tgz -C libraries
 	@rm minilibx-linux.tgz
+
+.SILENT : all

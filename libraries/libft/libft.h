@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:43:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/16 16:58:32 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:20:16 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 # include <string.h>
 # include <unistd.h>
 # include <sys/time.h>
+# include <fcntl.h>
 
-#include "get_next_line/get_next_line.h"
-#include "ft_printf/ft_printf.h"
+# include "get_next_line/get_next_line.h"
+# include "ft_printf/ft_printf.h"
 
 /* Checkers */
 int		ft_isalpha(int c);
@@ -87,5 +88,8 @@ int		ft_is_quote_closed(char *input);
 char	*ft_strjoin3(char *s1, char *s2, char *s3, int flag);
 size_t	ft_get_time(void);
 void	ft_usleep(size_t time);
+char	*ft_strstr(char *str, char *to_find);
+int		ft_fd_lines_counter(char *file_path);
+int		ft_err_msg(char *msg, int int_return);
 
 #endif

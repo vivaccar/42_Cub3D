@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parsing.c                                      :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:36:02 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/16 17:57:22 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:26:07 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube.h"
+#include "../../includes/cube.h"
 
 /**
  * @brief Starts the parsing of the map
@@ -18,61 +18,16 @@
  */
 int	parse_map(t_gm *game, int argc, char **argv)
 {
-	int		i;
 	char	**cub;
 
 	cub = get_mapfile_info(game, argv[1]);
-	i = 0;
-	while (cub[i])
-	{
-		if (cub[i] && ft_strnstr(cub[i], "NO", ft_strlen(cub[i])))
-			game->map->ntex = get_element_info(cub[i]);
-		else if (cub[i] && ft_strnstr(cub[i], "SO", ft_strlen(cub[i])))
-			game->map->stex = get_element_info(cub[i]);
-		else if (cub[i] && ft_strnstr(cub[i], "WE", ft_strlen(cub[i])))
-			game->map->wtex = get_element_info(cub[i]);
-		else if (cub[i] && ft_strnstr(cub[i], "EA", ft_strlen(cub[i])))
-			game->map->etex = get_element_info(cub[i]);
-		else if (cub[i] && ft_strnstr(cub[i], "F", ft_strlen(cub[i])))
-			game->map->f_color = get_element_info(cub[i]);
-		else if (cub[i] && ft_strnstr(cub[i], "C", ft_strlen(cub[i])))
-			game->map->c_color = get_element_info(cub[i]);
-		
-		i ++;
-	}
-	(void)argc;
-	printf("game->map->ntex %s \n", game->map->ntex);
-	printf("game->map->stex %s \n", game->map->stex);
-	printf("game->map->wtex %s \n", game->map->wtex);
-	printf("game->map->etex %s \n", game->map->etex);
-	printf("game->map->f_color %s", game->map->f_color);
-	printf("game->map->c_color %s", game->map->c_color);
-	
+	replace_tabs_to_space(cub);
+	get_texture_and_color(game, cub);
+	if (!is_texture_and_color_valid(game, cub))
+		return (ft_free_matriz(cub), EXIT_FAILURE);
 	ft_free_matriz(cub); // This is just to maintain everything freed
+	(void)argc;
 	return (EXIT_SUCCESS);
-}
-
-/**
- * @brief Extracts the infomation of the PATH of the the texture
- */
-char	*get_element_info(char *line)
-{
-	int		j;
-	int		i;
-	char	*extracted;
-
-	j = 0;
-	i = 0;
-	while (line[i] == ' ' || line[i] == '\t')
-		i ++;
-	while (ft_isalpha(line[i]))
-		i ++;
-	j = i;
-	while ((line[i])
-		&& (line[i] != ' ' || line[i] != '\t' || line[i] != '\n'))
-		i ++;
-	extracted = ft_substr(line, j, i - j);
-	return (extracted);
 }
 
 /**
@@ -86,7 +41,7 @@ char	**get_mapfile_info(t_gm *game, char *file_path)
 
 	if (!game)
 		return (NULL);
-	map = ft_calloc(sizeof(char *), fd_lines_counter(file_path) + 1);
+	map = ft_calloc(sizeof(char *), ft_fd_lines_counter(file_path) + 1);
 	if (!map)
 		return (NULL);
 	line = NULL;
@@ -105,31 +60,26 @@ char	**get_mapfile_info(t_gm *game, char *file_path)
 }
 
 /**
- * @brief Used on get_mapfile_info(), to alloc memory to the file
- * @return The number of the lines of a specific fd
+ * @brief Replace tabs for spaces in the matriz
  */
-int	fd_lines_counter(char *file_path)
+void	replace_tabs_to_space(char **cub)
 {
-	int		i;
-	int		fd;
-	char	*line;
+	int	i;
+	int	j;
 
-	fd = open(file_path, O_RDONLY);
-	if (fd < 0)
-		return (err_msg("Invalid FD", -1));
 	i = 0;
-	line = NULL;
-	while (1)
+	j = 0;
+	while (cub[i])
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		free(line);
+		j = 0;
+		while (cub[i][j] != '\0' && cub[i][j] != '\n')
+		{
+			if (cub[i][j] == '\t')
+				cub[i][j] = ' ';
+			j ++;
+		}
 		i ++;
 	}
-	free(line);
-	close(fd);
-	return (i);
 }
 
 //The map must be composed of only 6 possible characters: 0 for an empty space,

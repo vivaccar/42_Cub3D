@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_err_msg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 16:29:50 by aconceic         ###   ########.fr       */
+/*   Created: 2024/09/17 16:12:42 by aconceic          #+#    #+#             */
+/*   Updated: 2024/09/17 16:16:46 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube.h"
+#include "libft.h"
 
-void	free_game(t_gm *game)
+/**
+ * @brief Print a message of error in STDERR and return a given value;
+*/
+int	ft_err_msg(char *msg, int int_return)
 {
-	free(game->mlx);//This we will need to destroy after
-	free(game->window);
-	free_map(game->map); //incomplete function
-	free(game->map);//This we will need to clean inside, including close the fd
-}
-
-void	free_map(t_map *map)
-{
-	free(map->stex);
-	free(map->ntex);
-	free(map->etex);
-	free(map->wtex);
-	free(map->f_color);
-	free(map->c_color);
+	ft_putendl_fd("Error!", STDERR_FILENO);
+	ft_putendl_fd(msg, STDERR_FILENO);
+	return (int_return);
 }

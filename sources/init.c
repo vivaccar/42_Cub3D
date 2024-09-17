@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/16 16:52:36 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:31:25 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@ int	init_game_struct(t_gm *game)
 	ft_bzero(game, sizeof(t_gm));
 	game->map = malloc(sizeof(t_map));
 	if (!game->map)
-		return (err_msg("Error allocating map struct", EXIT_FAILURE));
+		return (ft_err_msg("Error allocating map struct", EXIT_FAILURE));
 	init_map_struct(game);
 	game->mlx = malloc(sizeof(t_mlx));
 	if (!game->mlx)
 	{
 		free(game->map);
-		return (err_msg("Error allocating mlx", EXIT_FAILURE));
+		return (ft_err_msg("Error allocating mlx", EXIT_FAILURE));
 	}
 	game->window = malloc(sizeof(t_window));
 	if (!game->window)
 	{
 		free(game->map);
 		free(game->mlx);
-		return (err_msg("Error allocating windows", EXIT_FAILURE));
+		return (ft_err_msg("Error allocating windows", EXIT_FAILURE));
 	}
 	return (EXIT_SUCCESS);
 }
@@ -43,21 +43,13 @@ int	init_game_struct(t_gm *game)
  * @brief init the mlx library
 */
 int	run_mlx(t_gm *game)
-{	
+{
 	game->mlx->cnt = mlx_init();
 	if (!game->mlx->cnt)
-	{
-		//free game->mlx
-		return (err_msg("mlx_init failed", EXIT_FAILURE));
-	}
-
+		return (ft_err_msg("mlx_init failed", EXIT_FAILURE));
 	game->mlx->wnd = mlx_new_window(game->mlx->cnt, 1000, 1000, "Cub3d");
 	if (!game->mlx->wnd)
-	{
-		//free game->mlx
-		return (err_msg("mlx_new_window failed", EXIT_FAILURE));
-	}
-	
+		return (ft_err_msg("mlx_new_window failed", EXIT_FAILURE));
 	mlx_loop(game->mlx->cnt);
 	return (EXIT_SUCCESS);
 }
