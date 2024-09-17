@@ -6,7 +6,7 @@
 #    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/17 17:58:27 by aconceic         ###   ########.fr        #
+#    Updated: 2024/09/17 20:27:31 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 SRC_DIR = ./sources/
 SRC = main.c free.c init.c start_game.c\
 	  parsing/scene.c parsing/elements.c parsing/elements2.c \
-	  parsing/map.c\
+	  parsing/map.c raycaster.c\
 
 ### MiniLibX
 ##DIR FOR MLX HAVING IN CONSIDERATION THE OS
