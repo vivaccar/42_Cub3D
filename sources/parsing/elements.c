@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:00:36 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 16:21:15 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 18:00:43 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,44 +98,7 @@ bool	is_texture_and_color_valid(t_gm *game, char **m)
 		return (ft_err_msg("Invalid Map Element, space in between", false));
 	if (is_element_missing(game))
 		return (ft_err_msg("Missing map element", false));
-	return (true);
-}
-
-/**
- * @brief Check if a word is separated by space
- * example -> "This is Spaced" ; "ThisIsNotSpaced"
- * @return false for not spaced or !str, true for spaced.
- */
-bool	is_spaced(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
+	if (!is_rgb_valid(game))
 		return (false);
-	while (str[i] == ' ' || str[i] == '\t')
-		i ++;
-	while (str[i])
-	{
-		if (str[i + 1] && ft_isalpha(str[i + 1]) && str[i] == ' ')
-			return (true);
-		if (str[i + 1] && ft_isdigit(str[i + 1]) && str[i] == ' ')
-		{
-			i ++ ;
-			continue ;
-		}
-		i ++;
-	}
-	return (false);
-}
-
-/**
- * @brief Verify if some of the elements of the map struct is null.
- */
-bool	is_element_missing(t_gm *game)
-{
-	if (!game->map->f_color || !game->map->c_color || !game->map->ntex
-		|| !game->map->stex || !game->map->etex || !game->map->wtex)
-		return (true);
-	return (false);
+	return (true);
 }

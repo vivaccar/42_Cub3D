@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 16:33:00 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 18:03:02 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_map
 	float	plyr_y;
 	float	plane_x;
 	float	plane_y;
+	int		frgb[3];
+	int		crgb[3];
 	// ceiling clr
 }	t_map;
 
@@ -75,8 +77,8 @@ int		run_mlx(t_gm *game);
 int		init_game_struct(t_gm *game);
 void	init_map_struct(t_gm *game);
 
-//parsing/map.c
-int		parse_map(t_gm *game, int argc, char **argv);
+//parsing/scene.c
+int		parse_file(t_gm *game, int argc, char **argv);
 char	**get_mapfile_info(t_gm *game, char *file_path);
 void	replace_tabs_to_space(char **cub);
 
@@ -84,8 +86,16 @@ void	replace_tabs_to_space(char **cub);
 void	get_texture_and_color(t_gm *game, char	**matriz);
 char	*get_element_info(char *str);
 bool	is_texture_and_color_valid(t_gm *game, char **matriz);
+
+//parsing/elements2.c
 bool	is_spaced(char *str);
 bool	is_element_missing(t_gm *game);
+bool	is_rgb_valid(t_gm *game);
+void	extract_numbers(char *str, int arr[3], int i);
+bool	is_color_format_valid(char *str);
+
+//parsing/map.c
+
 
 //start_game.
 void	start_game(t_gm *game);

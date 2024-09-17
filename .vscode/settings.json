@@ -5,6 +5,7 @@
         "libft.h": "c",
         "get_next_line.h": "c",
         "stdlib.h": "c",
-        "fcntl.h": "c"
+        "fcntl.h": "c",
+        "mlx_int.h": "c"
     }
 }
