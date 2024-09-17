@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:43:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 16:20:16 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:16:45 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <fcntl.h>
+#include <stdbool.h>
 
 # include "get_next_line/get_next_line.h"
 # include "ft_printf/ft_printf.h"
@@ -91,5 +92,6 @@ void	ft_usleep(size_t time);
 char	*ft_strstr(char *str, char *to_find);
 int		ft_fd_lines_counter(char *file_path);
 int		ft_err_msg(char *msg, int int_return);
+int		ft_isspace(char c);
 
 #endif

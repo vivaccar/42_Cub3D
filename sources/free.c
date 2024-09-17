@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 16:29:50 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 20:10:07 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void	free_map(t_map *map)
 	free(map->wtex);
 	free(map->f_color);
 	free(map->c_color);
+	ft_free_matriz(map->matriz);
 }

@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:36:02 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 18:01:04 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 20:15:54 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	parse_file(t_gm *game, int argc, char **argv)
 	get_texture_and_color(game, cub);
 	if (!is_texture_and_color_valid(game, cub))
 		return (ft_free_matriz(cub), EXIT_FAILURE);
-	ft_free_matriz(cub); // This is just to maintain everything freed
+	extract_map(game, cub);
+	ft_free_matriz(cub);
 	(void)argc;
 	return (EXIT_SUCCESS);
 }

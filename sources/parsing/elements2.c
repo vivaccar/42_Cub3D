@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:58:01 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 18:06:37 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 20:01:46 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,9 @@ bool	is_color_format_valid(char *str)
 		if (!ft_isdigit(str[i]))
 		{
 			if (str[i] != ',' && str[i] != ' ')
+				return (false);
+			if (str[i] == ' ' && i > 0 && ft_isdigit(str[i - 1])
+				&& str[i + 1] && ft_isdigit(str[i + 1]))
 				return (false);
 		}
 		if (str[i] == ',')

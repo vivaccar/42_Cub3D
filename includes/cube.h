@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 18:03:02 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:24:51 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,9 @@ void	extract_numbers(char *str, int arr[3], int i);
 bool	is_color_format_valid(char *str);
 
 //parsing/map.c
-
+void	extract_map(t_gm *game, char **scene);
+int		find_starting_point(char **scene);
+bool	is_empty_line(char *line);
 
 //start_game.
 void	start_game(t_gm *game);
