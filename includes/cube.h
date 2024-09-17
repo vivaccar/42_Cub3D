@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/16 16:13:02 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:37:07 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,19 @@
 # include "../libraries/minilibx-linux/mlx.h"
 # include "../libraries/minilibx-linux/mlx_int.h"
 
+#define WIDTH 1920
+#define HEIGHT 1040
+
 //Mlx Lib Struc
 typedef struct s_mlx
 {
 	void	*cnt;
 	void	*wnd;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }	t_mlx;
 
 //Window Struc
@@ -41,17 +49,19 @@ typedef struct s_map
 {
 	int		fd;
 	char	**matriz;
-	char	*f_color;
-	char	*c_color;
+	int		f_color;
+	int		c_color;
 	char	*ntex;
 	char	*stex;
 	char	*etex;
 	char	*wtex;
 	char	plyr_dir;
-    float 	plyr_x;
-    float 	plyr_y;
-    float 	plane_x;
-    float 	plane_y;
+    double 	plyr_x;
+    double 	plyr_y;
+    double 	plane_x;
+    double 	plane_y;
+	double	dirX;
+	double	dirY;
 	// ceiling clr
 }	t_map;
 
@@ -79,4 +89,7 @@ void	init_map_struct(t_gm *game);
 int		parse_map(t_gm *game, int argc, char **argv);
 
 //start_game.c
-void start_game(t_gm *game);
+void 	start_game(t_gm *game);
+void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+void	draw_floor_ceiling(t_gm *game, t_mlx *mlx);
+void	raycaster(t_gm *game);

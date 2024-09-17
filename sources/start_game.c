@@ -6,11 +6,40 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/16 16:50:24 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:16:20 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
+
+void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
+void	draw_floor_ceiling(t_gm *game, t_mlx *mlx)
+{
+	int	y;
+	int x;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			if (y < HEIGHT / 2)
+				my_mlx_pixel_put(mlx, x, y, game->map->c_color);
+			else
+				my_mlx_pixel_put(mlx, x, y, game->map->f_color);
+			x++;				
+		}
+		y++;
+	}
+}
 
 void    start_game(t_gm *game)
 {
@@ -41,29 +70,40 @@ void    start_game(t_gm *game)
 	game->map->matriz[23] = ft_strdup("1000000000000000000000001");
 	game->map->matriz[24] = ft_strdup("1111111111111111111111111");
 	game->map->plyr_dir = 'N';
+	game->map->plyr_x = 21.0;
+	game->map->plyr_y = 8.0;
+	game->map->f_color = 0xFF0000;
+	game->map->c_color = 0x00FF00;
 	game->map->ntex = ft_strdup("textures/test1.xpm");
 	game->map->stex = ft_strdup("textures/test2.xpm");
 	game->map->etex = ft_strdup("textures/test3.xpm");
 	game->map->wtex = ft_strdup("textures/test4.xpm");
+	game->map->dirX = -1.0;
+	game->map->dirY = 0.0;
 	if (game->map->plyr_dir == 'N')
 	{
 		game->map->plane_x = 0.66;
 		game->map->plane_y = 0;
 	}
-	if (game->map->plyr_dir == 'S')
+	else if (game->map->plyr_dir == 'S')
 	{
 		game->map->plane_x = -0.66;
 		game->map->plane_y = 0;
 	}
-	if (game->map->plyr_dir == 'W')
+	else if (game->map->plyr_dir == 'W')
 	{
 		game->map->plane_x = 0;
 		game->map->plane_y = 0.66;
 	}
-	if (game->map->plyr_dir == 'E')
+	else if (game->map->plyr_dir == 'E')
 	{
 		game->map->plane_x = 0;
 		game->map->plane_y = -0.66;
 	}
 }
 
+
+// plye_x e plyr_y --> DEFINEM A POSICAO DO JOGADOR NA MATRIZ;
+// plane_x e plane_y --> DEFINEM O PLANO DE PROJECAO DA CAMERA DO JOGADOR
+// dirX e dirY ---> VETORES DE DIRECAO;
+// 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/16 16:13:57 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/17 18:42:54 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,17 @@ int	run_mlx(t_gm *game)
 		return (err_msg("mlx_init failed", EXIT_FAILURE));
 	}
 
-	game->mlx->wnd = mlx_new_window(game->mlx->cnt, 1000, 1000, "Cub3d");
+	game->mlx->wnd = mlx_new_window(game->mlx->cnt, WIDTH, HEIGHT, "Cub3d");
 	if (!game->mlx->wnd)
 	{
 		//free game->mlx
 		return (err_msg("mlx_new_window failed", EXIT_FAILURE));
 	}
-	
+	game->mlx->img = mlx_new_image(game->mlx->cnt, WIDTH, HEIGHT);
+	game->mlx->addr = mlx_get_data_addr(game->mlx->img, &game->mlx->bits_per_pixel, &game->mlx->line_length, &game->mlx->endian);
+	draw_floor_ceiling(game, game->mlx);
+	raycaster(game);
+	mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd, game->mlx->img, 0, 0);
 	mlx_loop(game->mlx->cnt);
 	return (EXIT_SUCCESS);
 }
@@ -70,8 +74,8 @@ void	init_map_struct(t_gm *game)
 {
 	game->map->fd = 0;
 	game->map->matriz = NULL;
-	game->map->f_color = NULL;
-	game->map->c_color = NULL;
+	game->map->f_color = 0;
+	game->map->c_color = 0;
 	game->map->ntex = NULL;
 	game->map->stex = NULL;
 	game->map->etex = NULL;

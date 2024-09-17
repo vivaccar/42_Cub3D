@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
+#    By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/16 16:09:28 by aconceic         ###   ########.fr        #
+#    Updated: 2024/09/17 16:10:18 by vivaccar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ NAME = cub3D
 OBJ_DIR = ./objs/
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
 SRC_DIR = ./sources/
-SRC = main.c free.c init.c map_parsing.c start_game.c\
+SRC = main.c free.c init.c map_parsing.c start_game.c raycaster.c\
 
 ### MiniLibX
 ##DIR FOR MLX HAVING IN CONSIDERATION THE OS
