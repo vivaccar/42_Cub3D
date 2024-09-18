@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:43:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 19:16:45 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:42:19 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ char	*ft_strstr(char *str, char *to_find);
 int		ft_fd_lines_counter(char *file_path);
 int		ft_err_msg(char *msg, int int_return);
 int		ft_isspace(char c);
+int		ft_matriz_big_line(char **matriz);
 
 #endif

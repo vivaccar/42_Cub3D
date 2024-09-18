@@ -6,46 +6,18 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:58:01 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 20:01:46 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 14:50:16 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube.h"
 
 /**
- * @brief Check if a word is separated by space
- * example -> "This is Spaced" ; "ThisIsNotSpaced"
- * @return false for not spaced or !str, true for spaced.
- */
-bool	is_spaced(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (false);
-	while (str[i] == ' ' || str[i] == '\t')
-		i ++;
-	while (str[i])
-	{
-		if (str[i + 1] && ft_isalpha(str[i + 1]) && str[i] == ' ')
-			return (true);
-		if (str[i + 1] && ft_isdigit(str[i + 1]) && str[i] == ' ')
-		{
-			i ++ ;
-			continue ;
-		}
-		i ++;
-	}
-	return (false);
-}
-
-/**
  * @brief Verify if some of the elements of the map struct is null.
  */
 bool	is_element_missing(t_gm *game)
 {
-	if (!game->map->f_color || !game->map->c_color || !game->map->ntex
+	if (!game->map->fc_str || !game->map->cc_str || !game->map->ntex
 		|| !game->map->stex || !game->map->etex || !game->map->wtex)
 		return (true);
 	return (false);
@@ -57,18 +29,19 @@ bool	is_element_missing(t_gm *game)
  */
 bool	is_rgb_valid(t_gm *game)
 {
-	if (!is_color_format_valid(game->map->f_color)
-		|| !is_color_format_valid(game->map->c_color))
+	if (!is_color_format_valid(game->map->fc_str)
+		|| !is_color_format_valid(game->map->cc_str))
 	{
 		return (ft_err_msg("Color element format not valid, try nbr, nbr, nbr",
 				false));
 	}
-	extract_numbers(game->map->f_color, game->map->frgb, 0);
-	extract_numbers(game->map->c_color, game->map->crgb, 0);
-	if (game->map->frgb[0] > 255 || game->map->frgb[1] > 255
-		|| game->map->frgb[2] > 255 || game->map->crgb[0] > 255
-		|| game->map->crgb[1] > 255 || game->map->crgb[2] > 255)
+	extract_numbers(game->map->fc_str, game->map->fc_rgb, 0);
+	extract_numbers(game->map->cc_str, game->map->cc_rgb, 0);
+	if (game->map->fc_rgb[0] > 255 || game->map->fc_rgb[1] > 255
+		|| game->map->fc_rgb[2] > 255 || game->map->cc_rgb[0] > 255
+		|| game->map->cc_rgb[1] > 255 || game->map->cc_rgb[2] > 255)
 		return (ft_err_msg("Color elements exceeds 255", false));
+	convert_color_system(game);
 	return (true);
 }
 
@@ -130,4 +103,10 @@ bool	is_color_format_valid(char *str)
 	if (comma != 2)
 		return (false);
 	return (true);
+}
+
+void	convert_color_system(t_gm *game)
+{
+	game->map->fc_hex = (game->map->fc_rgb[0] << 16) | (game->map->fc_rgb[1] << 8) | game->map->fc_rgb[2];
+	game->map->cc_hex =  (game->map->cc_rgb[0] << 16) | (game->map->cc_rgb[1] << 8) | game->map->cc_rgb[2];
 }

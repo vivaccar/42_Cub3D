@@ -1,6 +1,6 @@
 
 ##### Compilation #####
-CC = cc
+CC = cc -c
 CFLAGS = -Wall -Werror -Wextra
 
 ##### Commands #####
@@ -72,6 +72,7 @@ BONUSSRC = 	ft_lstnew.c \
 			ft_lstclear.c \
 			ft_lstiter.c \
 			ft_lstmap.c \
+			ft_matriz_big_line.c \
 
 OBJS = $(SRCS:.c=.o)
 OBJSBONUS = $(BONUSSRC:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:00:36 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 18:00:43 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 14:39:32 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	get_texture_and_color(t_gm *game, char	**matriz)
 			game->map->wtex = get_element_info(m[i]);
 		else if (m[i] && (ft_strstr(m[i], "EA ")) && !game->map->etex)
 			game->map->etex = get_element_info(m[i]);
-		else if (m[i] && (ft_strstr(m[i], "F ")) && !game->map->f_color)
-			game->map->f_color = get_element_info(m[i]);
-		else if (m[i] && (ft_strstr(m[i], "C ")) && !game->map->c_color)
-			game->map->c_color = get_element_info(m[i]);
+		else if (m[i] && (ft_strstr(m[i], "F ")) && !game->map->fc_str)
+			game->map->fc_str = get_element_info(m[i]);
+		else if (m[i] && (ft_strstr(m[i], "C ")) && !game->map->cc_str)
+			game->map->cc_str = get_element_info(m[i]);
 		i ++;
 	}
 }
@@ -92,7 +92,7 @@ bool	is_texture_and_color_valid(t_gm *game, char **m)
 	}
 	if (qt > 6)
 		return (ft_err_msg("Duplicated Map Elements", false));
-	if (is_spaced(game->map->f_color) || is_spaced(game->map->c_color)
+	if (is_spaced(game->map->fc_str) || is_spaced(game->map->cc_str)
 		||is_spaced(game->map->ntex) || is_spaced(game->map->stex)
 		|| is_spaced(game->map->etex) || is_spaced(game->map->wtex))
 		return (ft_err_msg("Invalid Map Element, space in between", false));
@@ -101,4 +101,31 @@ bool	is_texture_and_color_valid(t_gm *game, char **m)
 	if (!is_rgb_valid(game))
 		return (false);
 	return (true);
+}
+/**
+ * @brief Check if a word is separated by space
+ * example -> "This is Spaced" ; "ThisIsNotSpaced"
+ * @return false for not spaced or !str, true for spaced.
+ */
+bool	is_spaced(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (false);
+	while (str[i] == ' ' || str[i] == '\t')
+		i ++;
+	while (str[i])
+	{
+		if (str[i + 1] && ft_isalpha(str[i + 1]) && str[i] == ' ')
+			return (true);
+		if (str[i + 1] && ft_isdigit(str[i + 1]) && str[i] == ' ')
+		{
+			i ++ ;
+			continue ;
+		}
+		i ++;
+	}
+	return (false);
 }

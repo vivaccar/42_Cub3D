@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 20:28:45 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 14:43:41 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ typedef struct s_map
 {
 	int		fd;
 	char	**matriz;
-	char	*f_color;
-	char	*c_color;
+	char	*fc_str;
+	char	*cc_str;
 	char	*ntex;
 	char	*stex;
 	char	*etex;
@@ -60,8 +60,10 @@ typedef struct s_map
 	double 	plyr_y;
 	double 	plane_x;
 	double 	plane_y;
-	int		frgb[3];
-	int		crgb[3];
+	int		fc_rgb[3];
+	int		cc_rgb[3];
+	int		fc_hex;
+	int		cc_hex;
 	double	dirX;
 	double	dirY;
 	// ceiling clr
@@ -96,18 +98,24 @@ void	replace_tabs_to_space(char **cub);
 void	get_texture_and_color(t_gm *game, char	**matriz);
 char	*get_element_info(char *str);
 bool	is_texture_and_color_valid(t_gm *game, char **matriz);
+bool	is_spaced(char *str);
 
 //parsing/elements2.c
-bool	is_spaced(char *str);
 bool	is_element_missing(t_gm *game);
 bool	is_rgb_valid(t_gm *game);
 void	extract_numbers(char *str, int arr[3], int i);
 bool	is_color_format_valid(char *str);
+void	convert_color_system(t_gm *game);
 
 //parsing/map.c
 void	extract_map(t_gm *game, char **scene);
 int		find_starting_point(char **scene);
 bool	is_empty_line(char *line);
+void	make_map_rectangle(t_gm *game);
+char	*create_spaced_line(char *line, int big_line);
+
+//parsing/map2.c
+bool	is_map_valid(t_gm *game);
 
 //start_game.
 void	start_game(t_gm *game);

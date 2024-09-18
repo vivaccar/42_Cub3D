@@ -6,7 +6,7 @@
 #    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/17 20:27:31 by aconceic         ###   ########.fr        #
+#    Updated: 2024/09/18 11:59:48 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 SRC_DIR = ./sources/
 SRC = main.c free.c init.c start_game.c\
 	  parsing/scene.c parsing/elements.c parsing/elements2.c \
-	  parsing/map.c raycaster.c\
+	  parsing/map.c parsing/map2.c raycaster.c\
 
 ### MiniLibX
 ##DIR FOR MLX HAVING IN CONSIDERATION THE OS
@@ -53,7 +53,7 @@ RM = rm -rf
 ### RULES
 all : download mlx_compile $(NAME)
 
-mlx_compile :
+mlx_compile : download
 	@echo "$(ORANGE)[!]$(RESET) Working on MiniLibX ..."
 	@$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1
 
@@ -90,17 +90,21 @@ fclean:
 	@echo "$(ORANGE)[!]$(RESET) Executing full cleaning..."
 	@$(RM) $(NAME) > /dev/null 2>&1
 	@$(RM) -rf $(OBJ_DIR) > /dev/null 2>&1
-	@$(RM) -rf libraries/minilibx-linux > /dev/null 2>&1
-	@make fclean -C $(LIBFT_DIR) > /dev/null 2>&1
-	@echo "$(GREEN)[✔]$(RESET) $(BLUE)full cleaning!$(RESET)"
+#	@$(RM) -rf $(MLX_DIR) > /dev/null 2>&1
+	@$(MAKE) fclean -C $(LIBFT_DIR) > /dev/null 2>&1
+	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Full cleaning Ok!$(RESET)"
 
-
-re : fclean download all
+re : fclean all
 	@echo "$(GREEN)[✔]$(RESET) $(MAGENTA)Refresh Ok!$(RESET) "
 
 download:
+ifeq ($(shell test -d $(MLX_DIR) && echo yes),)
+	@echo "$(ORANGE)[!]$(RESET) Downloading MiniLibX..."
 	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz
 	@tar -xzf minilibx-linux.tgz -C libraries
 	@rm minilibx-linux.tgz
+else
+	@echo "$(GREEN)[✔]$(RESET) MiniLibX already exists, skipping download."
+endif
 
 .SILENT : all
