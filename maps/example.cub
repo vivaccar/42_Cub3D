@@ -1,13 +1,13 @@
-NO ./path_to_the_north_texture
+NO textures/test1.xpm
 
 
 
-            SO ./path_to_the_south_texture
+            SO textures/test2.xpm
 
-    WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+    WE textures/test3.xpm
+EA textures/test4.xpm
 
-F 220,100,0
+F 0,0,255
 
 C 225, 0, 0
 

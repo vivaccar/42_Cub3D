@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 14:53:57 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:03:42 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	run_mlx(t_gm *game)
 	}
 	game->mlx->img = mlx_new_image(game->mlx->cnt, WIDTH, HEIGHT);
 	game->mlx->addr = mlx_get_data_addr(game->mlx->img, &game->mlx->bits_per_pixel, &game->mlx->line_length, &game->mlx->endian);
-	//draw_floor_ceiling(game, game->mlx);
+	draw_floor_ceiling(game, game->mlx);
 	raycaster(game->map, game->mlx);
 	mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd, game->mlx->img, 0, 0);
 	mlx_loop(game->mlx->cnt);

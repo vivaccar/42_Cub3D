@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/18 14:27:28 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:40:54 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	draw_floor_ceiling(t_gm *game, t_mlx *mlx)
 		while (x < WIDTH)
 		{
 			if (y < HEIGHT / 2)
-				my_mlx_pixel_put(mlx, x, y, 0xFFFFFF);
+				my_mlx_pixel_put(mlx, x, y, game->map->cc_hex);
 			else
-				my_mlx_pixel_put(mlx, x, y, 0x0000FF);
+				my_mlx_pixel_put(mlx, x, y, game->map->fc_hex);
 			x++;				
 		}
 		y++;
@@ -46,7 +46,7 @@ void	draw_floor_ceiling(t_gm *game, t_mlx *mlx)
 void    start_game(t_gm *game)
 {
 	// initializing main data to start raycasting 
-	game->map->matriz = ft_calloc(sizeof(char *), 25);
+/* 	game->map->matriz = ft_calloc(sizeof(char *), 25);
 	game->map->matriz[0] = ft_strdup("1111111111111111111111111");
 	game->map->matriz[1] = ft_strdup("1000000000000000000000001");
 	game->map->matriz[2] = ft_strdup("1000000000000000000000001");
@@ -73,13 +73,16 @@ void    start_game(t_gm *game)
 	game->map->matriz[24] = ft_strdup("1111111111111111111111111");
 	game->map->plyr_dir = 'N';
 	game->map->plyr_x = 5.0;
-	game->map->plyr_y = 5.0;
-	game->map->ntex = ft_strdup("textures/test1.xpm");
-	game->map->stex = ft_strdup("textures/test2.xpm");
+	game->map->plyr_y = 5.0; */
+	//game->map->ntex = game->map->nte;
+/* 	game->map->stex = ft_strdup("textures/test2.xpm");
 	game->map->etex = ft_strdup("textures/test3.xpm");
-	game->map->wtex = ft_strdup("textures/test4.xpm");
-	game->map->dirX = -1.0;
-	game->map->dirY = 0.0;
+	game->map->wtex = ft_strdup("textures/test4.xpm"); */
+	game->map->plyr_x = 15.0;
+	game->map->plyr_y = 10.0;
+	game->map->plyr_dir = 'N';
+	game->map->dirX = 0.0;
+	game->map->dirY = -1.0;
 	if (game->map->plyr_dir == 'N')
 	{
 		game->map->plane_x = 0.66;

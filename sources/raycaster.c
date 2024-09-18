@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/18 14:50:02 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:38:53 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	raycaster(t_map *map, t_mlx *mlx)
     int     hit; // flag determinante para saber se o quadrado do mapa que foi atingido e uma parede
     int     side;  // qual lado na parade foi atingido NS or WE
 
+    
+    printf("Player X: %f, Player Y: %f\n", map->plyr_x, map->plyr_y);
     x = 0;
     while (x < WIDTH)
     {
@@ -51,14 +53,22 @@ void	raycaster(t_map *map, t_mlx *mlx)
         mapY = (int)map->plyr_y;
 
         
-        delta_dstc_x = (ray_dir_x == 0) ? 1e30 : fabs(1 / ray_dir_x); // calculo para obter a distancia entre os pontos
-        delta_dstc_y = (ray_dir_y == 0) ? 1e30 : fabs(1 / ray_dir_y);
-
+/* 	    delta_dstc_x = sqrt(1 + (ray_dir_y * ray_dir_y) / (ray_dir_x * ray_dir_x));
+        delta_dstc_y = sqrt(1 + (ray_dir_x * ray_dir_x) / (ray_dir_y * ray_dir_y)); */
+        
+        if (ray_dir_x == 0)
+		    delta_dstc_x = INT_MAX;
+	    else
+		    delta_dstc_x = fabs(1 / ray_dir_x);
+	    if (ray_dir_y == 0)
+		    delta_dstc_y = INT_MAX;
+	    else
+		    delta_dstc_y = fabs(1 / ray_dir_y);
+        
         hit = 0;
         
-
-        printf("RayDirX = %f, RayDirY = %f\n", ray_dir_x, ray_dir_y);
-        printf("X = %i\n", x);
+        //printf("RayDirX = %f, RayDirY = %f\n", ray_dir_x, ray_dir_y);
+        //printf("X = %i\n", x);
         // definindo o step do ray
         if (ray_dir_x < 0)
         {
@@ -70,7 +80,7 @@ void	raycaster(t_map *map, t_mlx *mlx)
             step_x = 1;
             side_dstc_x = (mapX + 1.0 - map->plyr_x) * delta_dstc_x;
         }
-        if (ray_dir_y <= 0)
+        if (ray_dir_y < 0)
         {
             step_y = -1;
             side_dstc_y = (map->plyr_y - mapY) * delta_dstc_y;
@@ -95,7 +105,7 @@ void	raycaster(t_map *map, t_mlx *mlx)
                 mapY += step_y;
                 side = 1;
             }
-            if (map->matriz[mapX][mapY] == '1')
+            if (map->matriz[mapY][mapX] == '1')
             {
                 printf("Wall hitted X = %i, Y = %i\n", mapX, mapY);
                 hit = 1;
@@ -113,16 +123,14 @@ void	raycaster(t_map *map, t_mlx *mlx)
         int draw_end = line_size / 2 + HEIGHT / 2;
         if (draw_end >= HEIGHT)
             draw_end = HEIGHT - 1;
-        int color = 16753920;
-        draw_vertical_line(x, draw_start, draw_end, color, mlx);
-/*         if (side == 1 && ray_dir_y < 0)
-            draw_vertical_line(x, draw_start, draw_end, 0xFFF000, mlx);
+        if (side == 1 && ray_dir_y < 0)
+            draw_vertical_line(x, draw_start, draw_end, 0xF00000, mlx);
         else if (side == 1 && ray_dir_y > 0)
-            draw_vertical_line(x, draw_start, draw_end, 0x00FF00, mlx);
+            draw_vertical_line(x, draw_start, draw_end, 0x000000, mlx);
         else if (side == 0 && ray_dir_x < 0)
-            draw_vertical_line(x, draw_start, draw_end, 0x0000FF, mlx);
+            draw_vertical_line(x, draw_start, draw_end, 0x00000F, mlx);
         else
-            draw_vertical_line(x, draw_start, draw_end, 0x00FFFF, mlx); */
+            draw_vertical_line(x, draw_start, draw_end, 0x00F000, mlx);
         x++;
     }
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:36:02 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 11:51:05 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:39:14 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ int	parse_file(t_gm *game, int argc, char **argv)
 	if (!is_map_valid(game))
 		return (ft_free_matriz(cub), EXIT_FAILURE);
 	ft_free_matriz(cub);
+	game->map->plyr_x = 11.0;
+	game->map->plyr_y = 3.0;
+	game->map->plyr_dir = 'N';
 	(void)argc;
 	return (EXIT_SUCCESS);
 }
