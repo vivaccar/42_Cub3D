@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 14:43:41 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 14:51:59 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <math.h>
 #include <fcntl.h>
 #include <stdbool.h>
+#include <limits.h>
 
 #include "../libraries/libft/libft.h"
 #include "../libraries/minilibx-linux/mlx.h"
@@ -121,5 +122,5 @@ bool	is_map_valid(t_gm *game);
 void	start_game(t_gm *game);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	draw_floor_ceiling(t_gm *game, t_mlx *mlx);
-void	raycaster(t_gm *game);
+void	raycaster(t_map *map, t_mlx *mlx);
 
