@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/18 16:48:29 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:59:08 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,29 +78,35 @@ void    start_game(t_gm *game)
 /* 	game->map->stex = ft_strdup("textures/test2.xpm");
 	game->map->etex = ft_strdup("textures/test3.xpm");
 	game->map->wtex = ft_strdup("textures/test4.xpm"); */
-	game->map->dirX = 0.0;
-	game->map->dirY = -1.0;
-	printf("Player esta para o %c!", game->map->plyr_dir);
+	printf("Player esta para o %c!\n", game->map->plyr_dir);
 	if (game->map->plyr_dir == 'N')
 	{
 		printf("Player esta para o NORTE!");
-		game->map->plane_x = 0.66;
+		game->map->plane_x = -0.66;
 		game->map->plane_y = 0;
+		game->map->dirX = 0.0;
+		game->map->dirY = -1.0;
 	}
 	else if (game->map->plyr_dir == 'S')
 	{
-		game->map->plane_x = -0.66;
+		game->map->plane_x = 0.66;
 		game->map->plane_y = 0;
+		game->map->dirX = 0.0;
+		game->map->dirY = 1.0;
 	}
 	else if (game->map->plyr_dir == 'W')
 	{
 		game->map->plane_x = 0;
-		game->map->plane_y = 0.66;
+		game->map->plane_y = -0.66;
+		game->map->dirX = -1.0;
+		game->map->dirY = 0.0;
 	}
 	else if (game->map->plyr_dir == 'E')
 	{
 		game->map->plane_x = 0;
-		game->map->plane_y = -0.66;
+		game->map->plane_y = 0.66;
+		game->map->dirX = 1.0;
+		game->map->dirY = 0.0;
 	}
 }
 

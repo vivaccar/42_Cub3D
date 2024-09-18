@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:36:02 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 16:47:25 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:58:23 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	parse_file(t_gm *game, int argc, char **argv)
 	extract_map(game, cub);
 	if (!is_map_valid(game))
 		return (ft_free_matriz(cub), EXIT_FAILURE);
-	
 	ft_free_matriz(cub);
 	(void)argc;
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/18 16:48:44 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:11:48 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	raycaster(t_map *map, t_mlx *mlx)
     while (x < WIDTH)
     {
         cam_x = 2 * x / (double)WIDTH - 1;
+        printf("%f, ", cam_x);
         ray_dir_x = map->dirX + map->plane_x * cam_x; // esta parte vai calcular a direcao do raio 
         ray_dir_y = map->dirY + map->plane_y * cam_x;
 
@@ -107,7 +108,7 @@ void	raycaster(t_map *map, t_mlx *mlx)
             }
             if (map->matriz[mapY][mapX] == '1')
             {
-                //printf("Wall hitted X = %i, Y = %i\n", mapX, mapY);
+                printf("Wall hitted X = %i, Y = %i\n", mapX, mapY);
                 hit = 1;
             }   
         }
@@ -124,13 +125,13 @@ void	raycaster(t_map *map, t_mlx *mlx)
         if (draw_end >= HEIGHT)
             draw_end = HEIGHT - 1;
         if (side == 1 && ray_dir_y < 0)
-            draw_vertical_line(x, draw_start, draw_end, 0xF00000, mlx);
+            draw_vertical_line(x, draw_start, draw_end, 0x0000FF, mlx);
         else if (side == 1 && ray_dir_y > 0)
-            draw_vertical_line(x, draw_start, draw_end, 0x000000, mlx);
+            draw_vertical_line(x, draw_start, draw_end, 0x00FF00, mlx);
         else if (side == 0 && ray_dir_x < 0)
-            draw_vertical_line(x, draw_start, draw_end, 0x00000F, mlx);
+            draw_vertical_line(x, draw_start, draw_end, 0xFF0000, mlx);
         else
-            draw_vertical_line(x, draw_start, draw_end, 0x00F000, mlx);
+            draw_vertical_line(x, draw_start, draw_end, 0xFFFF00, mlx);
         x++;
     }
 }
