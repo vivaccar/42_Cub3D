@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 20:29:13 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:49:24 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	run_mlx(t_gm *game)
 	}
 	game->mlx->img = mlx_new_image(game->mlx->cnt, WIDTH, HEIGHT);
 	game->mlx->addr = mlx_get_data_addr(game->mlx->img, &game->mlx->bits_per_pixel, &game->mlx->line_length, &game->mlx->endian);
-	draw_floor_ceiling(game, game->mlx);
-	raycaster(game);
+	//draw_floor_ceiling(game, game->mlx);
+	raycaster(game->map, game->mlx);
 	mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd, game->mlx->img, 0, 0);
 	mlx_loop(game->mlx->cnt);
 	return (EXIT_SUCCESS);
@@ -74,8 +74,8 @@ void	init_map_struct(t_gm *game)
 {
 	game->map->fd = 0;
 	game->map->matriz = NULL;
-	game->map->f_color = 0;
-	game->map->c_color = 0;
+	game->map->f_color = NULL;
+	game->map->c_color = NULL;
 	game->map->ntex = NULL;
 	game->map->stex = NULL;
 	game->map->etex = NULL;

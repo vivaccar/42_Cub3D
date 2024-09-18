@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 20:28:45 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 13:31:35 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <math.h>
 #include <fcntl.h>
 #include <stdbool.h>
+#include <limits.h>
 
 #include "../libraries/libft/libft.h"
 #include "../libraries/minilibx-linux/mlx.h"
@@ -113,5 +114,5 @@ bool	is_empty_line(char *line);
 void	start_game(t_gm *game);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	draw_floor_ceiling(t_gm *game, t_mlx *mlx);
-void	raycaster(t_gm *game);
+void	raycaster(t_map *map, t_mlx *mlx);
 

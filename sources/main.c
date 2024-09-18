@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 20:27:56 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:34:43 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (!is_argument_valid(&game, argc, argv))
 		return (free_game(&game), EXIT_FAILURE);
-	if (parse_file(&game, argc, argv))
-		return (free_game(&game), EXIT_FAILURE);
+	//if (parse_file(&game, argc, argv))
+	//	return (free_game(&game), EXIT_FAILURE);
 	start_game(&game);
 	if (run_mlx(&game))
 		return (ft_err_msg("Error Mlx Init", EXIT_FAILURE));
