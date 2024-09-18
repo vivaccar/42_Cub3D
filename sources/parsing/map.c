@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:40:39 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 14:32:56 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:19:32 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	extract_map(t_gm *game, char **scene)
 	start = find_starting_point(scene);
 	lines = ft_matrizlen(&scene[start]);
 	game->map->matriz = ft_matrizdup(&scene[start]);
-	if (game->map->matriz == NULL)
+	if (game->map->matriz[0] == NULL)
 		return ;
 	make_map_rectangle(game);
 }

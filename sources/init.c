@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 14:53:57 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:35:50 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	init_map_struct(t_gm *game)
 	game->map->plyr_x = 0.0;
 	game->map->plyr_y = 0.0;
 	game->map->plane_x = 0.0;
-	game->map->plane_x = 0.0;
+	game->map->plane_y = 0.0;
 	game->map->fc_rgb[0] = 0;
 	game->map->fc_rgb[1] = 0;
 	game->map->fc_rgb[2] = 0;
@@ -93,4 +93,6 @@ void	init_map_struct(t_gm *game)
 	game->map->cc_rgb[2] = 0;
 	game->map->fc_hex = 0;
 	game->map->cc_hex = 0;
+	game->map->dirX = 0;
+	game->map->dirY = 0;
 }
