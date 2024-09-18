@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 14:35:02 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:01:43 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	free_game(t_gm *game)
 
 void	free_map(t_map *map)
 {
+	close(map->fd);
 	free(map->stex);
 	free(map->ntex);
 	free(map->etex);

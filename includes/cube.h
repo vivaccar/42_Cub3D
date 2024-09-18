@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 14:51:59 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:37:41 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@
 
 #define WIDTH 1920
 #define HEIGHT 1040
+
+// Define color codes
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+#define WHITE   "\033[37m"
+
 
 //Mlx Lib Struc
 typedef struct s_mlx
@@ -117,6 +128,7 @@ char	*create_spaced_line(char *line, int big_line);
 
 //parsing/map2.c
 bool	is_map_valid(t_gm *game);
+bool	is_player_valid(t_gm *game);
 
 //start_game.
 void	start_game(t_gm *game);
@@ -124,3 +136,5 @@ void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	draw_floor_ceiling(t_gm *game, t_mlx *mlx);
 void	raycaster(t_map *map, t_mlx *mlx);
 
+//support.c
+void	print_map_values(t_gm *game);

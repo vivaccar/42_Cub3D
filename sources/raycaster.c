@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/18 16:38:53 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:48:44 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	raycaster(t_map *map, t_mlx *mlx)
             }
             if (map->matriz[mapY][mapX] == '1')
             {
-                printf("Wall hitted X = %i, Y = %i\n", mapX, mapY);
+                //printf("Wall hitted X = %i, Y = %i\n", mapX, mapY);
                 hit = 1;
             }   
         }
