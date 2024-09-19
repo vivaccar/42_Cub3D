@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 16:37:41 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/19 21:28:29 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ typedef struct s_map
 	int		cc_hex;
 	double	dirX;
 	double	dirY;
+	int		h;
+	int		w;
 	// ceiling clr
 }	t_map;
 
@@ -125,10 +127,19 @@ int		find_starting_point(char **scene);
 bool	is_empty_line(char *line);
 void	make_map_rectangle(t_gm *game);
 char	*create_spaced_line(char *line, int big_line);
+void	clean_unecessary_spaces(t_gm *game);
 
 //parsing/map2.c
 bool	is_map_valid(t_gm *game);
 bool	is_player_valid(t_gm *game);
+bool	have_onlyvalid_ch(t_gm *game);
+bool	is_map_closed(char	**map);
+bool	is_first_column_closed(char **map);
+bool	is_last_column_closed(char **map);
+bool	jump_spaces(char ch, int *j, int backwards);
+bool	is_line_horizontal_valid(char *line);
+bool	is_line_vertical_valid(char **map);
+//bool	flood_fill(t_gm *game, char **map, int y, int x);
 
 //start_game.
 void	start_game(t_gm *game);
