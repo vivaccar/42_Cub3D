@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 14:44:37 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:18:53 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,34 @@ typedef struct s_map
 	char	plyr_dir;
 	double 	plyr_x;
 	double 	plyr_y;
-	double 	plane_x;
-	double 	plane_y;
 	int		fc_rgb[3];
 	int		cc_rgb[3];
 	int		fc_hex;
 	int		cc_hex;
+}	t_map;
+
+typedef struct s_ray
+{
+	double 	plyr_x;
+	double 	plyr_y;
 	double	dirX;
 	double	dirY;
-}	t_map;
+	double 	plane_x;
+	double 	plane_y;
+	double	cam_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dstc_x;
+	double	side_dstc_y;
+	double	delta_dstc_x;
+	double	delta_dstc_y;
+	double	wall_dstc;
+	int		step_x;
+	int		step_y;
+	int		side_hit;
+}	t_ray;
 
 //Main Struc gm = GaMe.
 typedef struct s_gm
@@ -86,6 +105,7 @@ typedef struct s_gm
 	t_mlx		*mlx;
 	t_window	*window;
 	t_map		*map;
+	t_ray		*ray;
 }	t_gm;
 
 int		main(int argc, char **argv);
@@ -99,6 +119,7 @@ void	free_map(t_map *map);
 int		run_mlx(t_gm *game);
 int		init_game_struct(t_gm *game);
 void	init_map_struct(t_gm *game);
+void	init_ray_struct(t_gm *game);
 
 //parsing/scene.c
 int		parse_file(t_gm *game, int argc, char **argv);
@@ -130,7 +151,7 @@ bool	is_map_valid(t_gm *game);
 bool	is_player_valid(t_gm *game);
 
 //start_game.
-void	start_game(t_gm *game);
+void	start_positions(t_gm *game);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	draw_floor_ceiling(t_gm *game, t_mlx *mlx);
 int		raycaster(t_gm *game);

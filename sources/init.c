@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 14:43:07 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:51:14 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ int	init_game_struct(t_gm *game)
 	if (!game->map)
 		return (ft_err_msg("Error allocating map struct", EXIT_FAILURE));
 	init_map_struct(game);
+	game->ray = malloc(sizeof(t_ray));
+	if (!game->ray)
+		return (ft_err_msg("Error allocating ray struct", EXIT_FAILURE));
+	init_ray_struct(game);
 	game->mlx = malloc(sizeof(t_mlx));
 	if (!game->mlx)
 	{
@@ -59,11 +63,30 @@ int	run_mlx(t_gm *game)
 	}
 	game->mlx->img = mlx_new_image(game->mlx->cnt, WIDTH, HEIGHT);
 	game->mlx->addr = mlx_get_data_addr(game->mlx->img, &game->mlx->bits_per_pixel, &game->mlx->line_length, &game->mlx->endian);
-	//draw_floor_ceiling(game, game->mlx);
-	mlx_loop_hook(game->mlx->cnt, &raycaster, game);
-	//raycaster(game->map, game->mlx);
-	mlx_loop(game->mlx->cnt);
 	return (EXIT_SUCCESS);
+}
+
+void	init_ray_struct(t_gm *game)
+{
+	game->ray->dirX = 0.0;
+	game->ray->dirY = 0.0;
+	game->ray->plane_x = 0.0;
+	game->ray->plane_y = 0.0;
+	game->ray->cam_x = 0.0;
+	game->ray->ray_dir_x = 0.0;
+	game->ray->ray_dir_y = 0.0;
+	game->ray->map_x = 0;
+	game->ray->map_y = 0;
+	game->ray->side_dstc_x = 0.0;
+	game->ray->side_dstc_x = 0.0;
+	game->ray->delta_dstc_x = 0.0;
+	game->ray->delta_dstc_y = 0.0;
+	game->ray->wall_dstc = 0.0;
+	game->ray->step_x = 0;
+	game->ray->step_y = 0;
+	game->ray->side_hit = 0;
+	game->ray->plyr_x = 0;
+	game->ray->plyr_y = 0;
 }
 
 /**
@@ -83,8 +106,6 @@ void	init_map_struct(t_gm *game)
 	game->map->plyr_dir = '\0';
 	game->map->plyr_x = 0.0;
 	game->map->plyr_y = 0.0;
-	game->map->plane_x = 0.0;
-	game->map->plane_y = 0.0;
 	game->map->fc_rgb[0] = 0;
 	game->map->fc_rgb[1] = 0;
 	game->map->fc_rgb[2] = 0;
@@ -93,6 +114,4 @@ void	init_map_struct(t_gm *game)
 	game->map->cc_rgb[2] = 0;
 	game->map->fc_hex = 0;
 	game->map->cc_hex = 0;
-	game->map->dirX = 0;
-	game->map->dirY = 0;
 }

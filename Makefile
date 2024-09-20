@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
+#    By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/18 16:20:30 by aconceic         ###   ########.fr        #
+#    Updated: 2024/09/20 15:35:49 by vivaccar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 SRC_DIR = ./sources/
 SRC = main.c free.c init.c start_game.c support.c \
 	  parsing/scene.c parsing/elements.c parsing/elements2.c \
-	  parsing/map.c parsing/map2.c raycaster.c\
+	  parsing/map.c parsing/map2.c raycaster/raycaster.c\
 
 ### MiniLibX
 ##DIR FOR MLX HAVING IN CONSIDERATION THE OS

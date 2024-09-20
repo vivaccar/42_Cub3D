@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   support.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:20:16 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 16:37:34 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:32:42 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void print_map_values(t_gm *game)
 
     // Print plane information
     printf("\n" BLUE "-- PLANE INFO --" RESET "\n");
-    printf("Plane X:             " CYAN "%.2f" RESET "\n", game->map->plane_x);
-    printf("Plane Y:             " CYAN "%.2f" RESET "\n", game->map->plane_y);
+    printf("Plane X:             " CYAN "%.2f" RESET "\n", game->ray->plane_x);
+    printf("Plane Y:             " CYAN "%.2f" RESET "\n", game->ray->plane_y);
 
     // Print hex colors
     printf("\n" YELLOW "-- HEX COLORS --" RESET "\n");
@@ -47,8 +47,8 @@ void print_map_values(t_gm *game)
 
     // Print direction vectors
     printf("\n" MAGENTA "-- DIRECTIONS --" RESET "\n");
-    printf("Direction X:         " RED "%.2f" RESET "\n", game->map->dirX);
-    printf("Direction Y:         " RED "%.2f" RESET "\n", game->map->dirY);
+    printf("Direction X:         " RED "%.2f" RESET "\n", game->ray->dirX);
+    printf("Direction Y:         " RED "%.2f" RESET "\n", game->ray->dirY);
 
     printf("\n" BLUE "===================================" RESET "\n");
 }
