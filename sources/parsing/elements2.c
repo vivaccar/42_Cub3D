@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:58:01 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 14:50:16 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:33:28 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ bool	is_color_format_valid(char *str)
 
 void	convert_color_system(t_gm *game)
 {
-	game->map->fc_hex = (game->map->fc_rgb[0] << 16) | (game->map->fc_rgb[1] << 8) | game->map->fc_rgb[2];
-	game->map->cc_hex =  (game->map->cc_rgb[0] << 16) | (game->map->cc_rgb[1] << 8) | game->map->cc_rgb[2];
+	game->map->fc_hex = (game->map->fc_rgb[0] << 16)
+		| (game->map->fc_rgb[1] << 8) | game->map->fc_rgb[2];
+	game->map->cc_hex = (game->map->cc_rgb[0] << 16)
+		| (game->map->cc_rgb[1] << 8) | game->map->cc_rgb[2];
 }

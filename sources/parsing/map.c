@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:40:39 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/19 21:27:05 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:05:05 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,22 +126,4 @@ char	*create_spaced_line(char *line, int big_line)
 	}
 	ret[j] = '\0';
 	return (ret);
-}
-
-void	clean_unecessary_spaces(t_gm *game)
-{
-	int	i;
-
-	i = 0;
-	while (game->map->matriz[i])
-	{
-		if (is_empty_line(game->map->matriz[i]))
-		{
-			free(game->map->matriz[i]);
-			game->map->matriz[i] = NULL;
-			i ++;
-			continue;	
-		}
-		i ++;
-	}
 }

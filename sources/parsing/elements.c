@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:00:36 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 14:39:32 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:33:50 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ bool	is_texture_and_color_valid(t_gm *game, char **m)
 		return (false);
 	return (true);
 }
+
 /**
  * @brief Check if a word is separated by space
  * example -> "This is Spaced" ; "ThisIsNotSpaced"
