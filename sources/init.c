@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 14:37:48 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:43:07 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	run_mlx(t_gm *game)
 	//draw_floor_ceiling(game, game->mlx);
 	mlx_loop_hook(game->mlx->cnt, &raycaster, game);
 	//raycaster(game->map, game->mlx);
-	mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd, game->mlx->img, 0, 0);
 	mlx_loop(game->mlx->cnt);
 	return (EXIT_SUCCESS);
 }

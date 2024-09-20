@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/20 14:14:51 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:44:20 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void    draw_vertical_line(int x, int draw_start, int draw_end, int color, t_mlx
     }
 }
 
-void	raycaster(t_map *map, t_mlx *mlx)
+int	raycaster(t_gm *game)
 {
-    int x;
+    int     x;
     double  cam_x; // mapear o valor de todas as colunas da tela entre -1 e 1;
     double  ray_dir_x; // direcao do raio em x
     double  ray_dir_y; // direcao do raio em y
@@ -41,7 +41,7 @@ void	raycaster(t_map *map, t_mlx *mlx)
     int     side;  // qual lado na parade foi atingido NS or WE
 
     
-    printf("Player X: %f, Player Y: %f\n", map->plyr_x, map->plyr_y);
+    printf("Player X: %f, Player Y: %f\n", game->map->plyr_x, game->map->plyr_y);
     x = 0;
     while (x < WIDTH)
     {
@@ -49,11 +49,11 @@ void	raycaster(t_map *map, t_mlx *mlx)
         printf("%f, ", cam_x);
         printf("RAY X: %f\n", ray_dir_x);
         printf("RAY Y: %f\n", ray_dir_y);
-        ray_dir_x = map->dirX + map->plane_x * cam_x; // esta parte vai calcular a direcao do raio 
-        ray_dir_y = map->dirY + map->plane_y * cam_x;
+        ray_dir_x = game->map->dirX + game->map->plane_x * cam_x; // esta parte vai calcular a direcao do raio 
+        ray_dir_y = game->map->dirY + game->map->plane_y * cam_x;
 
-        mapX = (int)map->plyr_x;
-        mapY = (int)map->plyr_y;
+        mapX = (int)game->map->plyr_x;
+        mapY = (int)game->map->plyr_y;
 
         
 /* 	    delta_dstc_x = sqrt(1 + (ray_dir_y * ray_dir_y) / (ray_dir_x * ray_dir_x));
@@ -80,22 +80,22 @@ void	raycaster(t_map *map, t_mlx *mlx)
         if (ray_dir_x < 0)
         {
             step_x = -1;
-            side_dstc_x = (map->plyr_x - mapX) * delta_dstc_x;
+            side_dstc_x = (game->map->plyr_x - mapX) * delta_dstc_x;
         }
         else // ray_dir_x >= 0
         {
             step_x = 1;
-            side_dstc_x = (mapX + 1.0 - map->plyr_x) * delta_dstc_x;
+            side_dstc_x = (mapX + 1.0 - game->map->plyr_x) * delta_dstc_x;
         }
         if (ray_dir_y < 0)
         {
             step_y = -1;
-            side_dstc_y = (map->plyr_y - mapY) * delta_dstc_y;
+            side_dstc_y = (game->map->plyr_y - mapY) * delta_dstc_y;
         }
         else
         {
             step_y = 1;
-            side_dstc_y = (mapY + 1 - map->plyr_y) * delta_dstc_y;
+            side_dstc_y = (mapY + 1 - game->map->plyr_y) * delta_dstc_y;
         }
 
         while (!hit)
@@ -112,7 +112,7 @@ void	raycaster(t_map *map, t_mlx *mlx)
                 mapY += step_y;
                 side = 1;
             }
-            if (map->matriz[mapY][mapX] == '1')
+            if (game->map->matriz[mapY][mapX] == '1')
             {
                 printf("Wall hitted X = %i, Y = %i\n", mapX, mapY);
                 hit = 1;
@@ -131,14 +131,16 @@ void	raycaster(t_map *map, t_mlx *mlx)
         if (draw_end >= HEIGHT)
             draw_end = HEIGHT - 1;
         if (side == 1 && ray_dir_y < 0)
-            draw_vertical_line(x, draw_start, draw_end, 0x0000FF, mlx);
+            draw_vertical_line(x, draw_start, draw_end, 0x0000FF, game->mlx);
         else if (side == 1 && ray_dir_y > 0)
-            draw_vertical_line(x, draw_start, draw_end, 0x00FF00, mlx);
+            draw_vertical_line(x, draw_start, draw_end, 0x00FF00, game->mlx);
         else if (side == 0 && ray_dir_x < 0)
-            draw_vertical_line(x, draw_start, draw_end, 0xFF0000, mlx);
+            draw_vertical_line(x, draw_start, draw_end, 0xFF0000, game->mlx);
         else
-            draw_vertical_line(x, draw_start, draw_end, 0xFFFF00, mlx);
+            draw_vertical_line(x, draw_start, draw_end, 0xFFFF00, game->mlx);
         x++;
     }
+    mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd, game->mlx->img, 0, 0);
+    return 0;
 }
 

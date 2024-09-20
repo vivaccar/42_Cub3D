@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 13:57:34 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:44:37 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ bool	is_player_valid(t_gm *game);
 void	start_game(t_gm *game);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	draw_floor_ceiling(t_gm *game, t_mlx *mlx);
-void	raycaster(t_map *map, t_mlx *mlx);
+int		raycaster(t_gm *game);
 
 //support.c
 void	print_map_values(t_gm *game);
