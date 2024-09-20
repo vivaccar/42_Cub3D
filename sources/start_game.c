@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/18 18:59:08 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:04:06 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@ void    start_game(t_gm *game)
 	if (game->map->plyr_dir == 'N')
 	{
 		printf("Player esta para o NORTE!");
-		game->map->plane_x = -0.66;
+		game->map->plane_x = 0.66;
 		game->map->plane_y = 0;
 		game->map->dirX = 0.0;
 		game->map->dirY = -1.0;
 	}
 	else if (game->map->plyr_dir == 'S')
 	{
-		game->map->plane_x = 0.66;
+		game->map->plane_x = -0.66;
 		game->map->plane_y = 0;
 		game->map->dirX = 0.0;
 		game->map->dirY = 1.0;

@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/18 18:11:48 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:14:51 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	raycaster(t_map *map, t_mlx *mlx)
     {
         cam_x = 2 * x / (double)WIDTH - 1;
         printf("%f, ", cam_x);
+        printf("RAY X: %f\n", ray_dir_x);
+        printf("RAY Y: %f\n", ray_dir_y);
         ray_dir_x = map->dirX + map->plane_x * cam_x; // esta parte vai calcular a direcao do raio 
         ray_dir_y = map->dirY + map->plane_y * cam_x;
 
@@ -65,7 +67,11 @@ void	raycaster(t_map *map, t_mlx *mlx)
 		    delta_dstc_y = INT_MAX;
 	    else
 		    delta_dstc_y = fabs(1 / ray_dir_y);
-        
+
+        printf("DELTA DSTC X = %f\n", delta_dstc_x);
+        printf("DELTA DSTC Y = %f\n", delta_dstc_y);
+
+
         hit = 0;
         
         //printf("RayDirX = %f, RayDirY = %f\n", ray_dir_x, ray_dir_y);
