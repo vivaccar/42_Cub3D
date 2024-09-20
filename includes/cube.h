@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 15:06:15 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:09:29 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,10 +136,10 @@ bool	is_map_closed(char	**map);
 bool	is_last_column_closed(char **map);
 
 //parsing/map_validations2.c
-bool	jump_spaces(char ch, int *j, int backwards);
-bool	have_unecessary_line(t_gm *game);
+bool	are_all_lines_valid(t_gm *game);
 bool	is_line_horizontal_valid(char *line);
 bool	is_line_vertical_valid(char **map);
+int		is_line_vertical_valid_aux(int *l, int *ch, int *qt_l, int *qt_ch);
 bool	is_first_last_valid(char **map);
 
 //start_game.
@@ -150,3 +150,4 @@ void	raycaster(t_map *map, t_mlx *mlx);
 
 //support.c
 void	print_map_values(t_gm *game);
+bool	jump_spaces(char ch, int *j, int backwards);

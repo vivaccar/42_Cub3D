@@ -6,12 +6,17 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 11:49:57 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 15:31:28 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:15:51 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube.h"
 
+/**
+ * @brief Anchor function to check the validation of the map
+ * If everything is ok, returns true.
+ * Else, returns false.
+*/
 bool	is_map_valid(t_gm *game)
 {
 	char	**m_copy;
@@ -19,10 +24,8 @@ bool	is_map_valid(t_gm *game)
 	if (game->map->matriz[0] == NULL)
 		return (ft_err_msg("Empty Map!", false));
 	m_copy = ft_matrizdup(game->map->matriz);
-	if (!have_onlyvalid_ch(game) || !have_unecessary_line(game)
-		|| !is_player_valid(game))
-		return (ft_free_matriz(m_copy), false);
-	if (!is_map_closed(m_copy))
+	if (!have_onlyvalid_ch(game) || !are_all_lines_valid(game)
+		|| !is_player_valid(game) || !is_map_closed(m_copy))
 		return (ft_free_matriz(m_copy), false);
 	game->map->h = ft_matrizlen(game->map->matriz);
 	game->map->w = ft_matriz_big_line(game->map->matriz);
@@ -30,6 +33,9 @@ bool	is_map_valid(t_gm *game)
 	return (true);
 }
 
+/**
+ * @brief Check of there is more or less than 1 player on the map
+*/
 bool	is_player_valid(t_gm *game)
 {
 	int		i;
@@ -58,6 +64,9 @@ bool	is_player_valid(t_gm *game)
 	return (true);
 }
 
+/**
+ * @brief Check if there is only valid characters on the map
+*/
 bool	have_onlyvalid_ch(t_gm *game)
 {
 	int		i;
@@ -77,6 +86,11 @@ bool	have_onlyvalid_ch(t_gm *game)
 	return (true);
 }
 
+/**
+ * @attention Support function to is_valid_map()
+ * Anchor function to validations of closed map.
+ * @brief Check if the map is closed and all the lines are valid.
+*/
 bool	is_map_closed(char	**map)
 {
 	int	i;
@@ -96,6 +110,9 @@ bool	is_map_closed(char	**map)
 	return (true);
 }
 
+/**
+ * @brief Check if the last column is closed by walls.
+*/
 bool	is_last_column_closed(char **map)
 {
 	int	i;
@@ -118,7 +135,6 @@ bool	is_last_column_closed(char **map)
 	}
 	return (true);
 }
-
 
 /* bool flood_fill(t_gm *game, char **map, int y, int x)
 {
@@ -149,44 +165,3 @@ bool	is_last_column_closed(char **map)
     // If all directions return true, the map is closed
     return (true);
 } */
-
-
-//The map must be composed of only 6 possible characters: 0 for an empty space,
-//1 for a wall, and N,S,E or W for the player’s start position and spawning
-//orientation.
-
-/*
-The map must be closed/surrounded by walls, if not the program must return
-an error.
-
-◦ Except for the map content, each type of element can be separated by one or
-more empty line(s).
-
-◦ Except for the map content which always has to be the last, each type of
-element can be set in any order in the file.
-
-◦ Except for the map, each type of information from an element can be separated
-by one or more space(s).
-
-◦ The map must be parsed as it looks in the file. Spaces are a valid part of the
-map and are up to you to handle. You must be able to parse any kind of map,
-as long as it respects the rules of the map.
-*/
-
-
-/* map structure {
-	char **map;
-	char *north_texture;
-	char *south_texture;
-	char *west_texture;
-	char *east_texture;
-	char *floor_color;
-	char *ceiling_color;
-	char player_direction;
-	double player_position_X;
-	double player_position_Y;
-	double plane_x;
-	double plane_y;
-
-
-	} */

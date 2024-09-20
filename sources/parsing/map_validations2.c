@@ -6,28 +6,17 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 14:58:50 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 15:31:51 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:10:11 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube.h"
 
-bool	jump_spaces(char ch, int *j, int backwards)
-{
-	if (ch == ' ' && !backwards)
-	{
-		(*j)++;
-		return (true);
-	}
-	if (ch == ' ' && backwards)
-	{
-		(*j)--;
-		return (true);
-	}
-	return (false);
-}
-
-bool	have_unecessary_line(t_gm *game)
+/**
+ * @brief Check if there is an emptyline (only with spaces) on the map
+ * @return True indicating that all lines are valid, false and msg otherwise
+*/
+bool	are_all_lines_valid(t_gm *game)
 {
 	int	i;
 
@@ -35,14 +24,15 @@ bool	have_unecessary_line(t_gm *game)
 	while (game->map->matriz[i])
 	{
 		if (is_empty_line(game->map->matriz[i]))
-			return (ft_err_msg("Invalid line after map\n", false));
+			return (ft_err_msg("Invalid line on map!", false));
 		i ++;
 	}
 	return (true);
 }
 
 /**
- * @brief 
+ * @brief Check for map validations horizontally on the map
+ * Including the player(NSEW) invalid positions
  */
 bool	is_line_horizontal_valid(char *line)
 {
@@ -74,19 +64,17 @@ bool	is_line_horizontal_valid(char *line)
 }
 
 /**
- * @brief
+ * @brief Check for map validations vertically on the map
  */
 bool	is_line_vertical_valid(char **map)
 {
 	int	line;
 	int	chars;
-	int	inside_map;
 	int	qt_lines;
 	int	qt_chars;
 
 	line = 0;
 	chars = 0;
-	inside_map = 0;
 	qt_chars = ft_matriz_big_line(map);
 	qt_lines = ft_matrizlen(map);
 	while (chars < qt_chars)
@@ -101,20 +89,33 @@ bool	is_line_vertical_valid(char **map)
 				&& map[line + 1][chars] == '0') || (map[line][chars] == '0'
 					&& map[line + 1][chars] == ' ')))
 			return (ft_err_msg("Invalid Map", false));
-		if ((line == qt_lines) && (chars == qt_chars))
+		if (is_line_vertical_valid_aux(&line, &chars, &qt_lines, &qt_chars))
 			break ;
-		line ++;
-		if (line == qt_lines)
-		{
-			line = 0;
-			chars ++;
-		}
 	}
 	return (true);
 }
 
 /**
- * @brief 
+ * @attention Auxiliar to is_line_vertical_valid()
+ * Just because of norminette. Used to break the loop.
+*/
+int	is_line_vertical_valid_aux(int *l, int *ch, int *qt_l, int *qt_ch)
+{
+	if ((*l) == (*qt_l) && (*ch) == (*qt_ch))
+		return (EXIT_FAILURE);
+	(*l)++;
+	if ((*l) == (*qt_l))
+	{
+		(*l) = 0;
+		(*ch)++;
+	}
+	return (EXIT_SUCCESS);
+}
+
+/**
+ * @brief Check validacity of first and last line only.
+ * Because, according to the subject, the map must be surrounded by wall.
+ * If there is a '0' in first or last line, return false.
 */
 bool	is_first_last_valid(char **map)
 {

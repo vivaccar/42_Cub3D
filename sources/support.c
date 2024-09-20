@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:20:16 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 15:25:44 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:41:08 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,22 @@ void print_map_values(t_gm *game)
 	printf("Direction Y:         " RED "%.2f" RESET "\n", game->map->dirY);
 
 	printf("\n" BLUE "===================================" RESET "\n");
+}
+
+/**
+ * @brief
+*/
+bool	jump_spaces(char ch, int *j, int backwards)
+{
+	if (ch == ' ' && !backwards)
+	{
+		(*j)++;
+		return (true);
+	}
+	if (ch == ' ' && backwards)
+	{
+		(*j)--;
+		return (true);
+	}
+	return (false);
 }
