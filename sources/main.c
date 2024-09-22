@@ -6,17 +6,64 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 15:36:23 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:46:35 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
 
+void	esc_close(t_gm *game)
+{
+	(void) game;
+	//free(game);
+	exit(0);
+}
+
+void	move_up(t_gm *game)
+{
+	game->ray->plyr_y += game->ray->dirY * 0.05;
+}
+
+void	move_down(t_gm *game)
+{
+	game->ray->plyr_y -= game->ray->dirY * 0.05;
+}
+
+void	move_left(t_gm *game)
+{
+	game->ray->plyr_x -= 0.05;
+}
+
+void	move_right(t_gm *game)
+{
+	game->ray->plyr_x += 0.05;
+}
+
+int	key_press_handler(int keycode, t_gm *game)
+{
+	(void)keycode;
+	
+	if (keycode == KEY_ESC)
+		esc_close(game);
+	else if (keycode == KEY_W)
+		move_up(game);
+	else if (keycode == KEY_S)
+		move_down(game);
+	else if (keycode == KEY_A)
+		move_left(game);
+	else if (keycode == KEY_D)
+		move_right(game);
+	printf("%i", game->ray->map_x);
+	//game->ray->map_y += game->ray->dirY;
+	printf("%i", game->ray->map_y);
+	return (0);
+}
+
 void	run_cub(t_gm *game)
 {
 	start_positions(game);
-	//draw_floor_ceiling(game, game->mlx);
 	mlx_loop_hook(game->mlx->cnt, &raycaster, game);
+	mlx_hook(game->mlx->wnd, 2, 1L << 0, key_press_handler, game);
 	mlx_loop(game->mlx->cnt);
 }
 

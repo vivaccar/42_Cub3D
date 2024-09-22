@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/20 16:51:56 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:19:16 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	draw_floor_ceiling(t_gm *game, t_mlx *mlx)
 		while (x < WIDTH)
 		{
 			if (y < HEIGHT / 2)
-				my_mlx_pixel_put(mlx, x, y, game->map->cc_hex);
+				my_mlx_pixel_put(mlx, x, y, 0x000000);
 			else
-				my_mlx_pixel_put(mlx, x, y, game->map->fc_hex);
+				my_mlx_pixel_put(mlx, x, y, 0x000000);
 			x++;				
 		}
 		y++;

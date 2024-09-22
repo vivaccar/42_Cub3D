@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/20 16:52:08 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:25:48 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void    launch_ray(t_ray *ray, t_map *map)
         }
         if (map->matriz[ray->map_y][ray->map_x] == '1')
         {
-            printf("Wall hitted X = %i, Y = %i\n", ray->map_x, ray->map_y);
+            //printf("Wall hitted X = %i, Y = %i\n", ray->map_x, ray->map_y);
             hit = 1;
         }    
     }
@@ -124,17 +124,19 @@ int raycaster(t_gm *game)
     int x;
 
     x = 0;
+    draw_floor_ceiling(game, game->mlx);
     while (x < WIDTH)
     {
-        game->ray->map_x = (int)game->map->plyr_x;
-    	game->ray->map_y = (int)game->map->plyr_y;
-        
+        game->ray->map_x = (int)game->ray->plyr_x;
+    	game->ray->map_y = (int)game->ray->plyr_y;
+        printf("%i\n", game->ray->map_x);
+        printf("%i\n", game->ray->map_y);
         rays_direction(game->ray, x);
         delta_dstc(game->ray);
         step_increment(game->ray);
         launch_ray(game->ray, game->map);
         get_wall_height_and_draw(game, game->ray, x);
-        printf("%f\n", game->ray->cam_x);
+/*         printf("%f\n", game->ray->cam_x);
         printf("%f\n", game->ray->delta_dstc_x);
         printf("%f\n", game->ray->delta_dstc_x);
         printf("%f\n", game->ray->dirX);
@@ -149,20 +151,10 @@ int raycaster(t_gm *game)
         printf("%f\n", game->ray->plyr_y);
         printf("%f\n", game->ray->plyr_x);
         printf("%f\n", game->ray->plane_x);
-        printf("%f\n", game->ray->plane_y);
+        printf("%f\n", game->ray->plane_y); */
         //exit(1);
         x++;
     }
-/*     printf("%i\n", game->ray->cam_x);
-    printf("%i\n", game->ray->cam_x);
-    printf("%i\n", game->ray->cam_x);
-    printf("%i\n", game->ray->cam_x);
-    printf("%i\n", game->ray->cam_x);
-    printf("%i\n", game->ray->cam_x);
-    printf("%i\n", game->ray->cam_x);
-    printf("%i\n", game->ray->cam_x);
-    printf("%i\n", game->ray->cam_x);
-    printf("%i\n", game->ray->cam_x); */
     
     mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd, game->mlx->img, 0, 0);
 
