@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/22 13:19:16 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/22 17:29:19 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

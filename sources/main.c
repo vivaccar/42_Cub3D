@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/22 14:14:04 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/22 17:40:57 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	key_press_handler(int keycode, t_gm *game)
 		move_left(game);
 	else if (keycode == KEY_D)
 		move_right(game);
+	else if (keycode == KEY_M)
+		game->mm->m_pressed = !game->mm->m_pressed;
 	printf("%i", game->ray->map_x);
 	//game->ray->map_y += game->ray->dirY;
 	printf("%i", game->ray->map_y);

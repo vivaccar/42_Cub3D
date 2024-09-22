@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/22 14:08:52 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/22 17:45:10 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int	init_game_struct(t_gm *game)
 		free(game->mlx);
 		return (ft_err_msg("Error allocating windows", EXIT_FAILURE));
 	}
+	game->mm = malloc(sizeof(t_minmap));
+	if (!game->mm)
+		return (ft_err_msg("Error allocating MiniMap struct", EXIT_FAILURE));
+	game->mm->m_pressed = 0;
+	game->mm->tile_size = 10;
 	return (EXIT_SUCCESS);
 }
 

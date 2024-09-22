@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/22 13:25:48 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/22 17:20:31 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,9 +155,8 @@ int raycaster(t_gm *game)
         //exit(1);
         x++;
     }
-    
+    draw_mini_map(game);
     mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd, game->mlx->img, 0, 0);
-
 /*      int     x;
     double  cam_x; // mapear o valor de todas as colunas da tela entre -1 e 1;
     double  ray_dir_x; // direcao do raio em x

@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 15:01:43 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/22 17:34:30 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	free_game(t_gm *game)
 	free(game->window);
 	free_map(game->map); //incomplete function
 	free(game->map);//This we will need to clean inside, including close the fd
+	free(game->mm);
 }
 
 void	free_map(t_map *map)

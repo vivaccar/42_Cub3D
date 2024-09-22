@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/22 14:07:41 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:06:37 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define KEY_M 109
 
 # define KEY_UP 65362
 # define KEY_DOWN 65364
@@ -112,6 +113,12 @@ typedef struct s_ray
 	int		side_hit;
 }	t_ray;
 
+typedef struct s_minmap
+{
+	int	m_pressed;
+	int	tile_size;
+}	t_minmap;
+
 //Main Struc gm = GaMe.
 typedef struct s_gm
 {
@@ -119,6 +126,7 @@ typedef struct s_gm
 	t_window	*window;
 	t_map		*map;
 	t_ray		*ray;
+	t_minmap	*mm;
 }	t_gm;
 
 int		main(int argc, char **argv);
@@ -173,11 +181,25 @@ bool	is_line_vertical_valid(char **map);
 int		is_line_vertical_valid_aux(int *l, int *ch, int *qt_l, int *qt_ch);
 bool	is_first_last_valid(char **map);
 
-//start_game.
-void	start_positions(t_gm *game);
+//start_game.c
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	draw_floor_ceiling(t_gm *game, t_mlx *mlx);
+void	start_positions(t_gm *game);
+
+//raycaster/raycaster.c
 int		raycaster(t_gm *game);
+void    draw_vertical_line(int x, int draw_start, int draw_end, int color, t_mlx *mlx);
+void    rays_direction(t_ray *ray, int x);
+void    delta_dstc(t_ray *ray);
+void    step_increment(t_ray *ray);
+void    launch_ray(t_ray *ray, t_map *map);
+void    get_wall_height_and_draw(t_gm *game, t_ray *ray, int x);
+
+//mini_map.c
+void	draw_mini_map(t_gm *game);
+void	render_mini_map(t_gm *game, int x, int y);
+void	render_mini_map_player(t_gm *game);
+void	render_mini_map_pl_dir(t_gm *game);
 
 //support.c
 void	print_map_values(t_gm *game);
