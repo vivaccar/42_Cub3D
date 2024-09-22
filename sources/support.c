@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:20:16 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 18:41:32 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/22 14:10:21 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ void	print_map_values(t_gm *game)
 	printf("Player X Position:   " RED "%.2f" RESET "\n", game->map->plyr_x);
 	printf("Player Y Position:   " RED "%.2f" RESET "\n", game->map->plyr_y);
 	printf("\n" BLUE "======= PLANE INFO =======" RESET "\n");
-	printf("Plane X:             " CYAN "%.2f" RESET "\n", game->map->plane_x);
-	printf("Plane Y:             " CYAN "%.2f" RESET "\n", game->map->plane_y);
+	printf("Plane X:             " CYAN "%.2f" RESET "\n", game->ray->plane_x);
+	printf("Plane Y:             " CYAN "%.2f" RESET "\n", game->ray->plane_y);
 	printf("\n" YELLOW "======= HEX COLORS =======" RESET "\n");
 	printf("Floor HEX:           " WHITE "%#X" RESET "\n", game->map->fc_hex);
 	printf("Ceiling HEX:         " WHITE "%#X" RESET "\n", game->map->cc_hex);
 	printf("\n" MAGENTA "======= DIRECTIONS =======" RESET "\n");
-	printf("Direction X:         " RED "%.2f" RESET "\n", game->map->dirX);
-	printf("Direction Y:         " RED "%.2f" RESET "\n", game->map->dirY);
+	printf("Direction X:         " RED "%.2f" RESET "\n", game->ray->dirX);
+	printf("Direction Y:         " RED "%.2f" RESET "\n", game->ray->dirY);
 	printf("\n" BLUE "===================================" RESET "\n");
 }
 

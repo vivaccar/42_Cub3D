@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 18:21:31 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/22 14:07:41 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@
 
 #define WIDTH 1920
 #define HEIGHT 1040
+
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 // Define color codes
 #define RESET   "\033[0m"
@@ -70,18 +81,36 @@ typedef struct s_map
 	char	plyr_dir;
 	double 	plyr_x;
 	double 	plyr_y;
-	double 	plane_x;
-	double 	plane_y;
 	int		fc_rgb[3];
 	int		cc_rgb[3];
 	int		fc_hex;
 	int		cc_hex;
-	double	dirX;
-	double	dirY;
 	int		h;
 	int		w;
-	// ceiling clr
 }	t_map;
+
+typedef struct s_ray
+{
+	double 	plyr_x;
+	double 	plyr_y;
+	double	dirX;
+	double	dirY;
+	double 	plane_x;
+	double 	plane_y;
+	double	cam_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dstc_x;
+	double	side_dstc_y;
+	double	delta_dstc_x;
+	double	delta_dstc_y;
+	double	wall_dstc;
+	int		step_x;
+	int		step_y;
+	int		side_hit;
+}	t_ray;
 
 //Main Struc gm = GaMe.
 typedef struct s_gm
@@ -89,6 +118,7 @@ typedef struct s_gm
 	t_mlx		*mlx;
 	t_window	*window;
 	t_map		*map;
+	t_ray		*ray;
 }	t_gm;
 
 int		main(int argc, char **argv);
@@ -102,6 +132,7 @@ void	free_map(t_map *map);
 int		run_mlx(t_gm *game);
 int		init_game_struct(t_gm *game);
 void	init_map_struct(t_gm *game);
+void	init_ray_struct(t_gm *game);
 
 //parsing/scene.c
 int		parse_file(t_gm *game, int argc, char **argv);
@@ -143,10 +174,10 @@ int		is_line_vertical_valid_aux(int *l, int *ch, int *qt_l, int *qt_ch);
 bool	is_first_last_valid(char **map);
 
 //start_game.
-void	start_game(t_gm *game);
+void	start_positions(t_gm *game);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	draw_floor_ceiling(t_gm *game, t_mlx *mlx);
-void	raycaster(t_map *map, t_mlx *mlx);
+int		raycaster(t_gm *game);
 
 //support.c
 void	print_map_values(t_gm *game);
