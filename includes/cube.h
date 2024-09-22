@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/22 14:07:41 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/22 17:05:30 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_ray
 	int		step_x;
 	int		step_y;
 	int		side_hit;
+	double	mov_speed;
 }	t_ray;
 
 //Main Struc gm = GaMe.
@@ -183,3 +184,13 @@ int		raycaster(t_gm *game);
 void	print_map_values(t_gm *game);
 bool	jump_spaces(char ch, int *j, int backwards);
 bool	is_openble_file(char *path, char *extention, int ext_len);
+
+//events
+
+void	esc_close(t_gm *game);
+int		key_press_handler(int keycode, t_gm *game);
+void	move_up(t_gm *game);
+void	move_down(t_gm *game);
+void	move_left(t_gm *game);
+void	move_right(t_gm *game);
+void    rotate(t_gm *game, int keycode);

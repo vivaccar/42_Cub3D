@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
+#    By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/22 14:11:02 by aconceic         ###   ########.fr        #
+#    Updated: 2024/09/22 17:05:56 by vivaccar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ SRC_DIR = ./sources/
 SRC = main.c free.c init.c start_game.c support.c \
 	  parsing/scene.c parsing/elements.c parsing/elements2.c \
 	  parsing/map.c parsing/map_validations1.c raycaster/raycaster.c\
-	  parsing/map_validations2.c \
+	  parsing/map_validations2.c events/exit.c events/handlers.c \
+	  events/move.c events/rotate.c\
 
 ### MiniLibX
 ##DIR FOR MLX HAVING IN CONSIDERATION THE OS

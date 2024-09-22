@@ -3,61 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/22 14:14:04 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/22 16:30:38 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
-
-void	esc_close(t_gm *game)
-{
-	(void) game;
-	//free(game);
-	exit(0);
-}
-
-void	move_up(t_gm *game)
-{
-	game->ray->plyr_y += game->ray->dirY * 0.03;
-}
-
-void	move_down(t_gm *game)
-{
-	game->ray->plyr_y -= game->ray->dirY * 0.03;
-}
-
-void	move_left(t_gm *game)
-{
-	game->ray->plyr_x -= 0.05;
-}
-
-void	move_right(t_gm *game)
-{
-	game->ray->plyr_x += 0.05;
-}
-
-int	key_press_handler(int keycode, t_gm *game)
-{
-	(void)keycode;
-	
-	if (keycode == KEY_ESC)
-		esc_close(game);
-	else if (keycode == KEY_W)
-		move_up(game);
-	else if (keycode == KEY_S)
-		move_down(game);
-	else if (keycode == KEY_A)
-		move_left(game);
-	else if (keycode == KEY_D)
-		move_right(game);
-	printf("%i", game->ray->map_x);
-	//game->ray->map_y += game->ray->dirY;
-	printf("%i", game->ray->map_y);
-	return (0);
-}
 
 void	run_cub(t_gm *game)
 {

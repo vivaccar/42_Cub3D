@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/22 14:08:52 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/22 16:25:43 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	init_ray_struct(t_gm *game)
 	game->ray->side_hit = 0;
 	game->ray->plyr_x = 0;
 	game->ray->plyr_y = 0;
+	game->ray->mov_speed = 0.07;
 }
 
 /**
