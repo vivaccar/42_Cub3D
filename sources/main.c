@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/19 16:13:48 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:31:26 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,11 @@ int	main(int argc, char **argv)
 */
 bool	is_argument_valid(t_gm *game, int argc, char **argv)
 {
-	int	invalid;
-	int	len;
-
 	if (argc != 2)
 		return (ft_err_msg("Invalid quantity of arguments!", false));
-	invalid = 1;
-	len = ft_strlen(argv[1]);
-	if (len > 4 && !ft_strncmp(".cub", &argv[1][len - 4], 4))
-		invalid = 0;
-	game->map->fd = open(argv[1], O_RDONLY); // dont forget to close this
-	if (invalid || game->map->fd < 0)
-		return (ft_err_msg("Invalid map file", false));
+	if (!is_openble_file(argv[1], ".cub", 4))
+		return(false);
+	game->map->fd = open(argv[1], O_RDONLY);
 	return (true);
 }
 //path

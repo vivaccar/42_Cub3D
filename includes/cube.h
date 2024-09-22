@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 16:09:29 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:21:31 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,3 +151,4 @@ void	raycaster(t_map *map, t_mlx *mlx);
 //support.c
 void	print_map_values(t_gm *game);
 bool	jump_spaces(char ch, int *j, int backwards);
+bool	is_openble_file(char *path, char *extention, int ext_len);

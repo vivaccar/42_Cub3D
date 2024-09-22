@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:36:02 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 15:26:11 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:40:43 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ int	parse_file(t_gm *game, int argc, char **argv)
 	cub = get_mapfile_info(game, argv[1]);
 	replace_tabs_to_space(cub);
 	get_texture_and_color(game, cub);
-	if (!is_texture_and_color_valid(game, cub))
+	if (!is_texture_and_color_valid(game, cub)
+		|| !is_openble_file(game->map->ntex, NULL, 4)
+		|| !is_openble_file(game->map->stex, NULL, 4)
+		|| !is_openble_file(game->map->etex, NULL, 4)
+		|| !is_openble_file(game->map->wtex, NULL, 4))
 		return (ft_free_matriz(cub), EXIT_FAILURE);
 	extract_map(game, cub);
 	if (!is_map_valid(game))

@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:20:16 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 16:19:13 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:41:32 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ void	print_map_values(t_gm *game)
 }
 
 /**
- * @brief
+ * @brief Move a characther of is a space
+ * If have backwards, decrement j value.
+ * If dont, acrecent.
 */
 bool	jump_spaces(char ch, int *j, int backwards)
 {
@@ -56,4 +58,36 @@ bool	jump_spaces(char ch, int *j, int backwards)
 		return (true);
 	}
 	return (false);
+}
+
+/**
+ * @brief Check some file has a specific extention and if its an openble file
+ * if nothing is passed on extention, just check if its an openble file
+*/
+bool	is_openble_file(char *path, char *extention, int ext_len)
+{
+	int		len;
+	int		fd;
+	char	*err_msg;
+
+	len = 0;
+	fd = -1;
+	len = ft_strlen(path);
+	err_msg = ft_strjoin(path, " - Not a valid file!");
+	if (extention)
+	{
+		if (len > ext_len 
+			&& ft_strncmp(extention, &path[len - ext_len], ext_len))
+		{
+			ft_err_msg(err_msg, false);		
+			return (free(err_msg), false);
+		}
+	}
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_err_msg(err_msg, false);
+		return (free(err_msg), false);
+	}
+	return (free(err_msg), true);
 }
