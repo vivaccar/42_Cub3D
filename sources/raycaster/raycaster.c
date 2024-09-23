@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/23 12:00:36 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:03:15 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ int raycaster(t_gm *game)
         delta_dstc(game->ray);
         step_increment(game->ray);
         launch_ray(game->ray, game->map);
+        
         get_wall_height_and_draw(game, game->ray, x);
 /*         printf("%f\n", game->ray->cam_x);
         printf("%f\n", game->ray->delta_dstc_x);

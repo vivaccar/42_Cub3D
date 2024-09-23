@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/23 14:16:04 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/23 14:48:13 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,11 @@ typedef struct s_minmap
 	int	tile_size;
 }	t_minmap;
 
+typedef struct s_texture
+{
+	void	*wall_texture[4];
+}	t_texture;
+
 //Main Struc gm = GaMe.
 typedef struct s_gm
 {
@@ -128,6 +133,7 @@ typedef struct s_gm
 	t_map		*map;
 	t_ray		*ray;
 	t_minmap	*mm;
+	t_texture	*textr;
 }	t_gm;
 
 int		main(int argc, char **argv);
@@ -142,6 +148,7 @@ int		run_mlx(t_gm *game);
 int		init_game_struct(t_gm *game);
 void	init_map_struct(t_gm *game);
 void	init_ray_struct(t_gm *game);
+void	get_texture_pointers(t_gm *game);
 
 //parsing/scene.c
 int		parse_file(t_gm *game, int argc, char **argv);

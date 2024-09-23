@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/23 14:10:23 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/23 14:53:59 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@
 int	init_game_struct(t_gm *game)
 {
 	ft_bzero(game, sizeof(t_gm));
+		//========================== Map ===============================
 	game->map = malloc(sizeof(t_map));
 	if (!game->map)
 		return (ft_err_msg("Error allocating map struct", EXIT_FAILURE));
 	init_map_struct(game);
+		//========================== RAYCASTER ===============================
 	game->ray = malloc(sizeof(t_ray));
 	if (!game->ray)
 		return (ft_err_msg("Error allocating ray struct", EXIT_FAILURE));
@@ -33,6 +35,7 @@ int	init_game_struct(t_gm *game)
 		free(game->map);
 		return (ft_err_msg("Error allocating mlx", EXIT_FAILURE));
 	}
+		//========================== mlx wndows ===============================
 	game->window = malloc(sizeof(t_window));
 	if (!game->window)
 	{
@@ -40,11 +43,20 @@ int	init_game_struct(t_gm *game)
 		free(game->mlx);
 		return (ft_err_msg("Error allocating windows", EXIT_FAILURE));
 	}
+		//========================== mini map===============================
 	game->mm = malloc(sizeof(t_minmap));
 	if (!game->mm)
 		return (ft_err_msg("Error allocating MiniMap struct", EXIT_FAILURE));
 	game->mm->m_pressed = 0;
 	game->mm->tile_size = 10;
+	//========================== texture ===============================
+	game->textr = malloc(sizeof(t_texture));
+	if (!game->textr)
+		return (ft_err_msg("Error allocating texture struct", EXIT_FAILURE));
+	game->textr->wall_texture[0] = NULL;
+	game->textr->wall_texture[1] = NULL;
+	game->textr->wall_texture[2] = NULL;
+	game->textr->wall_texture[3] = NULL;
 	return (EXIT_SUCCESS);
 }
 
@@ -55,19 +67,15 @@ int	run_mlx(t_gm *game)
 {
 	game->mlx->cnt = mlx_init();
 	if (!game->mlx->cnt)
-	{
-		//free game->mlx
 		return (ft_err_msg("mlx_init failed", EXIT_FAILURE));
-	}
-
 	game->mlx->wnd = mlx_new_window(game->mlx->cnt, WIDTH, HEIGHT, "Cub3d");
 	if (!game->mlx->wnd)
-	{
-		//free game->mlx
 		return (ft_err_msg("mlx_new_window failed", EXIT_FAILURE));
-	}
 	game->mlx->img = mlx_new_image(game->mlx->cnt, WIDTH, HEIGHT);
-	game->mlx->addr = mlx_get_data_addr(game->mlx->img, &game->mlx->bits_per_pixel, &game->mlx->line_length, &game->mlx->endian);
+	game->mlx->addr = mlx_get_data_addr(game->mlx->img,
+		&game->mlx->bits_per_pixel, &game->mlx->line_length,
+			&game->mlx->endian);
+	get_texture_pointers(game);
 	return (EXIT_SUCCESS);
 }
 
@@ -122,4 +130,24 @@ void	init_map_struct(t_gm *game)
 	game->map->cc_hex = 0;
 	game->map->h = 0;
 	game->map->w = 0;
+}
+
+void	get_texture_pointers(t_gm *game)
+{
+	t_texture	*t;
+	t_mlx		*cnt;
+	int			h;
+	int			w;
+
+	t = game->textr;
+	cnt = game->mlx->cnt;
+	t->wall_texture[0] = mlx_xpm_file_to_image(cnt, game->map->ntex, &w, &h);
+	t->wall_texture[1] = mlx_xpm_file_to_image(cnt, game->map->stex, &w, &h);
+	t->wall_texture[2] = mlx_xpm_file_to_image(cnt, game->map->etex, &w, &h);
+	t->wall_texture[3] = mlx_xpm_file_to_image(cnt, game->map->wtex, &w, &h);
+
+	//mlx_put_image_to_window(cnt, game->mlx->wnd, t->wall_texture[0], w, h);
+	if (t->wall_texture[0] == NULL || t->wall_texture[0] == NULL
+		|| t->wall_texture[0] == NULL || t->wall_texture[0] == NULL)
+		ft_err_msg("Failed texture image init", EXIT_FAILURE);
 }
