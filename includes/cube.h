@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/23 14:09:23 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/23 14:16:04 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,15 +207,15 @@ void	print_map_values(t_gm *game);
 bool	jump_spaces(char ch, int *j, int backwards);
 bool	is_openble_file(char *path, char *extention, int ext_len);
 
-//rotate.c
-void	rotate_left(t_gm *game);
-void	rotate_right(t_gm *game);
 //events
-
 void	esc_close(t_gm *game);
 int		key_press_handler(int keycode, t_gm *game);
 void	move_up(t_gm *game);
 void	move_down(t_gm *game);
 void	move_left(t_gm *game);
 void	move_right(t_gm *game);
+
+//events/rotate.c
 void    rotate(t_gm *game, int keycode);
+void	rotate_left(t_gm *game);
+void	rotate_right(t_gm *game);
