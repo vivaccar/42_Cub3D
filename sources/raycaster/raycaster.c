@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/22 17:20:31 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/23 12:00:36 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,8 @@ int raycaster(t_gm *game)
     {
         game->ray->map_x = (int)game->ray->plyr_x;
     	game->ray->map_y = (int)game->ray->plyr_y;
-        printf("%i\n", game->ray->map_x);
-        printf("%i\n", game->ray->map_y);
+        //printf("%i\n", game->ray->map_x);
+        //printf("%i\n", game->ray->map_y);
         rays_direction(game->ray, x);
         delta_dstc(game->ray);
         step_increment(game->ray);

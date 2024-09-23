@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/22 17:40:57 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/23 12:04:59 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ int	key_press_handler(int keycode, t_gm *game)
 		move_right(game);
 	else if (keycode == KEY_M)
 		game->mm->m_pressed = !game->mm->m_pressed;
+	else if (keycode == KEY_LEFT)
+		rotate_left(game);
+	else if (keycode == KEY_RIGHT)
+		rotate_right(game);
 	printf("%i", game->ray->map_x);
 	//game->ray->map_y += game->ray->dirY;
 	printf("%i", game->ray->map_y);
@@ -69,6 +73,9 @@ void	run_cub(t_gm *game)
 	mlx_loop(game->mlx->cnt);
 }
 
+/**
+ * Digital Differential Analysis Algorthm - Search for it
+ */
 int	main(int argc, char **argv)
 {
 	t_gm	game;

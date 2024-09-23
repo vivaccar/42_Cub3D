@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/22 18:06:37 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/23 12:04:41 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,3 +205,7 @@ void	render_mini_map_pl_dir(t_gm *game);
 void	print_map_values(t_gm *game);
 bool	jump_spaces(char ch, int *j, int backwards);
 bool	is_openble_file(char *path, char *extention, int ext_len);
+
+//rotate.c
+void	rotate_left(t_gm *game);
+void	rotate_right(t_gm *game);

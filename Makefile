@@ -6,7 +6,7 @@
 #    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/22 17:25:29 by aconceic         ###   ########.fr        #
+#    Updated: 2024/09/23 12:02:39 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC_DIR = ./sources/
 SRC = main.c free.c init.c start_game.c support.c \
 	  parsing/scene.c parsing/elements.c parsing/elements2.c \
 	  parsing/map.c parsing/map_validations1.c raycaster/raycaster.c\
-	  parsing/map_validations2.c mini_map.c \
+	  parsing/map_validations2.c mini_map.c rotate.c\
 
 ### MiniLibX
 ##DIR FOR MLX HAVING IN CONSIDERATION THE OS
