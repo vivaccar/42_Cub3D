@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/23 14:10:11 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:12:29 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	free_game(t_gm *game)
 	free(game->ray);
 }
 
+void	free_mlx(t_mlx *mlx)
+{
+	free(mlx->img);
+	free(mlx->wnd);
+}
+
 void	free_map(t_map *map)
 {
 	close(map->fd);
@@ -33,3 +39,4 @@ void	free_map(t_map *map)
 	free(map->cc_str);
 	ft_free_matriz(map->matriz);
 }
+

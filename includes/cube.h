@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/23 14:16:04 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:14:46 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ bool	is_argument_valid(t_gm *game, int argc, char **argv);
 //free.c
 void	free_game(t_gm *game);
 void	free_map(t_map *map);
+void	free_mlx(t_mlx *mlx);
 
 //init.c
 int		run_mlx(t_gm *game);

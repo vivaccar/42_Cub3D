@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/23 12:00:36 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:05:55 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void    rays_direction(t_ray *ray, int x)
 {
     ray->cam_x = 2 * x / (double)WIDTH - 1;
     ray->ray_dir_x = ray->dirX + ray->plane_x * ray->cam_x;
-    ray->ray_dir_y = ray->dirY + ray->plane_y * ray->cam_x;
+    ray->ray_dir_y = ray->dirY + ray->plane_y * ray->cam_x;       
+    printf("%f\n", ray->ray_dir_x);
+    printf("%f\n", ray->ray_dir_y);
+    //exit(0);
 }
 
 void    delta_dstc(t_ray *ray)
