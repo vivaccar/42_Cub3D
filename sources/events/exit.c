@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:27:20 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/22 16:29:14 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:27:16 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	esc_close(t_gm *game)
 {
+	free_mlx(game->mlx);
 	free_game(game);
 	exit(0);
 }
