@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/23 15:12:29 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:02:43 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	free_game(t_gm *game)
 {
 	free(game->mlx);//This we will need to destroy after
-	free(game->window);
 	free_map(game->map); //incomplete function
 	free(game->map);//This we will need to clean inside, including close the fd
 	free(game->mm);
@@ -24,8 +23,9 @@ void	free_game(t_gm *game)
 
 void	free_mlx(t_mlx *mlx)
 {
-	free(mlx->img);
+	//free(mlx->addr);
 	free(mlx->wnd);
+	free(mlx->img);
 }
 
 void	free_map(t_map *map)

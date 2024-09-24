@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/23 14:10:23 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:56:29 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,6 @@ int	init_game_struct(t_gm *game)
 	{
 		free(game->map);
 		return (ft_err_msg("Error allocating mlx", EXIT_FAILURE));
-	}
-	game->window = malloc(sizeof(t_window));
-	if (!game->window)
-	{
-		free(game->map);
-		free(game->mlx);
-		return (ft_err_msg("Error allocating windows", EXIT_FAILURE));
 	}
 	game->mm = malloc(sizeof(t_minmap));
 	if (!game->mm)

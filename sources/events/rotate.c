@@ -6,13 +6,13 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:54:58 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/23 14:55:57 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:46:35 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube.h"
 
-void	rotate_left(t_gm *game)
+void	rotate_left(t_gm *game, double speed)
 {
 	(void)game;
 	printf("KEYLEFT PRESSED\n");
@@ -23,8 +23,8 @@ void	rotate_left(t_gm *game)
 	printf("ray dirx: %f\n", game->ray->dirX);
 	printf("ray diry: %f\n", game->ray->dirY);
 
-	game->ray->dirX = old_dirx * cos(-game->ray->mov_speed) - old_diry * sin(-game->ray->mov_speed);
-	game->ray->dirY = old_dirx * sin(-game->ray->mov_speed) + old_diry * cos(-game->ray->mov_speed);
+	game->ray->dirX = old_dirx * cos(-speed) - old_diry * sin(-speed);
+	game->ray->dirY = old_dirx * sin(-speed) + old_diry * cos(-speed);
 	printf("ray dirx: %f\n", game->ray->dirX);
 	printf("ray diry: %f\n", game->ray->dirY);
 
@@ -33,11 +33,11 @@ void	rotate_left(t_gm *game)
 	double old_planey = game->ray->plane_y;  // Save both components before modifying
 	
 	// Apply rotation to the plane vector
-	game->ray->plane_x = old_planex * cos(-game->ray->mov_speed) - old_planey * sin(-game->ray->mov_speed);
-	game->ray->plane_y = old_planex * sin(-game->ray->mov_speed) + old_planey * cos(-game->ray->mov_speed);
+	game->ray->plane_x = old_planex * cos(-speed) - old_planey * sin(-speed);
+	game->ray->plane_y = old_planex * sin(-speed) + old_planey * cos(-speed);
 }
 
-void	rotate_right(t_gm *game)
+void	rotate_right(t_gm *game, double speed)
 {
 	(void)game;
 	printf("KEYLEFT PRESSED\n");
@@ -48,8 +48,8 @@ void	rotate_right(t_gm *game)
 	printf("ray dirx: %f\n", game->ray->dirX);
 	printf("ray diry: %f\n", game->ray->dirY);
 
-	game->ray->dirX = old_dirx * cos(game->ray->mov_speed) - old_diry * sin(game->ray->mov_speed);
-	game->ray->dirY = old_dirx * sin(game->ray->mov_speed) + old_diry * cos(game->ray->mov_speed);
+	game->ray->dirX = old_dirx * cos(speed) - old_diry * sin(speed);
+	game->ray->dirY = old_dirx * sin(speed) + old_diry * cos(speed);
 	printf("ray dirx: %f\n", game->ray->dirX);
 	printf("ray diry: %f\n", game->ray->dirY);
 
@@ -58,6 +58,6 @@ void	rotate_right(t_gm *game)
 	double old_planey = game->ray->plane_y;  // Save both components before modifying
 	
 	// Apply rotation to the plane vector
-	game->ray->plane_x = old_planex * cos(game->ray->mov_speed) - old_planey * sin(game->ray->mov_speed);
-	game->ray->plane_y = old_planex * sin(game->ray->mov_speed) + old_planey * cos(game->ray->mov_speed);
+	game->ray->plane_x = old_planex * cos(speed) - old_planey * sin(speed);
+	game->ray->plane_y = old_planex * sin(speed) + old_planey * cos(speed);
 }

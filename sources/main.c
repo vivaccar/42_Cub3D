@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/23 14:11:56 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:54:45 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	run_cub(t_gm *game)
 	start_positions(game);
 	mlx_loop_hook(game->mlx->cnt, &raycaster, game);
 	mlx_hook(game->mlx->wnd, 2, 1L << 0, key_press_handler, game);
+	mlx_hook(game->mlx->wnd, 6, 1L << 6, mouse_handler, game);
 	mlx_loop(game->mlx->cnt);
 }
 

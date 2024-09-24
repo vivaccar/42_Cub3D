@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/23 15:14:46 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:56:13 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,6 @@ typedef struct s_mlx
 	int		line_length;
 	int		endian;
 }	t_mlx;
-
-//Window Struc
-typedef struct s_window
-{
-	int	h;
-	int	w;
-}	t_window;
 
 typedef struct s_map
 {
@@ -124,7 +117,6 @@ typedef struct s_minmap
 typedef struct s_gm
 {
 	t_mlx		*mlx;
-	t_window	*window;
 	t_map		*map;
 	t_ray		*ray;
 	t_minmap	*mm;
@@ -215,8 +207,9 @@ void	move_up(t_gm *game);
 void	move_down(t_gm *game);
 void	move_left(t_gm *game);
 void	move_right(t_gm *game);
+int		mouse_handler(int x, int y, t_gm *game);
 
 //events/rotate.c
 void    rotate(t_gm *game, int keycode);
-void	rotate_left(t_gm *game);
-void	rotate_right(t_gm *game);
+void	rotate_left(t_gm *game, double speed);
+void	rotate_right(t_gm *game, double speed);
