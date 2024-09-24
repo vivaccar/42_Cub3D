@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/24 12:19:34 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:25:50 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,9 @@ typedef struct s_minmap
 typedef struct s_texture
 {
 	void	*wall_texture[4];
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }	t_texture;
 
 //Main Struc gm = GaMe.
@@ -192,6 +195,7 @@ bool	is_first_last_valid(char **map);
 
 //start_game.c
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+int get_pixel_color(t_gm *game, int x, int y, int index);
 void	draw_floor_ceiling(t_gm *game, t_mlx *mlx);
 void	start_positions(t_gm *game);
 

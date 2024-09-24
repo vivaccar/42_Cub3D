@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/23 11:13:34 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:25:50 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@ void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 
 	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+}
+
+int get_pixel_color(t_gm *game, int x, int y, int index)
+{
+    char *data_adr;
+	int offset;
+	int pixel;
+	
+	data_adr =  mlx_get_data_addr(game->textr->wall_texture[index],
+		&game->textr->bits_per_pixel, &game->textr->line_length,
+		&game->textr->endian);
+
+	offset = (y * game->textr->line_length) + (x * (game->textr->bits_per_pixel / 8));
+	pixel = *(int *)(data_adr + offset);
+	return (pixel);
 }
 
 void	draw_floor_ceiling(t_gm *game, t_mlx *mlx)
@@ -35,7 +50,7 @@ void	draw_floor_ceiling(t_gm *game, t_mlx *mlx)
 			if (y < HEIGHT / 2)
 				my_mlx_pixel_put(mlx, x, y, 0x000000);
 			else
-				my_mlx_pixel_put(mlx, x, y, 0x000000);
+				my_mlx_pixel_put(mlx, x, y, 0xC0C0C0);
 			x++;				
 		}
 		y++;
