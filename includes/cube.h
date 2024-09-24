@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/24 17:56:13 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:12:54 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,14 @@ typedef struct s_minmap
 	int	tile_size;
 }	t_minmap;
 
+typedef struct s_texture
+{
+	void	*wall_texture[4];
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_texture;
+
 //Main Struc gm = GaMe.
 typedef struct s_gm
 {
@@ -120,6 +128,7 @@ typedef struct s_gm
 	t_map		*map;
 	t_ray		*ray;
 	t_minmap	*mm;
+	t_texture	*textr;
 }	t_gm;
 
 int		main(int argc, char **argv);
@@ -135,6 +144,7 @@ int		run_mlx(t_gm *game);
 int		init_game_struct(t_gm *game);
 void	init_map_struct(t_gm *game);
 void	init_ray_struct(t_gm *game);
+void	get_texture_pointers(t_gm *game);
 
 //parsing/scene.c
 int		parse_file(t_gm *game, int argc, char **argv);
@@ -177,6 +187,7 @@ bool	is_first_last_valid(char **map);
 
 //start_game.c
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+int get_pixel_color(t_gm *game, int x, int y, int index);
 void	draw_floor_ceiling(t_gm *game, t_mlx *mlx);
 void	start_positions(t_gm *game);
 
