@@ -6,7 +6,7 @@
 #    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/23 14:16:57 by aconceic         ###   ########.fr        #
+#    Updated: 2024/09/25 13:48:55 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC_DIR = ./sources/
 SRC = main.c free.c init.c start_game.c support.c \
 	  parsing/scene.c parsing/elements.c parsing/elements2.c \
 	  parsing/map.c parsing/map_validations1.c raycaster/raycaster.c\
-	  events/exit.c events/handlers.c \
+	  events/exit.c events/handlers.c raycaster/render_textures.c\
 	  events/move.c parsing/map_validations2.c mini_map.c events/rotate.c\
 
 ### MiniLibX

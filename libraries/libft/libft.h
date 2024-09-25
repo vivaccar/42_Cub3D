@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:43:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/18 12:42:19 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:08:48 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <fcntl.h>
-#include <stdbool.h>
+# include <stdbool.h>
 
 # include "get_next_line/get_next_line.h"
 # include "ft_printf/ft_printf.h"

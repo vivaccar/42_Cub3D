@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handlers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:28:20 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/24 17:47:58 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:53:27 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	key_press_handler(int keycode, t_gm *game)
 {
-	(void)keycode;
-	
 	if (keycode == KEY_ESC)
 		esc_close(game);
 	else if (keycode == KEY_W)
@@ -37,9 +35,8 @@ int	key_press_handler(int keycode, t_gm *game)
 
 int	mouse_handler(int x, int y, t_gm *game)
 {
-	(void) game;
-	static int old_x = WIDTH / 2;
-	
+	static int	old_x = WIDTH / 2;
+
 	if (x < old_x)
 		rotate_left(game, game->ray->mov_speed / 3);
 	else
@@ -47,5 +44,5 @@ int	mouse_handler(int x, int y, t_gm *game)
 	old_x = x;
 	printf("%i", x);
 	printf("%i", y);
-	return (0);	
+	return (0);
 }

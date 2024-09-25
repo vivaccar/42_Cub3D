@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/24 18:12:54 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:47:10 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,19 @@
 
 #define WIDTH 1920
 #define HEIGHT 1040
+#define TXT_W 128
+#define TXT_H 128
 
-# define KEY_ESC 65307
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-# define KEY_M 109
-
-# define KEY_UP 65362
-# define KEY_DOWN 65364
-# define KEY_LEFT 65361
-# define KEY_RIGHT 65363
+#define KEY_ESC 65307
+#define KEY_W 119
+#define KEY_A 97
+#define KEY_S 115
+#define KEY_D 100
+#define KEY_M 109
+#define KEY_UP 65362
+#define KEY_DOWN 65364
+#define KEY_LEFT 65361
+#define KEY_RIGHT 65363
 
 // Define color codes
 #define RESET   "\033[0m"
@@ -48,7 +49,6 @@
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
 #define WHITE   "\033[37m"
-
 
 //Mlx Lib Struc
 typedef struct s_mlx
@@ -73,8 +73,8 @@ typedef struct s_map
 	char	*etex;
 	char	*wtex;
 	char	plyr_dir;
-	double 	plyr_x;
-	double 	plyr_y;
+	double	plyr_x;
+	double	plyr_y;
 	int		fc_rgb[3];
 	int		cc_rgb[3];
 	int		fc_hex;
@@ -85,12 +85,12 @@ typedef struct s_map
 
 typedef struct s_ray
 {
-	double 	plyr_x;
-	double 	plyr_y;
-	double	dirX;
-	double	dirY;
-	double 	plane_x;
-	double 	plane_y;
+	double	plyr_x;
+	double	plyr_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 	double	cam_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
@@ -100,7 +100,7 @@ typedef struct s_ray
 	double	side_dstc_y;
 	double	delta_dstc_x;
 	double	delta_dstc_y;
-	double	wall_dstc;
+	double	wall_ppclr_dstc;
 	int		step_x;
 	int		step_y;
 	int		side_hit;
@@ -116,8 +116,16 @@ typedef struct s_minmap
 typedef struct s_texture
 {
 	void	*wall_texture[4];
+	int		txt_x;
+	int		txt_y;
+	double	text_pos;
+	int		r_line_len;
+	int		r_first_point;
+	int		r_last_point;
+	double	wall_hit_pos;
+	double	step;
 	int		bits_per_pixel;
-	int		line_length;
+	int		line_len;
 	int		endian;
 }	t_texture;
 
@@ -187,18 +195,18 @@ bool	is_first_last_valid(char **map);
 
 //start_game.c
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
-int get_pixel_color(t_gm *game, int x, int y, int index);
-void	draw_floor_ceiling(t_gm *game, t_mlx *mlx);
-void	start_positions(t_gm *game);
+int		my_mlx_get_pixel(t_gm *game, int x, int y, int index);
+void	draw_floor_ceiling(t_gm *game);
+void	start_player_position(t_gm *game);
+void	set_plane_positions(t_gm *game, double plane_x, double plane_y);
+void	set_direction_positions(t_gm *game, double dir_x, double dir_y);
 
 //raycaster/raycaster.c
 int		raycaster(t_gm *game);
-void    draw_vertical_line(int x, int draw_start, int draw_end, int color, t_mlx *mlx);
-void    rays_direction(t_ray *ray, int x);
-void    delta_dstc(t_ray *ray);
-void    step_increment(t_ray *ray);
-void    launch_ray(t_ray *ray, t_map *map);
-void    get_wall_height_and_draw(t_gm *game, t_ray *ray, int x);
+void	rays_direction(t_ray *ray, int x);
+void	delta_dstc(t_ray *ray);
+void	step_increment(t_ray *ray);
+void	launch_ray(t_ray *ray, t_map *map);
 
 //mini_map.c
 void	draw_mini_map(t_gm *game);
@@ -221,6 +229,11 @@ void	move_right(t_gm *game);
 int		mouse_handler(int x, int y, t_gm *game);
 
 //events/rotate.c
-void    rotate(t_gm *game, int keycode);
 void	rotate_left(t_gm *game, double speed);
 void	rotate_right(t_gm *game, double speed);
+
+//raycaster/render_textures.c
+void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x);
+void	draw_texture(t_gm *g, int x, int img_index);
+void	get_wall_hit_pos(t_gm *game);
+void	get_render_points(t_gm *game);

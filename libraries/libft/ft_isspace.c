@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:50:06 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/17 19:16:14 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:09:00 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
  * @brief Check if the input is only spaces
  * @return true if only space, false for not
  */
-int ft_isspace(char c)
+int	ft_isspace(char c)
 {
-    return (c == ' ' || c == '\t'
-		|| c == '\n' || c == '\v' ||
-			c == '\f' || c == '\r');
+	return (c == ' ' || c == '\t'
+		|| c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r');
 }
