@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/24 18:13:45 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:53:11 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void	get_texture_pointers(t_gm *game)
 	t->wall_texture[1] = mlx_xpm_file_to_image(cnt, game->map->stex, &w, &h);
 	t->wall_texture[2] = mlx_xpm_file_to_image(cnt, game->map->etex, &w, &h);
 	t->wall_texture[3] = mlx_xpm_file_to_image(cnt, game->map->wtex, &w, &h);
+	t->wall_texture[4] = mlx_xpm_file_to_image(cnt, "textures/door.xpm", &w, &h);
 
 	//mlx_put_image_to_window(cnt, game->mlx->wnd, t->wall_texture[0], w, h);
 	if (t->wall_texture[0] == NULL || t->wall_texture[0] == NULL

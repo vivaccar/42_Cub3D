@@ -6,15 +6,16 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:27:20 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/23 15:27:16 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:03:07 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube.h"
 
-void	esc_close(t_gm *game)
+int	close_cub(t_gm *game)
 {
-	free_mlx(game->mlx);
 	free_game(game);
+	free_mlx(game->mlx);
 	exit(0);
+	return (0);
 }

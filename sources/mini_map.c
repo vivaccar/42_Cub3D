@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:25:05 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/23 10:13:12 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:24:19 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void render_mini_map(t_gm *game, int x, int y)
             if (game->map->matriz[y][x] == '1')
                 my_mlx_pixel_put(game->mlx, (x * ts) + j, (y * ts) + i, 0xFFFFFF);
             else if (ft_strchr("NSEW0", game->map->matriz[y][x]))
-                my_mlx_pixel_put(game->mlx, (x * ts) + j, (y * ts) + i, 0xFF0000);
+                my_mlx_pixel_put(game->mlx, (x * ts) + j, (y * ts) + i, 0x0000FF);
             j++;
         }
         i++;

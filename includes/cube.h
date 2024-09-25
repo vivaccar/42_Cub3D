@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/24 18:12:54 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:52:29 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ typedef struct s_minmap
 
 typedef struct s_texture
 {
-	void	*wall_texture[4];
+	void	*wall_texture[5];
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -212,7 +212,7 @@ bool	jump_spaces(char ch, int *j, int backwards);
 bool	is_openble_file(char *path, char *extention, int ext_len);
 
 //events
-void	esc_close(t_gm *game);
+int		close_cub(t_gm *game);
 int		key_press_handler(int keycode, t_gm *game);
 void	move_up(t_gm *game);
 void	move_down(t_gm *game);

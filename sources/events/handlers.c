@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:28:20 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/24 17:47:58 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:12:18 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	key_press_handler(int keycode, t_gm *game)
 	(void)keycode;
 	
 	if (keycode == KEY_ESC)
-		esc_close(game);
+		close_cub(game);
 	else if (keycode == KEY_W)
 		move_up(game);
 	else if (keycode == KEY_S)
@@ -40,9 +40,9 @@ int	mouse_handler(int x, int y, t_gm *game)
 	(void) game;
 	static int old_x = WIDTH / 2;
 	
-	if (x < old_x)
+	if (x < old_x && x < WIDTH / 2)
 		rotate_left(game, game->ray->mov_speed / 3);
-	else
+	else if (x > old_x && x > WIDTH / 2)
 		rotate_right(game, game->ray->mov_speed / 3);
 	old_x = x;
 	printf("%i", x);

@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/24 18:28:05 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:54:59 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void    launch_ray(t_ray *ray, t_map *map)
 			ray->map_y += ray->step_y;
 			ray->side_hit = 1;
 		}
-		if (map->matriz[ray->map_y][ray->map_x] == '1')
+		if (map->matriz[ray->map_y][ray->map_x] == '1' || map->matriz[ray->map_y][ray->map_x] == 'D')
 		{
 			//printf("Wall hitted X = %i, Y = %i\n", ray->map_x, ray->map_y);
 			hit = 1;
@@ -144,10 +144,26 @@ void get_wall_height_and_draw(t_gm *game, t_ray *ray, int x)
     double step = 1.0 * texture_height / line_size;
     double textPos = (first_point - HEIGHT / 2 + line_size / 2) * step;
 
+    
+    if (game->map->matriz[game->ray->map_y][game->ray->map_x] == 'D')
+    {
+        for (int y = first_point; y < last_point; y++)
+        {
+            int textY = (int)textPos & (texture_height - 1);  // Texture Y coordinate
+            textPos += step;
+
+            // Get the pixel color from the texture (adjust to how you fetch it)
+            color = get_pixel_color(game, textX, textY, 4);
+            
+            // Draw the pixel on the screen
+            draw_vertical_line(x, y, y, color, game->mlx);
+        }
+        return ;
+    }
     // Check which wall was hit and calculate the texture accordingly
     if (ray->side_hit == 1 && ray->ray_dir_y < 0) // South-facing wall
     {
-        textX = texture_width - textX - 1; // Flip texture for south-facing wall
+        //textX = texture_width - textX - 1; // Flip texture for south-facing wall
 
         // Loop through each y-coordinate of the line and fetch the texture color
         for (int y = first_point; y < last_point; y++)
