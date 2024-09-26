@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/25 16:52:29 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:02:10 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 #include "../libraries/minilibx-linux/mlx.h"
 #include "../libraries/minilibx-linux/mlx_int.h"
 
-#define WIDTH 1920
-#define HEIGHT 1040
+#define WIDTH 720
+#define HEIGHT 600
 
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -33,6 +33,7 @@
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_M 109
+# define KEY_SPACE 32
 
 # define KEY_UP 65362
 # define KEY_DOWN 65364

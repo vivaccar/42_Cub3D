@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 11:49:57 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/25 17:07:48 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:11:05 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ bool	have_onlyvalid_ch(t_gm *game)
 		j = -1;
 		while (game->map->matriz[i][++ j])
 		{
-			if (!ft_strchr("01NSEWD  ", game->map->matriz[i][j]))
+			if (!ft_strchr("01NSEWD ", game->map->matriz[i][j]))
 				return (ft_err_msg("Invalid Character on map!", false));
 		}
 	}
