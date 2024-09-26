@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/25 16:53:11 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:17:56 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,17 @@ int	init_game_struct(t_gm *game)
 	game->textr->wall_texture[1] = NULL;
 	game->textr->wall_texture[2] = NULL;
 	game->textr->wall_texture[3] = NULL;
+	game->textr->txt_x = 0;
+	game->textr->txt_y = 0;
+	game->textr->text_pos = 0;
+	game->textr->r_line_len = 0;
+	game->textr->r_first_point = 0;
+	game->textr->r_last_point = 0;
+	game->textr->wall_hit_pos = 0;
+	game->textr->step = 0;
+	game->textr->bits_per_pixel = 0;
+	game->textr->endian = 0;
+	game->textr->line_len = 0;
 	return (EXIT_SUCCESS);
 }
 
@@ -64,7 +75,7 @@ int	run_mlx(t_gm *game)
 		return (ft_err_msg("mlx_new_window failed", EXIT_FAILURE));
 	game->mlx->img = mlx_new_image(game->mlx->cnt, WIDTH, HEIGHT);
 	game->mlx->addr = mlx_get_data_addr(game->mlx->img,
-		&game->mlx->bits_per_pixel, &game->mlx->line_length,
+			&game->mlx->bits_per_pixel, &game->mlx->line_length,
 			&game->mlx->endian);
 	get_texture_pointers(game);
 	return (EXIT_SUCCESS);
@@ -72,8 +83,8 @@ int	run_mlx(t_gm *game)
 
 void	init_ray_struct(t_gm *game)
 {
-	game->ray->dirX = 0.0;
-	game->ray->dirY = 0.0;
+	game->ray->dir_x = 0.0;
+	game->ray->dir_y = 0.0;
 	game->ray->plane_x = 0.0;
 	game->ray->plane_y = 0.0;
 	game->ray->cam_x = 0.0;
@@ -85,7 +96,7 @@ void	init_ray_struct(t_gm *game)
 	game->ray->side_dstc_x = 0.0;
 	game->ray->delta_dstc_x = 0.0;
 	game->ray->delta_dstc_y = 0.0;
-	game->ray->wall_dstc = 0.0;
+	game->ray->wall_ppclr_dstc = 0.0;
 	game->ray->step_x = 0;
 	game->ray->step_y = 0;
 	game->ray->side_hit = 0;
@@ -136,9 +147,6 @@ void	get_texture_pointers(t_gm *game)
 	t->wall_texture[1] = mlx_xpm_file_to_image(cnt, game->map->stex, &w, &h);
 	t->wall_texture[2] = mlx_xpm_file_to_image(cnt, game->map->etex, &w, &h);
 	t->wall_texture[3] = mlx_xpm_file_to_image(cnt, game->map->wtex, &w, &h);
-	t->wall_texture[4] = mlx_xpm_file_to_image(cnt, "textures/door.xpm", &w, &h);
-
-	//mlx_put_image_to_window(cnt, game->mlx->wnd, t->wall_texture[0], w, h);
 	if (t->wall_texture[0] == NULL || t->wall_texture[0] == NULL
 		|| t->wall_texture[0] == NULL || t->wall_texture[0] == NULL)
 		ft_err_msg("Failed texture image init", EXIT_FAILURE);

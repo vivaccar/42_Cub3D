@@ -6,40 +6,42 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/24 15:25:50 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:51:55 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube.h"
 
+// plye_x e plyr_y --> DEFINEM A POSICAO DO JOGADOR NA MATRIZ;
+// plane_x e plane_y --> DEFINEM O PLANO DE PROJECAO DA CAMERA DO JOGADOR
+// dir_x e dir_y ---> VETORES DE DIRECAO;
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
-int get_pixel_color(t_gm *game, int x, int y, int index)
+int	my_mlx_get_pixel(t_gm *game, int x, int y, int index)
 {
-    char *data_adr;
-	int offset;
-	int pixel;
-	
-	data_adr =  mlx_get_data_addr(game->textr->wall_texture[index],
-		&game->textr->bits_per_pixel, &game->textr->line_length,
-		&game->textr->endian);
+	char		*data_adr;
+	t_texture	*t;
+	int			offset;
+	int			pixel;
 
-	offset = (y * game->textr->line_length) + (x * (game->textr->bits_per_pixel / 8));
+	t = game->textr;
+	data_adr = mlx_get_data_addr(t->wall_texture[index], &t->bits_per_pixel,
+			&t->line_len, &t->endian);
+	offset = (y * t->line_len) + (x * (t->bits_per_pixel / 8));
 	pixel = *(int *)(data_adr + offset);
 	return (pixel);
 }
 
-void	draw_floor_ceiling(t_gm *game, t_mlx *mlx)
+void	draw_floor_ceiling(t_gm *game)
 {
 	int	y;
-	int x;
-	(void) game;
+	int	x;
 
 	y = 0;
 	while (y < HEIGHT)
@@ -48,52 +50,49 @@ void	draw_floor_ceiling(t_gm *game, t_mlx *mlx)
 		while (x < WIDTH)
 		{
 			if (y < HEIGHT / 2)
-				my_mlx_pixel_put(mlx, x, y, 0x000000);
+				my_mlx_pixel_put(game->mlx, x, y, 0x000000);
 			else
-				my_mlx_pixel_put(mlx, x, y, 0xC0C0C0);
-			x++;				
+				my_mlx_pixel_put(game->mlx, x, y, 0xC0C0C0);
+			x ++;
 		}
 		y++;
 	}
 }
 
-
-void    start_positions(t_gm *game)
+void	start_player_position(t_gm *game)
 {
 	game->ray->plyr_x = game->map->plyr_x;
 	game->ray->plyr_y = game->map->plyr_y;
 	if (game->map->plyr_dir == 'N')
 	{
-		game->ray->plane_x = 0.66;
-		game->ray->plane_y = 0;
-		game->ray->dirX = 0.0;
-		game->ray->dirY = -1.0;
+		set_plane_positions(game, 0.66, 0.0);
+		set_direction_positions(game, 0.0, -1.0);
 	}
 	else if (game->map->plyr_dir == 'S')
 	{
-		game->ray->plane_x = -0.66;
-		game->ray->plane_y = 0;
-		game->ray->dirX = 0.0;
-		game->ray->dirY = 1.0;
+		set_plane_positions(game, -0.66, 0.0);
+		set_direction_positions(game, 0.0, 1.0);
 	}
 	else if (game->map->plyr_dir == 'W')
 	{
-		game->ray->plane_x = 0;
-		game->ray->plane_y = -0.66;
-		game->ray->dirX = -1.0;
-		game->ray->dirY = 0.0;
+		set_plane_positions(game, 0.0, -0.66);
+		set_direction_positions(game, -1.0, 0.0);
 	}
 	else if (game->map->plyr_dir == 'E')
 	{
-		game->ray->plane_x = 0;
-		game->ray->plane_y = 0.66;
-		game->ray->dirX = 1.0;
-		game->ray->dirY = 0.0;
+		set_plane_positions(game, 0.0, 0.66);
+		set_direction_positions(game, 1.0, 0.0);
 	}
 }
 
+void	set_plane_positions(t_gm *game, double plane_x, double plane_y)
+{
+	game->ray->plane_x = plane_x;
+	game->ray->plane_y = plane_y;
+}
 
-// plye_x e plyr_y --> DEFINEM A POSICAO DO JOGADOR NA MATRIZ;
-// plane_x e plane_y --> DEFINEM O PLANO DE PROJECAO DA CAMERA DO JOGADOR
-// dirX e dirY ---> VETORES DE DIRECAO;
-// 
+void	set_direction_positions(t_gm *game, double dir_x, double dir_y)
+{
+	game->ray->dir_x = dir_x;
+	game->ray->dir_y = dir_y;
+}

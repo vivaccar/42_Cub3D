@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:28:20 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/26 14:02:33 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:14:50 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	key_press_handler(int keycode, t_gm *game)
 {
-	(void)keycode;
-	
 	if (keycode == KEY_ESC)
 		close_cub(game);
 	else if (keycode == KEY_W)
@@ -37,7 +35,6 @@ int	key_press_handler(int keycode, t_gm *game)
 
 int	mouse_handler(int x, int y, t_gm *game)
 {
-	(void) game;
 	(void) y;
 	static int old_x = WIDTH / 2;
 	

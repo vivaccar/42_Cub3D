@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/25 14:02:13 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:18:06 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	run_cub(t_gm *game)
 {
-	start_positions(game);
+	start_player_position(game);
 	mlx_loop_hook(game->mlx->cnt, &raycaster, game);
 	mlx_hook(game->mlx->wnd, 2, 1L << 0, key_press_handler, game);
 	mlx_hook(game->mlx->wnd, 6, 1L << 6, mouse_handler, game);
@@ -53,7 +53,7 @@ bool	is_argument_valid(t_gm *game, int argc, char **argv)
 	if (argc != 2)
 		return (ft_err_msg("Invalid quantity of arguments!", false));
 	if (!is_openble_file(argv[1], ".cub", 4))
-		return(false);
+		return (false);
 	game->map->fd = open(argv[1], O_RDONLY);
 	return (true);
 }

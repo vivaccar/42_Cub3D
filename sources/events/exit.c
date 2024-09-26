@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:27:20 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/25 14:03:07 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:16:04 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ int	close_cub(t_gm *game)
 {
 	free_game(game);
 	free_mlx(game->mlx);
-	exit(0);
-	return (0);
+	return (exit(0), 0);
 }

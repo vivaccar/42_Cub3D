@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/25 13:48:56 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:17:30 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	free_game(t_gm *game)
 {
-	int	i = 0;
-	
-	free_map(game->map); //incomplete function
-	free(game->map);//This we will need to clean inside, including close the fd
+	int	i;
+
+	i = 0;
+	free_map(game->map);
+	free(game->map);
 	free(game->mm);
 	free(game->ray);
  	while (i < 4)
@@ -49,4 +50,3 @@ void	free_map(t_map *map)
 	free(map->cc_str);
 	ft_free_matriz(map->matriz);
 }
-

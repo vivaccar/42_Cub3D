@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:20:16 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/22 14:10:21 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:56:02 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	print_map_values(t_gm *game)
 	printf("Floor HEX:           " WHITE "%#X" RESET "\n", game->map->fc_hex);
 	printf("Ceiling HEX:         " WHITE "%#X" RESET "\n", game->map->cc_hex);
 	printf("\n" MAGENTA "======= DIRECTIONS =======" RESET "\n");
-	printf("Direction X:         " RED "%.2f" RESET "\n", game->ray->dirX);
-	printf("Direction Y:         " RED "%.2f" RESET "\n", game->ray->dirY);
+	printf("Direction X:         " RED "%.2f" RESET "\n", game->ray->dir_x);
+	printf("Direction Y:         " RED "%.2f" RESET "\n", game->ray->dir_y);
 	printf("\n" BLUE "===================================" RESET "\n");
 }
 
@@ -76,10 +76,10 @@ bool	is_openble_file(char *path, char *extention, int ext_len)
 	err_msg = ft_strjoin(path, " - Not a valid file!");
 	if (extention)
 	{
-		if (len > ext_len 
+		if (len > ext_len
 			&& ft_strncmp(extention, &path[len - ext_len], ext_len))
 		{
-			ft_err_msg(err_msg, false);		
+			ft_err_msg(err_msg, false);
 			return (free(err_msg), false);
 		}
 	}
