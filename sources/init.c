@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/26 14:17:56 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/26 15:13:24 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,15 @@ int	init_game_struct(t_gm *game)
 	game->textr = malloc(sizeof(t_texture));
 	if (!game->textr)
 		return (ft_err_msg("Error allocating texture struct", EXIT_FAILURE));
+	game->doors = malloc(sizeof(t_doors));
+	if (!game->doors)
+		return (ft_err_msg("Error allocating doors struct", EXIT_FAILURE));
+	game->doors = NULL;
 	game->textr->wall_texture[0] = NULL;
 	game->textr->wall_texture[1] = NULL;
 	game->textr->wall_texture[2] = NULL;
 	game->textr->wall_texture[3] = NULL;
+	game->textr->wall_texture[4] = NULL;
 	game->textr->txt_x = 0;
 	game->textr->txt_y = 0;
 	game->textr->text_pos = 0;
@@ -147,6 +152,7 @@ void	get_texture_pointers(t_gm *game)
 	t->wall_texture[1] = mlx_xpm_file_to_image(cnt, game->map->stex, &w, &h);
 	t->wall_texture[2] = mlx_xpm_file_to_image(cnt, game->map->etex, &w, &h);
 	t->wall_texture[3] = mlx_xpm_file_to_image(cnt, game->map->wtex, &w, &h);
+	t->wall_texture[4] = mlx_xpm_file_to_image(cnt, "textures/door.xpm", &w, &h);
 	if (t->wall_texture[0] == NULL || t->wall_texture[0] == NULL
 		|| t->wall_texture[0] == NULL || t->wall_texture[0] == NULL)
 		ft_err_msg("Failed texture image init", EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/26 14:13:01 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/26 16:34:18 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 #include "../libraries/minilibx-linux/mlx.h"
 #include "../libraries/minilibx-linux/mlx_int.h"
 
-#define WIDTH 1920
-#define HEIGHT 1040
+#define WIDTH 900
+#define HEIGHT 740
 #define TXT_W 128
 #define TXT_H 128
 
@@ -114,9 +114,17 @@ typedef struct s_minmap
 	int	tile_size;
 }	t_minmap;
 
+typedef struct s_doors
+{
+	int				door_x;
+	int				door_y;
+	int				is_open;
+	struct s_doors	*next;
+}	t_doors;
+
 typedef struct s_texture
 {
-	void	*wall_texture[4];
+	void	*wall_texture[5];
 	int		txt_x;
 	int		txt_y;
 	double	text_pos;
@@ -138,6 +146,7 @@ typedef struct s_gm
 	t_ray		*ray;
 	t_minmap	*mm;
 	t_texture	*textr;
+	t_doors		*doors;
 }	t_gm;
 
 int		main(int argc, char **argv);
@@ -207,7 +216,7 @@ int		raycaster(t_gm *game);
 void	rays_direction(t_ray *ray, int x);
 void	delta_dstc(t_ray *ray);
 void	step_increment(t_ray *ray);
-void	launch_ray(t_ray *ray, t_map *map);
+void	launch_ray(t_gm *game, t_ray *ray, t_map *map);
 
 //mini_map.c
 void	draw_mini_map(t_gm *game);
@@ -238,3 +247,5 @@ void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x);
 void	draw_texture(t_gm *g, int x, int img_index);
 void	get_wall_hit_pos(t_gm *game);
 void	get_render_points(t_gm *game);
+
+int		door_is_open(int y, int x, t_doors *doors);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/25 18:51:55 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:34:01 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	draw_floor_ceiling(t_gm *game)
 		while (x < WIDTH)
 		{
 			if (y < HEIGHT / 2)
-				my_mlx_pixel_put(game->mlx, x, y, 0x000000);
+				my_mlx_pixel_put(game->mlx, x, y, game->map->cc_hex);
 			else
-				my_mlx_pixel_put(game->mlx, x, y, 0xC0C0C0);
+				my_mlx_pixel_put(game->mlx, x, y, game->map->fc_hex);
 			x ++;
 		}
 		y++;

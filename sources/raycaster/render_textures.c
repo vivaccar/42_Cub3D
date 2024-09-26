@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:48:15 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/25 18:06:09 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/26 16:11:45 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x)
 	t->text_pos = (t->r_first_point - HEIGHT / 2 + t->r_line_len / 2) * t->step;
 	get_render_points(game);
 	get_wall_hit_pos(game);
+	if (game->map->matriz[game->ray->map_y][game->ray->map_x] == 'D')
+	{
+		if (!door_is_open(game->ray->map_y, game->ray->map_x, game->doors))
+			return (draw_texture(game, x, 4));
+	}
 	if (ray->side_hit == 1 && ray->ray_dir_y < 0)
 		draw_texture(game, x, 0);
 	else if (ray->side_hit == 1 && ray->ray_dir_y > 0)
