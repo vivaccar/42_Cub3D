@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:28:20 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/26 15:45:45 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/28 14:03:36 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ int	mouse_handler(int x, int y, t_gm *game)
 		rotate_left(game, game->ray->mov_speed / 3);
 	else if (x > old_x && x > WIDTH / 2 && x < WIDTH - 5)
 		rotate_right(game, game->ray->mov_speed / 3);
-	old_x = x;
+	old_x = x;	
 	return (0);	
 }

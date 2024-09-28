@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/26 16:34:18 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/28 16:35:33 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 #include "../libraries/minilibx-linux/mlx.h"
 #include "../libraries/minilibx-linux/mlx_int.h"
 
-#define WIDTH 900
-#define HEIGHT 740
+#define WIDTH 1140
+#define HEIGHT 750
 #define TXT_W 128
 #define TXT_H 128
 

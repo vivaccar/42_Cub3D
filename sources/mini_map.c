@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:25:05 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/26 14:18:58 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/28 12:04:47 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,8 @@ void render_mini_map_pl_dir(t_gm *game)
 			my_mlx_pixel_put(game->mlx, pixel_x, pixel_y, 0x00FF00); // Green ray
 
 			// Check if we hit a wall
-			if (game->map->matriz[(int)ray_pos_y][(int)ray_pos_x] == '1')
+			if (game->map->matriz[(int)ray_pos_y][(int)ray_pos_x] == '1' ||
+				game->map->matriz[(int)ray_pos_y][(int)ray_pos_x] == ' ')
 			{
 				hit = 1; // Wall hit, stop the ray
 			}

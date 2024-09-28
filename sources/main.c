@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/26 15:21:47 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/28 16:40:48 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,16 @@ void	print_doors(t_gm *game)
 {
 	t_doors *tmp = game->doors;
 
-	// Verifica se a lista de portas está vazia
 	if (!tmp)
 	{
 		printf("Nenhuma porta encontrada.\n");
 		return;
 	}
-
-	// Percorre toda a lista de portas
 	while (tmp)
 	{
-		// Imprime as coordenadas e o estado da porta
 		printf("Porta na posição (x: %d, y: %d) - Estado: %s\n", 
 			tmp->door_x, tmp->door_y, 
 			tmp->is_open ? "Aberta" : "Fechada");
-		
-		// Avança para a próxima porta
 		tmp = tmp->next;
 	}
 }

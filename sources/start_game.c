@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/26 14:34:01 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/28 13:35:20 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	draw_floor_ceiling(t_gm *game)
 
 void	start_player_position(t_gm *game)
 {
-	game->ray->plyr_x = game->map->plyr_x;
-	game->ray->plyr_y = game->map->plyr_y;
+	game->ray->plyr_x = game->map->plyr_x + 0.5;
+	game->ray->plyr_y = game->map->plyr_y + 0.5;
 	if (game->map->plyr_dir == 'N')
 	{
 		set_plane_positions(game, 0.66, 0.0);
