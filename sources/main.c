@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/26 14:18:06 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/29 18:07:32 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,3 @@ bool	is_argument_valid(t_gm *game, int argc, char **argv)
 	game->map->fd = open(argv[1], O_RDONLY);
 	return (true);
 }
-//path
-//create window
-//parse the map
-	// extracting relevant information such as the map dimensions, 
-	//player position, and the map layout itself. 
-	//The map is validated to ensure its correctness, 
-	//and memory is allocated to store the map information. 
-	//This part sets the foundation for the rest of the project by 
-	//providing the necessary data to render the game world.
