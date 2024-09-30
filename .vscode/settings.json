@@ -8,6 +8,7 @@
         "fcntl.h": "c",
         "mlx_int.h": "c",
         "stdio.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "cube_bonus.h": "c"
     }
 }

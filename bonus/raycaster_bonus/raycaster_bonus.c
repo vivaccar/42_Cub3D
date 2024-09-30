@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycaster.c                                        :+:      :+:    :+:   */
+/*   raycaster_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/30 14:42:21 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:30:39 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cube.h"
+#include "../../includes/cube_bonus.h"
 
 void	rays_direction(t_ray *ray, int x)
 {
@@ -95,6 +95,7 @@ int	raycaster(t_gm *game)
 		get_wall_height_and_draw(game, game->ray, x);
 		x++;
 	}
+	draw_mini_map(game);
 	mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd,
 		game->mlx->img, 0, 0);
 	return (EXIT_SUCCESS);
