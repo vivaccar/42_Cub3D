@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/28 16:35:33 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:44:12 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 #include "../libraries/minilibx-linux/mlx.h"
 #include "../libraries/minilibx-linux/mlx_int.h"
 
-#define WIDTH 1140
-#define HEIGHT 750
-#define TXT_W 128
-#define TXT_H 128
+#define WIDTH 1920
+#define HEIGHT 1000
+#define TXT_W 64
+#define TXT_H 64
 
 #define KEY_SPACE 32
 #define KEY_ESC 65307
@@ -106,6 +106,7 @@ typedef struct s_ray
 	int		step_y;
 	int		side_hit;
 	double	mov_speed;
+	int		z_buffer[WIDTH];
 }	t_ray;
 
 typedef struct s_minmap
@@ -114,17 +115,9 @@ typedef struct s_minmap
 	int	tile_size;
 }	t_minmap;
 
-typedef struct s_doors
-{
-	int				door_x;
-	int				door_y;
-	int				is_open;
-	struct s_doors	*next;
-}	t_doors;
-
 typedef struct s_texture
 {
-	void	*wall_texture[5];
+	void	*wall_texture[4];
 	int		txt_x;
 	int		txt_y;
 	double	text_pos;
@@ -146,7 +139,6 @@ typedef struct s_gm
 	t_ray		*ray;
 	t_minmap	*mm;
 	t_texture	*textr;
-	t_doors		*doors;
 }	t_gm;
 
 int		main(int argc, char **argv);
@@ -155,7 +147,7 @@ bool	is_argument_valid(t_gm *game, int argc, char **argv);
 //free.c
 void	free_game(t_gm *game);
 void	free_map(t_map *map);
-void	free_mlx(t_mlx *mlx);
+void	free_mlx(t_mlx *mlx, t_gm *game);
 
 //init.c
 int		run_mlx(t_gm *game);
@@ -247,5 +239,3 @@ void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x);
 void	draw_texture(t_gm *g, int x, int img_index);
 void	get_wall_hit_pos(t_gm *game);
 void	get_render_points(t_gm *game);
-
-int		door_is_open(int y, int x, t_doors *doors);

@@ -6,53 +6,11 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:36:02 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/26 15:22:46 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:59:53 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube.h"
-
-void	add_new_door(int y, int x, t_doors **doors)
-{
-	t_doors *new;
-	t_doors	*tmp;
-
-	new = malloc(sizeof(t_doors));
-	if (!new)
-		return ; /// fazer funcao que libera memoria e da exit
-	new->door_y = y;
-	new->door_x = x;
-	new->is_open = 0;
-	new->next = NULL;
-	if (*doors == NULL)
-		*doors = new;
-	else
-	{
-		tmp = *doors;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
-	}
-}
-
-void	find_doors(t_gm *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (game->map->matriz[i])
-	{
-		j = 0;
-		while (game->map->matriz[i][j])
-		{
-			if (game->map->matriz[i][j] == 'D')
-				add_new_door(i, j, &game->doors);
-			j++;
-		}
-		i++;
-	}
-}
 
 /**
  * @brief Starts the parsing of the map
@@ -75,7 +33,6 @@ int	parse_file(t_gm *game, int argc, char **argv)
 	if (!is_map_valid(game))
 		return (ft_free_matriz(cub), EXIT_FAILURE);
 	ft_free_matriz(cub);
-	find_doors(game);
 	(void)argc;
 	return (EXIT_SUCCESS);
 }

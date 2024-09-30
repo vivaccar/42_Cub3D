@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/26 14:17:30 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:25:22 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,25 @@ void	free_game(t_gm *game)
 	free(game->map);
 	free(game->mm);
 	free(game->ray);
- 	while (i < 4)
-	{
-		mlx_destroy_image(game->mlx->cnt, game->textr->wall_texture[i]);
-		i++;
-	}
+	free(game->mlx);
 	free(game->textr);
 }
 
-void	free_mlx(t_mlx *mlx)
+void	free_mlx(t_mlx *mlx, t_gm *game)
 {
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (game->textr->wall_texture[i])
+			mlx_destroy_image(game->mlx->cnt, game->textr->wall_texture[i]);
+		i++;
+	}
 	mlx_destroy_window(mlx->cnt, mlx->wnd);
 	mlx_destroy_image(mlx->cnt, mlx->img);
-	//free(mlx->addr);
 	mlx_destroy_display(mlx->cnt);
 	free(mlx->cnt);
-	free(mlx);
 }
 
 void	free_map(t_map *map)

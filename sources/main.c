@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/28 16:40:48 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:53:58 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,6 @@ void	run_cub(t_gm *game)
 	mlx_hook(game->mlx->wnd, 6, 1L << 6, mouse_handler, game);
 	mlx_hook(game->mlx->wnd, 17, 0, close_cub, game);
 	mlx_loop(game->mlx->cnt);
-}
-
-void	print_doors(t_gm *game)
-{
-	t_doors *tmp = game->doors;
-
-	if (!tmp)
-	{
-		printf("Nenhuma porta encontrada.\n");
-		return;
-	}
-	while (tmp)
-	{
-		printf("Porta na posição (x: %d, y: %d) - Estado: %s\n", 
-			tmp->door_x, tmp->door_y, 
-			tmp->is_open ? "Aberta" : "Fechada");
-		tmp = tmp->next;
-	}
 }
 
 /**
@@ -56,10 +38,8 @@ int	main(int argc, char **argv)
 	print_map_values(&game);
 	if (run_mlx(&game))
 		return (ft_err_msg("Error Mlx Init", EXIT_FAILURE));
-	print_doors(&game);
 	run_cub(&game);
 	free_game(&game);
-
 	return (0);
 }
 

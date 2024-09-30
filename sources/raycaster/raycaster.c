@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/26 17:12:48 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:50:03 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,10 @@ void	step_increment(t_ray *ray)
 	}
 }
 
-int		door_is_open(int y, int x, t_doors *doors)
-{
-	t_doors *tmp;
-
-	tmp = doors;
-	while (tmp)
-	{
-		if (tmp->door_x == x && tmp->door_y == y)
-			return (tmp->is_open);
-		tmp = tmp->next;
-	}
-	return (0);
-}
-
 void	launch_ray(t_gm *game, t_ray *ray, t_map *map)
 {
 	int	hit;
+	(void) game;
 
 	hit = 0;
 	while (!hit)
@@ -88,13 +75,9 @@ void	launch_ray(t_gm *game, t_ray *ray, t_map *map)
 			ray->side_hit = 1;
 			ray->wall_ppclr_dstc = ray->side_dstc_y - ray->delta_dstc_y;
 		}
-		if (map->matriz[ray->map_y][ray->map_x] == '1' || map->matriz[ray->map_y][ray->map_x] == 'D' ||
+		if (map->matriz[ray->map_y][ray->map_x] == '1' ||
 			map->matriz[ray->map_y][ray->map_x] == ' ')
-		{
-			if (map->matriz[ray->map_y][ray->map_x] == 'D' && door_is_open(ray->map_y, ray->map_x, game->doors))
-				continue;
 			hit = 1;
-		}
 	}
 }
 

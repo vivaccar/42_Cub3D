@@ -6,26 +6,11 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:28:20 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/28 14:03:36 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:00:20 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube.h"
-
-void	open_doors(t_gm *game)
-{
-	t_doors *tmp;
-
-	tmp = game->doors;
-	while (tmp)
-	{
-		if (tmp->is_open)
-			tmp->is_open = 0;
-		else
-			tmp->is_open = 1;
-		tmp = tmp->next;	
-	}
-}
 
 int	key_press_handler(int keycode, t_gm *game)
 {
@@ -45,8 +30,6 @@ int	key_press_handler(int keycode, t_gm *game)
 		rotate_right(game, game->ray->mov_speed);
 	else if (keycode == KEY_M)
 		game->mm->m_pressed = !game->mm->m_pressed;
-	else if (keycode == KEY_SPACE)
-		open_doors(game);
 	return (0);
 }
 
