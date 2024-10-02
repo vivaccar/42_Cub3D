@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube.h                                             :+:      :+:    :+:   */
+/*   cube_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/02 16:31:01 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/02 16:23:58 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE_H
-# define CUBE_H
+#ifndef CUBE_BONUS_H
+#define CUBE_BONUS_H
 
 #include <stdlib.h> //malloc() free() exit()
 #include <unistd.h> //open() close() read() write()
@@ -28,7 +28,7 @@
 #include "../libraries/minilibx-linux/mlx_int.h"
 
 #define WIDTH 1920
-#define HEIGHT 1000
+#define HEIGHT 1040
 #define TXT_W 64
 #define TXT_H 64
 
@@ -109,7 +109,6 @@ typedef struct s_ray
 	int		step_y;
 	int		side_hit;
 	double	mov_speed;
-	int		z_buffer[WIDTH];
 }	t_ray;
 
 typedef struct s_minmap
@@ -211,7 +210,7 @@ int		raycaster(t_gm *game);
 void	rays_direction(t_ray *ray, int x);
 void	delta_dstc(t_ray *ray);
 void	step_increment(t_ray *ray);
-void	launch_ray(t_gm *game, t_ray *ray, t_map *map);
+void	launch_ray(t_ray *ray, t_map *map);
 
 //mini_map.c
 void	draw_mini_map(t_gm *game);
@@ -231,6 +230,7 @@ void	move_up(t_gm *game);
 void	move_down(t_gm *game);
 void	move_left(t_gm *game);
 void	move_right(t_gm *game);
+int		mouse_handler(int x, int y, t_gm *game);
 
 //events/rotate.c
 void	rotate_left(t_gm *game, double speed);

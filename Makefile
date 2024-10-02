@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
+#    By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/25 13:48:55 by aconceic         ###   ########.fr        #
+#    Updated: 2024/09/30 14:44:06 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC = main.c free.c init.c start_game.c support.c \
 	  parsing/scene.c parsing/elements.c parsing/elements2.c \
 	  parsing/map.c parsing/map_validations1.c raycaster/raycaster.c\
 	  events/exit.c events/handlers.c raycaster/render_textures.c\
-	  events/move.c parsing/map_validations2.c mini_map.c events/rotate.c\
+	  events/move.c parsing/map_validations2.c events/rotate.c\
 
 ### MiniLibX
 ##DIR FOR MLX HAVING IN CONSIDERATION THE OS
@@ -51,6 +51,18 @@ CC = cc
 GCC = cc -g
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
+
+### BONUS
+BONUS_NAME = cub3D_bonus
+BONUS_OBJ_DIR = ./objs_bonus/
+BONUS_OBJ = $(addprefix $(BONUS_OBJ_DIR), $(BONUS_SRC:.c=.o))
+BONUS_SRC_DIR = ./bonus/
+BONUS_SRC = main_bonus.c free_bonus.c init_bonus.c start_game_bonus.c support_bonus.c \
+	  parsing_bonus/scene_bonus.c parsing_bonus/elements_bonus.c parsing_bonus/elements2_bonus.c \
+	  parsing_bonus/map_bonus.c parsing_bonus/map_validations1_bonus.c raycaster_bonus/raycaster_bonus.c\
+	  events_bonus/exit_bonus.c events_bonus/handlers_bonus.c raycaster_bonus/render_textures_bonus.c\
+	  events_bonus/move_bonus.c parsing_bonus/map_validations2_bonus.c mini_map_bonus.c events_bonus/rotate_bonus.c\
+
 
 ### RULES
 all : download mlx_compile $(NAME)
@@ -86,12 +98,14 @@ clean:
 	@$(RM) -rf $(OBJ_DIR) > /dev/null 2>&1
 	@$(MAKE) clean -C $(LIBFT_DIR) > /dev/null 2>&1
 	@$(MAKE) clean -C $(MLX_DIR) > /dev/null 2>&1
+	@$(RM) -rf $(OBJ_DIR) $(BONUS_OBJ_DIR) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Cleaning Ok!$(RESET)"
 
 fclean:
 	@echo "$(ORANGE)[!]$(RESET) Executing full cleaning..."
 	@$(RM) $(NAME) > /dev/null 2>&1
 	@$(RM) -rf $(OBJ_DIR) > /dev/null 2>&1
+	@$(RM) -rf $(OBJ_DIR) $(BONUS_OBJ_DIR) > /dev/null 2>&1
 #	@$(RM) -rf $(MLX_DIR) > /dev/null 2>&1
 	@$(MAKE) fclean -C $(LIBFT_DIR) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Full cleaning Ok!$(RESET)"
@@ -108,5 +122,18 @@ ifeq ($(shell test -d $(MLX_DIR) && echo yes),)
 else
 	@echo "$(GREEN)[✔]$(RESET) MiniLibX already exists, skipping download."
 endif
+
+bonus : download mlx_compile $(BONUS_NAME)
+
+$(BONUS_OBJ_DIR)%.o: $(BONUS_SRC_DIR)%.c
+	@mkdir -p $(dir $@) > /dev/null 2>&1
+	@$(GCC) $(CFLAGS) -c $< -o $@
+
+$(BONUS_NAME) : $(BONUS_OBJ) $(LIBFT_LIB)
+	@echo "$(ORANGE)[!]$(RESET) Working on bonus project ... "
+	@$(GCC) $(CFLAGS) $(BONUS_OBJ) $(LIBFT_LIB) $(GNL_LIB) $(MLXFLAGS) -o $(BONUS_NAME)
+	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Bonus Ok!$(RESET)"
+
+bonus : download mlx_compile $(BONUS_NAME)
 
 .SILENT : all

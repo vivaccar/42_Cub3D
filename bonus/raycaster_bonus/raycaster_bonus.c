@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycaster.c                                        :+:      :+:    :+:   */
+/*   raycaster_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/30 14:51:46 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:30:39 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cube.h"
+#include "../../includes/cube_bonus.h"
 
 void	rays_direction(t_ray *ray, int x)
 {
@@ -18,7 +18,6 @@ void	rays_direction(t_ray *ray, int x)
 	ray->ray_dir_x = ray->dir_x + ray->plane_x * ray->cam_x;
 	ray->ray_dir_y = ray->dir_y + ray->plane_y * ray->cam_x;
 }
-
 
 void	delta_dstc(t_ray *ray)
 {
@@ -53,10 +52,9 @@ void	step_increment(t_ray *ray)
 	}
 }
 
-void	launch_ray(t_gm *game, t_ray *ray, t_map *map)
+void	launch_ray(t_ray *ray, t_map *map)
 {
 	int	hit;
-	(void) game;
 
 	hit = 0;
 	while (!hit)
@@ -75,8 +73,7 @@ void	launch_ray(t_gm *game, t_ray *ray, t_map *map)
 			ray->side_hit = 1;
 			ray->wall_ppclr_dstc = ray->side_dstc_y - ray->delta_dstc_y;
 		}
-		if (map->matriz[ray->map_y][ray->map_x] == '1' ||
-			map->matriz[ray->map_y][ray->map_x] == ' ')
+		if (map->matriz[ray->map_y][ray->map_x] == '1')
 			hit = 1;
 	}
 }
@@ -94,10 +91,11 @@ int	raycaster(t_gm *game)
 		rays_direction(game->ray, x);
 		delta_dstc(game->ray);
 		step_increment(game->ray);
-		launch_ray(game, game->ray, game->map);
+		launch_ray(game->ray, game->map);
 		get_wall_height_and_draw(game, game->ray, x);
 		x++;
 	}
+	draw_mini_map(game);
 	mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd,
 		game->mlx->img, 0, 0);
 	return (EXIT_SUCCESS);

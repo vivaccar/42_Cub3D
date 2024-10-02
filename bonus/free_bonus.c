@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/02 17:11:40 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:11:07 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube.h"
+#include "../includes/cube_bonus.h"
 
 void	free_game(t_gm *game)
 {
@@ -19,6 +19,7 @@ void	free_game(t_gm *game)
 	i = 0;
 	free_map(game->map);
 	free(game->map);
+	free(game->mm);
 	free(game->ray);
 	free(game->mlx);
 	free(game->textr);
