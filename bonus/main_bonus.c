@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 11:49:11 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:45:14 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(int argc, char **argv)
 {
 	t_gm	game;
 
-	printf("This is the bonus main");
 	if (init_game_struct(&game))
 		return (EXIT_FAILURE);
 	if (!is_argument_valid(&game, argc, argv))

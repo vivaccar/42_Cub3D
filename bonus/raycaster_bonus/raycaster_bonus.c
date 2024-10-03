@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/03 12:25:06 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 16:44:43 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	raycaster(t_gm *game)
 		game->ray->map_x = (int)game->ray->plyr_x;
 		game->ray->map_y = (int)game->ray->plyr_y;
 		rays_direction(game->ray, x);
-		delta_dstc(game->ray); //amauri que fez
+		delta_dstc(game->ray);
 		step_increment(game->ray);
 		launch_ray(game->ray, game->map);
 		get_wall_height_and_draw(game, game->ray, x);

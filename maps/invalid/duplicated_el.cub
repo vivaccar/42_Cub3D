@@ -1,20 +1,20 @@
-EA ./path_to_the_east_texture
+EA textures/magic_cub/blue.xpm
 
 F 220,100,0
 	
 	
 	                                     C 225,30,0
 
-			SO ./path_to_the_south_texture
-EA ./path_to_the_east_texture
+			SO textures/magic_cub/blue.xpm
+EA textures/magic_cub/blue.xpm
 
 
 
-			NO ./path_to_the_north_texture
+			NO textures/magic_cub/blue.xpm
 
 
 
-WE ./path_to_the_west_texture
+WE textures/magic_cub/blue.xpm
 			1111111111111111111111111
 			1000000000000000000000001
 			1001111000111000000000001

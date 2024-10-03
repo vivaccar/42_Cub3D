@@ -1,12 +1,11 @@
-NO ./path_to_the_north_texture
+NO textures/magic_cub/yellow.xpm
 
 
 
-            SO ./path_to_the_south_texture
+            SO textures/magic_cub/blue.xpm
 
-    WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
-
+    WE textures/magic_cub/red.xpm
+EA textures/magic_cub/green.xpm
 F 220,100,0
 
 C 225, 0, 0
