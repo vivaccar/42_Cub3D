@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/03 12:25:06 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:28:14 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	raycaster(t_gm *game)
 	int	x;
 
 	x = 0;
+	mlx_mouse_move(game->mlx->cnt, game->mlx->wnd, WIDTH / 2, HEIGHT / 2);
 	draw_floor_ceiling(game);
 	while (x < WIDTH)
 	{
@@ -96,6 +97,15 @@ int	raycaster(t_gm *game)
 		x++;
 	}
 	draw_mini_map(game);
+	if (game->textr->gun_fire > 0 && game->textr->gun_fire <= 7)
+	{
+		draw_scaled_gun(game, 3, 5);
+		game->textr->gun_fire ++;
+		if (game->textr->gun_fire == 30)
+			game->textr->gun_fire = 0;
+	}
+	else	
+		draw_scaled_gun(game, 3, 4);
 	mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd,
 		game->mlx->img, 0, 0);
 	return (EXIT_SUCCESS);

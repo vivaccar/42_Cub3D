@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 14:51:17 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:08:00 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 
 # define WIDTH 1920
 # define HEIGHT 1040
-# define TXT_W 64
-# define TXT_H 64
+# define TXT_W 128
+# define TXT_H 128
 
 # define KEY_SPACE 32
 # define KEY_ESC 65307
@@ -43,6 +43,7 @@
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+# define KEY_SHIFT 65505
 
 // Define color codes
 # define RESET   "\033[0m"
@@ -119,11 +120,11 @@ typedef struct s_minmap
 
 typedef struct s_texture
 {
-	void	*wall_texture[4];
+	void	*texture[6];
 	int		txt_x;
 	int		txt_y;
-	int		txt_width[4];
-	int		txt_height[4];
+	int		txt_width[6];
+	int		txt_height[6];
 	double	text_pos;
 	int		r_line_len;
 	int		r_first_point;
@@ -133,6 +134,8 @@ typedef struct s_texture
 	int		bits_per_pixel;
 	int		line_len;
 	int		endian;
+	int		gun_mov;
+	int		gun_fire;
 }	t_texture;
 
 //Main Struc gm = GaMe.
@@ -234,6 +237,7 @@ void	move_down(t_gm *game);
 void	move_left(t_gm *game);
 void	move_right(t_gm *game);
 int		mouse_handler(int x, int y, t_gm *game);
+int		mouse_fire(int mousecode, int x, int y, void *param);
 
 //events/rotate.c
 void	rotate_left(t_gm *game, double speed);
@@ -244,5 +248,8 @@ void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x);
 void	draw_texture(t_gm *g, int x, int img_index);
 void	get_wall_hit_pos(t_gm *game);
 void	get_render_points(t_gm *game);
+
+//bonus/gun_bonus.c
+void	draw_scaled_gun(t_gm *game, int scale_factor, int img_i);
 
 #endif
