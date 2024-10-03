@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/30 14:23:20 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:49:11 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,13 @@ int	main(int argc, char **argv)
 	if (init_game_struct(&game))
 		return (EXIT_FAILURE);
 	if (!is_argument_valid(&game, argc, argv))
-		return (free_game(&game), EXIT_FAILURE);
+		return (free_game(&game, 1), EXIT_FAILURE);
 	if (parse_file(&game, argc, argv))
-		return (free_game(&game), EXIT_FAILURE);
+		return (free_game(&game, 1), EXIT_FAILURE);
 	print_map_values(&game);
 	if (run_mlx(&game))
 		return (ft_err_msg("Error Mlx Init", EXIT_FAILURE));
 	run_cub(&game);
-	free_game(&game);
 	return (0);
 }
 

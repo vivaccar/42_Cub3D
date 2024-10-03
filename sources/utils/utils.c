@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_game_bonus.c                                 :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/02 17:03:54 by vivaccar         ###   ########.fr       */
+/*   Created: 2024/10/03 11:29:51 by vivaccar          #+#    #+#             */
+/*   Updated: 2024/10/03 12:18:33 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube_bonus.h"
+#include "../../includes/cube.h"
 
 // plye_x e plyr_y --> DEFINEM A POSICAO DO JOGADOR NA MATRIZ;
 // plane_x e plane_y --> DEFINEM O PLANO DE PROJECAO DA CAMERA DO JOGADOR
@@ -30,6 +30,8 @@ int	my_mlx_get_pixel(t_gm *game, int x, int y, int index)
 	int			offset;
 	int			pixel;
 
+	if (x > 64 || y > 64)
+		return (0);
 	t = game->textr;
 	data_adr = mlx_get_data_addr(t->wall_texture[index], &t->bits_per_pixel,
 			&t->line_len, &t->endian);
@@ -57,42 +59,4 @@ void	draw_floor_ceiling(t_gm *game)
 		}
 		y++;
 	}
-}
-
-void	start_player_position(t_gm *game)
-{
-	game->ray->plyr_x = game->map->plyr_x;
-	game->ray->plyr_y = game->map->plyr_y;
-	if (game->map->plyr_dir == 'N')
-	{
-		set_plane_positions(game, 0.66, 0.0);
-		set_direction_positions(game, 0.0, -1.0);
-	}
-	else if (game->map->plyr_dir == 'S')
-	{
-		set_plane_positions(game, -0.66, 0.0);
-		set_direction_positions(game, 0.0, 1.0);
-	}
-	else if (game->map->plyr_dir == 'W')
-	{
-		set_plane_positions(game, 0.0, -0.66);
-		set_direction_positions(game, -1.0, 0.0);
-	}
-	else if (game->map->plyr_dir == 'E')
-	{
-		set_plane_positions(game, 0.0, 0.66);
-		set_direction_positions(game, 1.0, 0.0);
-	}
-}
-
-void	set_plane_positions(t_gm *game, double plane_x, double plane_y)
-{
-	game->ray->plane_x = plane_x;
-	game->ray->plane_y = plane_y;
-}
-
-void	set_direction_positions(t_gm *game, double dir_x, double dir_y)
-{
-	game->ray->dir_x = dir_x;
-	game->ray->dir_y = dir_y;
 }

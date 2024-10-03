@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/30 14:51:46 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:36:08 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	rays_direction(t_ray *ray, int x)
 	ray->ray_dir_x = ray->dir_x + ray->plane_x * ray->cam_x;
 	ray->ray_dir_y = ray->dir_y + ray->plane_y * ray->cam_x;
 }
-
 
 void	delta_dstc(t_ray *ray)
 {
@@ -53,10 +52,9 @@ void	step_increment(t_ray *ray)
 	}
 }
 
-void	launch_ray(t_gm *game, t_ray *ray, t_map *map)
+void	launch_ray(t_ray *ray, t_map *map)
 {
 	int	hit;
-	(void) game;
 
 	hit = 0;
 	while (!hit)
@@ -94,7 +92,7 @@ int	raycaster(t_gm *game)
 		rays_direction(game->ray, x);
 		delta_dstc(game->ray);
 		step_increment(game->ray);
-		launch_ray(game, game->ray, game->map);
+		launch_ray(game->ray, game->map);
 		get_wall_height_and_draw(game, game->ray, x);
 		x++;
 	}

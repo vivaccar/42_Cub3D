@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handlers.c                                         :+:      :+:    :+:   */
+/*   handlers_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:28:20 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/30 14:23:44 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:50:39 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	key_press_handler(int keycode, t_gm *game)
 
 int	mouse_handler(int x, int y, t_gm *game)
 {
+	static int	old_x = WIDTH / 2;
+
 	(void) y;
-	static int old_x = WIDTH / 2;
-	
 	if (x < old_x && x < WIDTH / 2 && x > 5)
 		rotate_left(game, game->ray->mov_speed / 3);
 	else if (x > old_x && x > WIDTH / 2 && x < WIDTH - 5)
 		rotate_right(game, game->ray->mov_speed / 3);
 	old_x = x;
-	return (0);	
+	return (0);
 }

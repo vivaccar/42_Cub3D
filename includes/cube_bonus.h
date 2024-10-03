@@ -6,53 +6,53 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/02 16:23:58 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:23:57 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_BONUS_H
-#define CUBE_BONUS_H
+# define CUBE_BONUS_H
 
-#include <stdlib.h> //malloc() free() exit()
-#include <unistd.h> //open() close() read() write()
-#include <stdio.h> //perror()
-#include <string.h> //strerror()
-#include <sys/time.h> //gettimeofday()
-#include <math.h>
-#include <fcntl.h>
-#include <stdbool.h>
-#include <limits.h>
+# include <stdlib.h> //malloc() free() exit()
+# include <unistd.h> //open() close() read() write()
+# include <stdio.h> //perror()
+# include <string.h> //strerror()
+# include <sys/time.h> //gettimeofday()
+# include <math.h>
+# include <fcntl.h>
+# include <stdbool.h>
+# include <limits.h>
 
-#include "../libraries/libft/libft.h"
-#include "../libraries/minilibx-linux/mlx.h"
-#include "../libraries/minilibx-linux/mlx_int.h"
+# include "../libraries/libft/libft.h"
+# include "../libraries/minilibx-linux/mlx.h"
+# include "../libraries/minilibx-linux/mlx_int.h"
 
-#define WIDTH 1920
-#define HEIGHT 1040
-#define TXT_W 64
-#define TXT_H 64
+# define WIDTH 1920
+# define HEIGHT 1040
+# define TXT_W 64
+# define TXT_H 64
 
-#define KEY_SPACE 32
-#define KEY_ESC 65307
-#define KEY_W 119
-#define KEY_A 97
-#define KEY_S 115
-#define KEY_D 100
-#define KEY_M 109
-#define KEY_UP 65362
-#define KEY_DOWN 65364
-#define KEY_LEFT 65361
-#define KEY_RIGHT 65363
+# define KEY_SPACE 32
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_M 109
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 // Define color codes
-#define RESET   "\033[0m"
-#define RED     "\033[31m"
-#define GREEN   "\033[32m"
-#define YELLOW  "\033[33m"
-#define BLUE    "\033[34m"
-#define MAGENTA "\033[35m"
-#define CYAN    "\033[36m"
-#define WHITE   "\033[37m"
+# define RESET   "\033[0m"
+# define RED     "\033[31m"
+# define GREEN   "\033[32m"
+# define YELLOW  "\033[33m"
+# define BLUE    "\033[34m"
+# define MAGENTA "\033[35m"
+# define CYAN    "\033[36m"
+# define WHITE   "\033[37m"
 
 //Mlx Lib Struc
 typedef struct s_mlx
@@ -147,7 +147,7 @@ int		main(int argc, char **argv);
 bool	is_argument_valid(t_gm *game, int argc, char **argv);
 
 //free.c
-void	free_game(t_gm *game);
+void	free_game(t_gm *game, int to_free);
 void	free_map(t_map *map);
 void	free_mlx(t_mlx *mlx, t_gm *game);
 
@@ -156,6 +156,7 @@ int		run_mlx(t_gm *game);
 int		init_game_struct(t_gm *game);
 void	init_map_struct(t_gm *game);
 void	init_ray_struct(t_gm *game);
+void	init_textr_struct(t_gm *game);
 void	get_texture_pointers(t_gm *game);
 
 //parsing/scene.c

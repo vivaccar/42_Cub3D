@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_game.c                                       :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/28 13:35:20 by vivaccar         ###   ########.fr       */
+/*   Created: 2024/10/03 11:45:44 by vivaccar          #+#    #+#             */
+/*   Updated: 2024/10/03 11:46:45 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube.h"
+#include "../../includes/cube_bonus.h"
 
 // plye_x e plyr_y --> DEFINEM A POSICAO DO JOGADOR NA MATRIZ;
 // plane_x e plane_y --> DEFINEM O PLANO DE PROJECAO DA CAMERA DO JOGADOR
@@ -57,42 +57,4 @@ void	draw_floor_ceiling(t_gm *game)
 		}
 		y++;
 	}
-}
-
-void	start_player_position(t_gm *game)
-{
-	game->ray->plyr_x = game->map->plyr_x + 0.5;
-	game->ray->plyr_y = game->map->plyr_y + 0.5;
-	if (game->map->plyr_dir == 'N')
-	{
-		set_plane_positions(game, 0.66, 0.0);
-		set_direction_positions(game, 0.0, -1.0);
-	}
-	else if (game->map->plyr_dir == 'S')
-	{
-		set_plane_positions(game, -0.66, 0.0);
-		set_direction_positions(game, 0.0, 1.0);
-	}
-	else if (game->map->plyr_dir == 'W')
-	{
-		set_plane_positions(game, 0.0, -0.66);
-		set_direction_positions(game, -1.0, 0.0);
-	}
-	else if (game->map->plyr_dir == 'E')
-	{
-		set_plane_positions(game, 0.0, 0.66);
-		set_direction_positions(game, 1.0, 0.0);
-	}
-}
-
-void	set_plane_positions(t_gm *game, double plane_x, double plane_y)
-{
-	game->ray->plane_x = plane_x;
-	game->ray->plane_y = plane_y;
-}
-
-void	set_direction_positions(t_gm *game, double dir_x, double dir_y)
-{
-	game->ray->dir_x = dir_x;
-	game->ray->dir_y = dir_y;
 }

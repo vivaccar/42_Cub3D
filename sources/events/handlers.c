@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:28:20 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/02 16:30:29 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:04:02 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ int	key_press_handler(int keycode, t_gm *game)
 		rotate_left(game, game->ray->mov_speed);
 	else if (keycode == KEY_RIGHT)
 		rotate_right(game, game->ray->mov_speed);
-	else if (keycode == KEY_M)
-		game->mm->m_pressed = !game->mm->m_pressed;
 	return (0);
 }
