@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:25:05 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/30 14:30:50 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:55:12 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube_bonus.h"
 
-void draw_mini_map(t_gm *game)
+void	draw_mini_map(t_gm *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	if (game->mm->m_pressed == 1)
@@ -38,11 +38,11 @@ void draw_mini_map(t_gm *game)
 /**
  * @brief tl = TILE_SIZE
  */
-void render_mini_map(t_gm *game, int x, int y)
+void	render_mini_map(t_gm *game, int x, int y)
 {
-	int i;
-	int j;
-	int ts;
+	int	i;
+	int	j;
+	int	ts;
 
 	ts = game->mm->tile_size;
 	i = 0;
@@ -52,9 +52,11 @@ void render_mini_map(t_gm *game, int x, int y)
 		while (j < ts)
 		{
 			if (game->map->matriz[y][x] == '1')
-				my_mlx_pixel_put(game->mlx, (x * ts) + j, (y * ts) + i, 0xFFFFFF);
+				my_mlx_pixel_put(game->mlx, (x * ts) + j, (y * ts) + i,
+					0xFFFFFF);
 			else if (ft_strchr("NSEW0", game->map->matriz[y][x]))
-				my_mlx_pixel_put(game->mlx, (x * ts) + j, (y * ts) + i, 0xFF0000);
+				my_mlx_pixel_put(game->mlx, (x * ts) + j, (y * ts) + i,
+					0xFF0000);
 			j++;
 		}
 		i++;
@@ -65,13 +67,14 @@ void render_mini_map(t_gm *game, int x, int y)
  * circle calculus -> (x−xc​)**+(y−yc​)2<=r
  * xc​ and yc​ are the center coordinates of the circle (the player's position).
  * r is the radius of the circle.
- * x and y are the pixel coordinates you're calculating for each point in the circle.
+ * x and y are the pixel coordinates you're calculating for 
+ * each point in the circle.
  */
-void render_mini_map_player(t_gm *game)
+void	render_mini_map_player(t_gm *game)
 {
-	int radius;
-	int x;
-	int y;
+	int	radius;
+	int	x;
+	int	y;
 
 	if (!game->mm->m_pressed)
 		radius = 2;
@@ -85,20 +88,21 @@ void render_mini_map_player(t_gm *game)
 		{
 			if (x * x + y * y <= radius * radius)// Check if the point is inside the circle
 			{
-				my_mlx_pixel_put(game->mlx, (game->ray->plyr_x * game->mm->tile_size) + x,
+				my_mlx_pixel_put(game->mlx,
+					(game->ray->plyr_x * game->mm->tile_size) + x,
 					(game->ray->plyr_y * game->mm->tile_size) + y, 0x00FF00);
-			}  	
+			}
 			x ++;
 		}
 		y ++;
 	}
-	render_mini_map_pl_dir(game);
+	//render_mini_map_pl_dir(game);
 }
 
 /**
  * Render Rays 
  */
-void render_mini_map_pl_dir(t_gm *game)
+/* void render_mini_map_pl_dir(t_gm *game)
 {
 	int ray_count = 100; // Number of rays to draw for FOV
 	double fov = 66 * (M_PI / 180); // FOV in radians (e.g., 60 degrees)
@@ -135,10 +139,11 @@ void render_mini_map_pl_dir(t_gm *game)
 			my_mlx_pixel_put(game->mlx, pixel_x, pixel_y, 0x00FF00); // Green ray
 
 			// Check if we hit a wall
-			if (game->map->matriz[(int)ray_pos_y][(int)ray_pos_x] == '1')
+			if (game->map->matriz[(int)ray_pos_y][(int)ray_pos_x] == '1' ||
+				game->map->matriz[(int)ray_pos_y][(int)ray_pos_x] == ' ')
 			{
 				hit = 1; // Wall hit, stop the ray
 			}
 		}
 	}
-}
+} */

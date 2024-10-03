@@ -3,66 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/25 18:51:55 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:29:37 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube.h"
+#include "../../includes/cube.h"
 
-// plye_x e plyr_y --> DEFINEM A POSICAO DO JOGADOR NA MATRIZ;
-// plane_x e plane_y --> DEFINEM O PLANO DE PROJECAO DA CAMERA DO JOGADOR
-// dir_x e dir_y ---> VETORES DE DIRECAO;
-void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
+/**
+ * @brief init the mlx library
+*/
+int	run_mlx(t_gm *game)
 {
-	char	*dst;
-
-	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
-int	my_mlx_get_pixel(t_gm *game, int x, int y, int index)
-{
-	char		*data_adr;
-	t_texture	*t;
-	int			offset;
-	int			pixel;
-
-	t = game->textr;
-	data_adr = mlx_get_data_addr(t->wall_texture[index], &t->bits_per_pixel,
-			&t->line_len, &t->endian);
-	offset = (y * t->line_len) + (x * (t->bits_per_pixel / 8));
-	pixel = *(int *)(data_adr + offset);
-	return (pixel);
-}
-
-void	draw_floor_ceiling(t_gm *game)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			if (y < HEIGHT / 2)
-				my_mlx_pixel_put(game->mlx, x, y, 0x000000);
-			else
-				my_mlx_pixel_put(game->mlx, x, y, 0xC0C0C0);
-			x ++;
-		}
-		y++;
-	}
+	game->mlx->cnt = mlx_init();
+	if (!game->mlx->cnt)
+		return (ft_err_msg("mlx_init failed", EXIT_FAILURE));
+	game->mlx->wnd = mlx_new_window(game->mlx->cnt, WIDTH, HEIGHT, "Cub3d");
+	if (!game->mlx->wnd)
+		return (ft_err_msg("mlx_new_window failed", EXIT_FAILURE));
+	game->mlx->img = mlx_new_image(game->mlx->cnt, WIDTH, HEIGHT);
+	game->mlx->addr = mlx_get_data_addr(game->mlx->img,
+			&game->mlx->bits_per_pixel, &game->mlx->line_length,
+			&game->mlx->endian);
+	get_texture_pointers(game);
+	return (EXIT_SUCCESS);
 }
 
 void	start_player_position(t_gm *game)
 {
-	game->ray->plyr_x = game->map->plyr_x;
-	game->ray->plyr_y = game->map->plyr_y;
+	game->ray->plyr_x = game->map->plyr_x + 0.5;
+	game->ray->plyr_y = game->map->plyr_y + 0.5;
 	if (game->map->plyr_dir == 'N')
 	{
 		set_plane_positions(game, 0.66, 0.0);

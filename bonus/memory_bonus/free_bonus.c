@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/30 14:30:45 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:44:10 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube_bonus.h"
+#include "../../includes/cube_bonus.h"
 
-void	free_game(t_gm *game)
+void	free_game(t_gm *game, int to_free)
 {
 	int	i;
 
@@ -21,19 +21,27 @@ void	free_game(t_gm *game)
 	free(game->map);
 	free(game->mm);
 	free(game->ray);
- 	while (i < 4)
+	if (to_free)
 	{
-		mlx_destroy_image(game->mlx->cnt, game->textr->wall_texture[i]);
+		free(game->textr);
+		free(game->mlx);
+	}
+}
+
+void	free_mlx(t_mlx *mlx, t_gm *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (game->textr->wall_texture[i])
+			mlx_destroy_image(game->mlx->cnt, game->textr->wall_texture[i]);
 		i++;
 	}
 	free(game->textr);
-}
-
-void	free_mlx(t_mlx *mlx)
-{
 	mlx_destroy_window(mlx->cnt, mlx->wnd);
 	mlx_destroy_image(mlx->cnt, mlx->img);
-	//free(mlx->addr);
 	mlx_destroy_display(mlx->cnt);
 	free(mlx->cnt);
 	free(mlx);

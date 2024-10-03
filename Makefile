@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+         #
+#    By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/09/30 14:44:06 by aconceic         ###   ########.fr        #
+#    Updated: 2024/10/03 14:03:06 by vivaccar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,12 @@ NAME = cub3D
 OBJ_DIR = ./objs/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 SRC_DIR = ./sources/
-SRC = main.c free.c init.c start_game.c support.c \
+SRC = main.c memory/free.c memory/init.c start/start_game.c support.c \
 	  parsing/scene.c parsing/elements.c parsing/elements2.c \
 	  parsing/map.c parsing/map_validations1.c raycaster/raycaster.c\
 	  events/exit.c events/handlers.c raycaster/render_textures.c\
 	  events/move.c parsing/map_validations2.c events/rotate.c\
+	  utils/utils.c\
 
 ### MiniLibX
 ##DIR FOR MLX HAVING IN CONSIDERATION THE OS
@@ -57,11 +58,12 @@ BONUS_NAME = cub3D_bonus
 BONUS_OBJ_DIR = ./objs_bonus/
 BONUS_OBJ = $(addprefix $(BONUS_OBJ_DIR), $(BONUS_SRC:.c=.o))
 BONUS_SRC_DIR = ./bonus/
-BONUS_SRC = main_bonus.c free_bonus.c init_bonus.c start_game_bonus.c support_bonus.c \
+BONUS_SRC = main_bonus.c memory_bonus/free_bonus.c memory_bonus/init_bonus.c start_bonus/start_game_bonus.c support_bonus.c \
 	  parsing_bonus/scene_bonus.c parsing_bonus/elements_bonus.c parsing_bonus/elements2_bonus.c \
 	  parsing_bonus/map_bonus.c parsing_bonus/map_validations1_bonus.c raycaster_bonus/raycaster_bonus.c\
 	  events_bonus/exit_bonus.c events_bonus/handlers_bonus.c raycaster_bonus/render_textures_bonus.c\
 	  events_bonus/move_bonus.c parsing_bonus/map_validations2_bonus.c mini_map_bonus.c events_bonus/rotate_bonus.c\
+	  utils_bonus/utils_bonus.c
 
 
 ### RULES
@@ -106,6 +108,7 @@ fclean:
 	@$(RM) $(NAME) > /dev/null 2>&1
 	@$(RM) -rf $(OBJ_DIR) > /dev/null 2>&1
 	@$(RM) -rf $(OBJ_DIR) $(BONUS_OBJ_DIR) > /dev/null 2>&1
+	@$(RM) $(BONUS_NAME) > /dev/null 2>&1
 #	@$(RM) -rf $(MLX_DIR) > /dev/null 2>&1
 	@$(MAKE) fclean -C $(LIBFT_DIR) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Full cleaning Ok!$(RESET)"

@@ -6,34 +6,41 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/26 14:17:30 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:24:22 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube.h"
+#include "../../includes/cube.h"
 
-void	free_game(t_gm *game)
+void	free_game(t_gm *game, int to_free)
 {
 	int	i;
 
 	i = 0;
 	free_map(game->map);
 	free(game->map);
-	free(game->mm);
 	free(game->ray);
- 	while (i < 4)
+	if (to_free)
 	{
-		mlx_destroy_image(game->mlx->cnt, game->textr->wall_texture[i]);
+		free(game->textr);
+		free(game->mlx);
+	}
+}
+
+void	free_mlx(t_mlx *mlx, t_gm *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (game->textr->wall_texture[i])
+			mlx_destroy_image(game->mlx->cnt, game->textr->wall_texture[i]);
 		i++;
 	}
 	free(game->textr);
-}
-
-void	free_mlx(t_mlx *mlx)
-{
 	mlx_destroy_window(mlx->cnt, mlx->wnd);
 	mlx_destroy_image(mlx->cnt, mlx->img);
-	//free(mlx->addr);
 	mlx_destroy_display(mlx->cnt);
 	free(mlx->cnt);
 	free(mlx);

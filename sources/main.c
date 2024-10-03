@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/30 14:42:08 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:34:06 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,10 @@ void	run_cub(t_gm *game)
 	start_player_position(game);
 	mlx_loop_hook(game->mlx->cnt, &raycaster, game);
 	mlx_hook(game->mlx->wnd, 2, 1L << 0, key_press_handler, game);
-	mlx_hook(game->mlx->wnd, 6, 1L << 6, mouse_handler, game);
 	mlx_hook(game->mlx->wnd, 17, 0, close_cub, game);
 	mlx_loop(game->mlx->cnt);
 }
 
-/**
- * Digital Differential Analysis Algorthm - Search for it
- */
 int	main(int argc, char **argv)
 {
 	t_gm	game;
@@ -32,13 +28,12 @@ int	main(int argc, char **argv)
 	if (init_game_struct(&game))
 		return (EXIT_FAILURE);
 	if (!is_argument_valid(&game, argc, argv))
-		return (free_game(&game), EXIT_FAILURE);
+		return (free_game(&game, 1), EXIT_FAILURE);
 	if (parse_file(&game, argc, argv))
-		return (free_game(&game), EXIT_FAILURE);
+		return (free_game(&game, 1), EXIT_FAILURE);
 	if (run_mlx(&game))
 		return (ft_err_msg("Error Mlx Init", EXIT_FAILURE));
 	run_cub(&game);
-	free_game(&game);
 	return (0);
 }
 

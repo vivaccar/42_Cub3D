@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/09/30 14:42:21 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:36:08 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void	launch_ray(t_ray *ray, t_map *map)
 			ray->side_hit = 1;
 			ray->wall_ppclr_dstc = ray->side_dstc_y - ray->delta_dstc_y;
 		}
-		if (map->matriz[ray->map_y][ray->map_x] == '1')
+		if (map->matriz[ray->map_y][ray->map_x] == '1' ||
+			map->matriz[ray->map_y][ray->map_x] == ' ')
 			hit = 1;
 	}
 }

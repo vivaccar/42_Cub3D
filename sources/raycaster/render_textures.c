@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:48:15 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/25 18:06:09 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/03 12:10:03 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x)
 {
 	t_texture	*t;
 
+	ray->z_buffer[x] = ray->wall_ppclr_dstc;
 	t = game->textr;
 	t->r_line_len = (int)(HEIGHT / ray->wall_ppclr_dstc);
 	t->txt_x = (int)(t->wall_hit_pos * (double)TXT_W);
@@ -52,7 +53,7 @@ void	draw_texture(t_gm *game, int x, int img_index)
 		t->text_pos += t->step;
 		color = my_mlx_get_pixel(game, t->txt_x, t->txt_y, img_index);
 		my_mlx_pixel_put(game->mlx, x, y, color);
-		y ++;
+		y++;
 	}
 }
 

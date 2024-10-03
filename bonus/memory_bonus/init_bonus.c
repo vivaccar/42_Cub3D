@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/30 14:30:47 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:55:50 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube_bonus.h"
+#include "../../includes/cube_bonus.h"
 
 /**
  * @brief Start main game struct
@@ -19,12 +19,10 @@
 int	init_game_struct(t_gm *game)
 {
 	ft_bzero(game, sizeof(t_gm));
-		//========================== Map ===============================
 	game->map = malloc(sizeof(t_map));
 	if (!game->map)
 		return (ft_err_msg("Error allocating map struct", EXIT_FAILURE));
 	init_map_struct(game);
-		//========================== RAYCASTER ===============================
 	game->ray = malloc(sizeof(t_ray));
 	if (!game->ray)
 		return (ft_err_msg("Error allocating ray struct", EXIT_FAILURE));
@@ -40,10 +38,15 @@ int	init_game_struct(t_gm *game)
 		return (ft_err_msg("Error allocating MiniMap struct", EXIT_FAILURE));
 	game->mm->m_pressed = 0;
 	game->mm->tile_size = 10;
-	//========================== texture ===============================
 	game->textr = malloc(sizeof(t_texture));
 	if (!game->textr)
 		return (ft_err_msg("Error allocating texture struct", EXIT_FAILURE));
+	init_textr_struct(game);
+	return (EXIT_SUCCESS);
+}
+
+void	init_textr_struct(t_gm *game)
+{
 	game->textr->wall_texture[0] = NULL;
 	game->textr->wall_texture[1] = NULL;
 	game->textr->wall_texture[2] = NULL;
@@ -59,26 +62,6 @@ int	init_game_struct(t_gm *game)
 	game->textr->bits_per_pixel = 0;
 	game->textr->endian = 0;
 	game->textr->line_len = 0;
-	return (EXIT_SUCCESS);
-}
-
-/**
- * @brief init the mlx library
-*/
-int	run_mlx(t_gm *game)
-{
-	game->mlx->cnt = mlx_init();
-	if (!game->mlx->cnt)
-		return (ft_err_msg("mlx_init failed", EXIT_FAILURE));
-	game->mlx->wnd = mlx_new_window(game->mlx->cnt, WIDTH, HEIGHT, "Cub3d");
-	if (!game->mlx->wnd)
-		return (ft_err_msg("mlx_new_window failed", EXIT_FAILURE));
-	game->mlx->img = mlx_new_image(game->mlx->cnt, WIDTH, HEIGHT);
-	game->mlx->addr = mlx_get_data_addr(game->mlx->img,
-			&game->mlx->bits_per_pixel, &game->mlx->line_length,
-			&game->mlx->endian);
-	get_texture_pointers(game);
-	return (EXIT_SUCCESS);
 }
 
 void	init_ray_struct(t_gm *game)
@@ -138,15 +121,18 @@ void	get_texture_pointers(t_gm *game)
 {
 	t_texture	*t;
 	t_mlx		*cnt;
-	int			h;
-	int			w;
 
 	t = game->textr;
 	cnt = game->mlx->cnt;
-	t->wall_texture[0] = mlx_xpm_file_to_image(cnt, game->map->ntex, &w, &h);
-	t->wall_texture[1] = mlx_xpm_file_to_image(cnt, game->map->stex, &w, &h);
-	t->wall_texture[2] = mlx_xpm_file_to_image(cnt, game->map->etex, &w, &h);
-	t->wall_texture[3] = mlx_xpm_file_to_image(cnt, game->map->wtex, &w, &h);
+	t->wall_texture[0] = mlx_xpm_file_to_image(cnt, game->map->ntex,
+			&game->textr->txt_width[0], &game->textr->txt_height[0]);
+	t->wall_texture[1] = mlx_xpm_file_to_image(cnt, game->map->stex,
+			&game->textr->txt_width[1], &game->textr->txt_height[1]);
+	t->wall_texture[2] = mlx_xpm_file_to_image(cnt, game->map->wtex,
+			&game->textr->txt_width[2], &game->textr->txt_height[2]);
+	t->wall_texture[3] = mlx_xpm_file_to_image(cnt, game->map->etex,
+			&game->textr->txt_width[3], &game->textr->txt_height[3]);
+	printf("%i\n%i\n", game->textr->txt_height[0], game->textr->txt_width[0]);
 	if (t->wall_texture[0] == NULL || t->wall_texture[0] == NULL
 		|| t->wall_texture[0] == NULL || t->wall_texture[0] == NULL)
 		ft_err_msg("Failed texture image init", EXIT_FAILURE);

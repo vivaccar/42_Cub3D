@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_textures_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:48:15 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/30 14:30:41 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:57:53 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
