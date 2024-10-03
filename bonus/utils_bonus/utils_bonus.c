@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:44 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/03 11:46:45 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:49:35 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,19 @@ int	my_mlx_get_pixel(t_gm *game, int x, int y, int index)
 	char		*data_adr;
 	t_texture	*t;
 	int			offset;
-	int			pixel;
+	int			max_txt_width;
+	int			max_txt_height;
 
+	max_txt_height = game->textr->txt_height[index];
+	max_txt_width = game->textr->txt_width[index];
+
+	if (x >= max_txt_width || y >= max_txt_height)
+		return (0);
 	t = game->textr;
 	data_adr = mlx_get_data_addr(t->wall_texture[index], &t->bits_per_pixel,
 			&t->line_len, &t->endian);
 	offset = (y * t->line_len) + (x * (t->bits_per_pixel / 8));
-	pixel = *(int *)(data_adr + offset);
-	return (pixel);
+	return (*(int *)(data_adr + offset));
 }
 
 void	draw_floor_ceiling(t_gm *game)

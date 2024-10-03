@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/03 11:51:28 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:42:23 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	run_mlx(t_gm *game)
 			&game->mlx->bits_per_pixel, &game->mlx->line_length,
 			&game->mlx->endian);
 	get_texture_pointers(game);
+	printf("%i", game->textr->txt_height[0]);
 	return (EXIT_SUCCESS);
 }
 

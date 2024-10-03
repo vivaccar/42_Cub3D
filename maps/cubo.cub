@@ -1,11 +1,11 @@
-NO textures/wolfstein/colorstone.xpm
+NO textures/magic_cub/yellow.xpm
 
 
 
-            SO textures/materias/wood2.xpm
+            SO textures/magic_cub/blue.xpm
 
-    WE textures/wolfstein/eagle.xpm
-EA textures/wolfstein/greystone.xpm
+    WE textures/magic_cub/red.xpm
+EA textures/magic_cub/green.xpm
 
 
 C 246,120,40

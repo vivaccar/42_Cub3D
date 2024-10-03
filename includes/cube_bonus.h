@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 13:23:57 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:51:17 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ typedef struct s_texture
 	void	*wall_texture[4];
 	int		txt_x;
 	int		txt_y;
+	int		txt_width[4];
+	int		txt_height[4];
 	double	text_pos;
 	int		r_line_len;
 	int		r_first_point;

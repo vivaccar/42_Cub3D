@@ -6,7 +6,7 @@
 #    By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/10/03 11:48:24 by vivaccar         ###   ########.fr        #
+#    Updated: 2024/10/03 14:03:06 by vivaccar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,6 +108,7 @@ fclean:
 	@$(RM) $(NAME) > /dev/null 2>&1
 	@$(RM) -rf $(OBJ_DIR) > /dev/null 2>&1
 	@$(RM) -rf $(OBJ_DIR) $(BONUS_OBJ_DIR) > /dev/null 2>&1
+	@$(RM) $(BONUS_NAME) > /dev/null 2>&1
 #	@$(RM) -rf $(MLX_DIR) > /dev/null 2>&1
 	@$(MAKE) fclean -C $(LIBFT_DIR) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Full cleaning Ok!$(RESET)"
