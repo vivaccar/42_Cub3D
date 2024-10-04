@@ -6,11 +6,35 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:48:15 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 15:16:45 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 15:39:39 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube_bonus.h"
+
+void	get_txtr_size(int *height, int *width, t_gm *game)
+{
+	if (game->ray->side_hit == 1 && game->ray->ray_dir_y < 0)
+	{
+		*height = game->textr->txt_height[0];
+		*width = game->textr->txt_width[0];
+	}
+	else if (game->ray->side_hit == 1 && game->ray->ray_dir_y > 0)
+	{
+		*height = game->textr->txt_height[1];
+		*width = game->textr->txt_width[1];
+	}
+	else if (game->ray->side_hit == 0 && game->ray->ray_dir_x < 0)
+	{
+		*height = game->textr->txt_height[2];
+		*width = game->textr->txt_width[2];
+	}
+	else
+	{
+		*height = game->textr->txt_height[3];
+		*width = game->textr->txt_width[3];
+	}
+}
 
 /**
  * @brief Calculates the height of the wall to be drawn on the screen based on 
@@ -23,22 +47,25 @@
 void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x)
 {
 	t_texture	*t;
+	int			txt_w;
+	int			txt_h;
 
+	get_txtr_size(&txt_h, &txt_w, game);
 	t = game->textr;
 	t->r_line_len = (int)(HEIGHT / ray->wall_ppclr_dstc);
-	t->txt_x = (int)(t->wall_hit_pos * (double)TXT_W);
-	t->step = 1.0 * TXT_H / t->r_line_len;
+	t->txt_x = (int)(t->wall_hit_pos * (double)txt_w);
+	t->step = 1.0 * txt_h / t->r_line_len;
 	t->text_pos = (t->r_first_point - HEIGHT / 2 + t->r_line_len / 2) * t->step;
 	get_render_points(game);
 	get_wall_hit_pos(game);
 	if (ray->side_hit == 1 && ray->ray_dir_y < 0)
-		draw_texture(game, x, 0);
+		draw_texture(game, x, 0, txt_h);
 	else if (ray->side_hit == 1 && ray->ray_dir_y > 0)
-		draw_texture(game, x, 1);
+		draw_texture(game, x, 1, txt_h);
 	else if (ray->side_hit == 0 && ray->ray_dir_x < 0)
-		draw_texture(game, x, 2);
+		draw_texture(game, x, 2, txt_h);
 	else
-		draw_texture(game, x, 3);
+		draw_texture(game, x, 3, txt_h);
 }
 
 /**
@@ -48,7 +75,7 @@ void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x)
  * from the texture image (img_index), 
  * and places it onto the screen using my_mlx_pixel_put.
  */
-void	draw_texture(t_gm *game, int x, int img_index)
+void	draw_texture(t_gm *game, int x, int img_index, int txt_h)
 {
 	int			y;
 	int			color;
@@ -58,7 +85,7 @@ void	draw_texture(t_gm *game, int x, int img_index)
 	y = t->r_first_point;
 	while (y < t->r_last_point)
 	{
-		t->txt_y = (int)t->text_pos & (TXT_H - 1);
+		t->txt_y = (int)t->text_pos & (txt_h - 1);
 		t->text_pos += t->step;
 		color = my_mlx_get_pixel(game, t->txt_x, t->txt_y, img_index);
 		my_mlx_pixel_put(game->mlx, x, y, color);

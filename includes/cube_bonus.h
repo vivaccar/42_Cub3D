@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 14:09:21 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 15:38:16 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@
 
 # define WIDTH 1920
 # define HEIGHT 1040
-# define TXT_W 128
-# define TXT_H 128
 
 # define KEY_SPACE 32
 # define KEY_ESC 65307
@@ -260,7 +258,7 @@ void	rotate_right(t_gm *game, double speed);
 
 //raycaster/render_textures.c
 void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x);
-void	draw_texture(t_gm *g, int x, int img_index);
+void	draw_texture(t_gm *g, int x, int img_index, int txt_h);
 void	get_wall_hit_pos(t_gm *game);
 void	get_render_points(t_gm *game);
 

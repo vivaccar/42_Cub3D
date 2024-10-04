@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 14:56:31 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:55:43 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void	get_texture_pointers(t_gm *game)
 			&game->textr->txt_width[2], &game->textr->txt_height[2]);
 	t->wall_texture[3] = mlx_xpm_file_to_image(cnt, game->map->etex,
 			&game->textr->txt_width[3], &game->textr->txt_height[3]);
-	printf("%i\n%i\n", game->textr->txt_height[0], game->textr->txt_width[0]);
 	if (t->wall_texture[0] == NULL || t->wall_texture[0] == NULL
 		|| t->wall_texture[0] == NULL || t->wall_texture[0] == NULL)
 		ft_err_msg("Failed texture image init", EXIT_FAILURE);

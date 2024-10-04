@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/04 14:36:02 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 15:38:03 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	run_mlx(t_gm *game)
  */
 void	start_player_position(t_gm *game)
 {
-	game->ray->plyr_x = game->map->plyr_x;
-	game->ray->plyr_y = game->map->plyr_y;
+	game->ray->plyr_x = game->map->plyr_x + 0.5;
+	game->ray->plyr_y = game->map->plyr_y + 0.5;
 	if (game->map->plyr_dir == 'N')
 	{
 		set_plane_positions(game, 0.66, 0.0);
