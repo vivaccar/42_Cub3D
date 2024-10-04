@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   render_textures_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:48:15 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 13:57:53 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/04 15:16:45 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube_bonus.h"
 
+/**
+ * @brief Calculates the height of the wall to be drawn on the screen based on 
+ * the ray's perpendicular distance (wall_ppclr_dstc). It also determines the 
+ * texture coordinates and the step size for texture mapping. Then, depending 
+ * on which side of the wall the ray hit and the direction of the ray, it 
+ * selects the appropriate texture to render the wall slice 
+ * on the screen at position x.
+ */
 void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x)
 {
 	t_texture	*t;
@@ -34,9 +42,11 @@ void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x)
 }
 
 /**
- * @param g Game Structure,
- * @param x x position,
- * @param img_index img_index to be rendered.
+ * @brief Renders a vertical slice of a texture onto the screen at position x.
+ * It loops through the y-coordinates between r_first_point and r_last_point,
+ * fetching the corresponding texture color for each pixel 
+ * from the texture image (img_index), 
+ * and places it onto the screen using my_mlx_pixel_put.
  */
 void	draw_texture(t_gm *game, int x, int img_index)
 {
@@ -76,7 +86,10 @@ void	get_wall_hit_pos(t_gm *game)
 }
 
 /**
- * @brief Calculate the start and ending point of the line to be rendered
+ * @brief calculates the starting (r_first_point) and ending (r_last_point) 
+ * y-coordinates of a vertical line representing a wall to be rendered on 
+ * the screen, ensuring they stay within the screen height (HEIGHT). 
+ * These points define the portion of the wall slice to be drawn.
  */
 void	get_render_points(t_gm *game)
 {

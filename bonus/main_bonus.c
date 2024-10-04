@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 14:10:15 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:33:26 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,20 @@ void	run_cub(t_gm *game)
 }
 
 /**
- * Digital Differential Analysis Algorthm - Search for it
+ * @brief Main function for the Cub3d project.
+ * Uses Digital Differential Analysis Algorthm - Search for it.
+ * and MLX_Library to render the images.
  */
 int	main(int argc, char **argv)
 {
 	t_gm	game;
 
-	printf("This is the bonus main");
 	if (init_game_struct(&game))
 		return (EXIT_FAILURE);
 	if (!is_argument_valid(&game, argc, argv))
 		return (free_game(&game, 1), EXIT_FAILURE);
 	if (parse_file(&game, argc, argv))
 		return (free_game(&game, 1), EXIT_FAILURE);
-	print_map_values(&game);
 	if (run_mlx(&game))
 		return (ft_err_msg("Error Mlx Init", EXIT_FAILURE));
 	run_cub(&game);
@@ -56,6 +56,8 @@ int	main(int argc, char **argv)
 */
 bool	is_argument_valid(t_gm *game, int argc, char **argv)
 {
+	if (!argv)
+		return (false);
 	if (argc != 2)
 		return (ft_err_msg("Invalid quantity of arguments!", false));
 	if (!is_openble_file(argv[1], ".cub", 4))

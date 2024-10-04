@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   start_game_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:09:49 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/03 14:42:23 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:36:02 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube_bonus.h"
 
 /**
- * @brief init the mlx library
+ * @brief Init mlx library
 */
 int	run_mlx(t_gm *game)
 {
@@ -28,10 +28,13 @@ int	run_mlx(t_gm *game)
 			&game->mlx->bits_per_pixel, &game->mlx->line_length,
 			&game->mlx->endian);
 	get_texture_pointers(game);
-	printf("%i", game->textr->txt_height[0]);
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Start the initial player position with values
+ * depending on his direction.
+ */
 void	start_player_position(t_gm *game)
 {
 	game->ray->plyr_x = game->map->plyr_x;
@@ -58,12 +61,20 @@ void	start_player_position(t_gm *game)
 	}
 }
 
+/**
+ * @note Auxiliar to start_player_position()
+ * @brief Set plane_x\plane_y position
+ */
 void	set_plane_positions(t_gm *game, double plane_x, double plane_y)
 {
 	game->ray->plane_x = plane_x;
 	game->ray->plane_y = plane_y;
 }
 
+/**
+ * @note Auxiliar to start_player_position()
+ * @brief Set dir_x\dir_y position
+ */
 void	set_direction_positions(t_gm *game, double dir_x, double dir_y)
 {
 	game->ray->dir_x = dir_x;

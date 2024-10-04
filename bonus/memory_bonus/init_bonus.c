@@ -6,15 +6,17 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 13:12:42 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:29:11 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube_bonus.h"
 
 /**
- * @brief Start main game struct
- * allocate memory and init values to NULL or 0;
+ * @brief Start the main struct(game) with initial values
+ * and allocate memory for the substructs;
+ * @attention Error handling trough init_game_error_handling()
+ * to keep track in case of errors during allocations;
  */
 int	init_game_struct(t_gm *game)
 {
@@ -36,9 +38,10 @@ int	init_game_struct(t_gm *game)
 }
 
 /**
+ * @note Called on run_mlx()
  * @brief Get the texture and save them on pointers, 
  * getting also info about the texture (width and height)
- * use mlx_xpm_file_to_image()
+ * use mlx_xpm_file_to_image() to get the info/image.
  * @attention index 0 from 3 to wall textures. Index 4 and 5 to gun texture.
  * index 6 to aim texture.
  */
@@ -71,13 +74,17 @@ void	get_texture_pointers(t_gm *game)
 		ft_err_msg("Failed texture image init", EXIT_FAILURE);
 }
 
+/**
+ * @note Called on init_game_struct()
+ * @brief Treat possible allocation errors and free the ptrs if necessary;
+ * Returns EXIT_SUCCESS (0) if no errors,
+ * EXIT_FAILURE(1) if error(doing necessary frees);
+ */
 int	init_game_error_handling(t_gm *game)
 {
 	if (!game || !game->gun || !game->map || !game->mlx
 		|| !game->mm || !game->ray || !game->textr)
 	{
-		if (game)
-			free(game);
 		if (game->gun)
 			free(game->gun);
 		if (game->map)
@@ -90,6 +97,8 @@ int	init_game_error_handling(t_gm *game)
 			free(game->ray);
 		if (game->textr)
 			free(game->textr);
+		if (game)
+			free(game);
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);

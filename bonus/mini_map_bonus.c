@@ -6,12 +6,19 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:25:05 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 14:11:13 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 15:23:41 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube_bonus.h"
 
+/**
+ * Renders the entire mini-map based on the game's map matrix.
+ * It adjusts the tile size according to whether the mini-map button 
+ * (m_pressed) is pressed (30 pixels if pressed, 10 otherwise) 
+ * and iterates through the map matrix, calling render_mini_map for each tile.
+ * Finally, it draws the player on the mini-map using render_mini_map_player.
+ */
 void	draw_mini_map(t_gm *game)
 {
 	int	i;
@@ -36,7 +43,12 @@ void	draw_mini_map(t_gm *game)
 }
 
 /**
- * @brief tl = TILE_SIZE
+ * @brief Draws a tile on the mini-map based on the contents of the game map.
+ * For each tile at coordinates (x, y), it checks the corresponding character
+ * in the map's matrix: if it's a wall ('1'), it draws a white pixel; 
+ * if it's a player or spawn point ('N', 'S', 'E', 'W', or '0'), 
+ * it draws a red pixel. 
+ * The size of each tile is determined by tile_size.
  */
 void	render_mini_map(t_gm *game, int x, int y)
 {
@@ -64,6 +76,12 @@ void	render_mini_map(t_gm *game, int x, int y)
 }
 
 /**
+ * 
+ * @brief draws the player as a small green circle on the mini-map. 
+ * Depending on whether the mini-map button (m_pressed) is pressed, 
+ * the player's radius is either 2 or 4. It uses a loop to fill in 
+ * pixels within the circle's radius and places them at the player's 
+ * current position on the mini-map.
  * circle calculus -> (x−xc​)**+(y−yc​)2<=r
  * xc​ and yc​ are the center coordinates of the circle (the player's position).
  * r is the radius of the circle.

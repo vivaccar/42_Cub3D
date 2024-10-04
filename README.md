@@ -10,3 +10,5 @@ Repository for the Cub3d project for 42 Porto.
 
 
 //make re && clear && valgrind --leak-check=full ./cub3D maps/example.cub
+
+//https://www.spriters-resource.com
