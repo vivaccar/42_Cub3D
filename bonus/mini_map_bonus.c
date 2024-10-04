@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:25:05 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 15:23:41 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:24:17 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	render_mini_map(t_gm *game, int x, int y)
  * x and y are the pixel coordinates you're calculating for 
  * each point in the circle.
  */
+
 void	render_mini_map_player(t_gm *game)
 {
 	int	radius;
@@ -97,7 +98,7 @@ void	render_mini_map_player(t_gm *game)
 	if (!game->mm->m_pressed)
 		radius = 2;
 	else
-		radius = 4;
+		radius = 5;
 	y = -radius;
 	while (y <= radius)
 	{

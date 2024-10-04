@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 15:36:39 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:27:51 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	get_texture_pointers(t_gm *game)
 			&game->textr->txt_width[5], &game->textr->txt_height[5]);
 	t->texture[6] = mlx_xpm_file_to_image(cnt, "textures/aim.xpm",
 			&game->textr->txt_width[6], &game->textr->txt_height[6]);
-	printf("%i\n%i\n", game->textr->txt_height[4], game->textr->txt_width[4]);
 	if (t->texture[0] == NULL || t->texture[1] == NULL
 		|| t->texture[2] == NULL || t->texture[3] == NULL
 		|| t->texture[4] == NULL || t->texture[5] == NULL

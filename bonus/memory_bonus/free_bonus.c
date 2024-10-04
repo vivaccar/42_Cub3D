@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 15:57:31 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:28:35 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	free_game(t_gm *game, int to_free)
 	free(game->map);
 	free(game->mm);
 	free(game->ray);
+	free(game->gun);
 	if (to_free)
 	{
 		free(game->textr);
@@ -33,7 +34,7 @@ void	free_mlx(t_mlx *mlx, t_gm *game)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 7)
 	{
 		if (game->textr->texture[i])
 			mlx_destroy_image(game->mlx->cnt, game->textr->texture[i]);

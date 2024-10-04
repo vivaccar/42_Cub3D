@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 15:36:24 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:30:36 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	run_cub(t_gm *game)
 {
 	start_player_position(game);
-	mlx_mouse_hide(game->mlx->cnt, game->mlx->wnd);
+	//mlx_mouse_hide(game->mlx->cnt, game->mlx->wnd);
 	mlx_mouse_hook(game->mlx->wnd, mouse_fire, game);
 	mlx_loop_hook(game->mlx->cnt, &raycaster, game);
 	mlx_hook(game->mlx->wnd, 2, 1L << 0, key_press_handler, game);
