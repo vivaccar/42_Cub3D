@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 11:48:50 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:09:21 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,14 @@ typedef struct s_minmap
 
 //texture from index 0 to 3 -> walls
 //texture index 4 and 5 -> gun
+//texture index 6 -> aim
 typedef struct s_texture
 {
-	void	*texture[6];
+	void	*texture[7];
 	int		txt_x;
 	int		txt_y;
-	int		txt_width[6];
-	int		txt_height[6];
+	int		txt_width[7];
+	int		txt_height[7];
 	double	text_pos;
 	int		r_line_len;
 	int		r_first_point;
@@ -140,17 +141,17 @@ typedef struct s_texture
 
 typedef struct s_gun
 {
-	t_texture *t;
-	int	move;
-	int	fire;
-	int orig_x;
-    int orig_y;
-    int new_x;
-    int new_y;
-    int start_x;
-    int start_y;
-    int scaled_w;
-    int scaled_h;
+	t_texture	*t;
+	int			move;
+	int			fire;
+	int			orig_x;
+	int			orig_y;
+	int			new_x;
+	int			new_y;
+	int			start_x;
+	int			start_y;
+	int			scaled_w;
+	int			scaled_h;
 }	t_gun;
 
 //Main Struc gm = GaMe.
@@ -175,10 +176,8 @@ void	free_mlx(t_mlx *mlx, t_gm *game);
 //init.c
 int		run_mlx(t_gm *game);
 int		init_game_struct(t_gm *game);
-void	init_map_struct(t_gm *game);
-void	init_ray_struct(t_gm *game);
-void	init_textr_struct(t_gm *game);
 void	get_texture_pointers(t_gm *game);
+int		init_game_error_handling(t_gm *game);
 
 //parsing/scene.c
 int		parse_file(t_gm *game, int argc, char **argv);
@@ -238,7 +237,7 @@ void	launch_ray(t_ray *ray, t_map *map);
 void	draw_mini_map(t_gm *game);
 void	render_mini_map(t_gm *game, int x, int y);
 void	render_mini_map_player(t_gm *game);
-void	render_mini_map_pl_dir(t_gm *game);
+//void	render_mini_map_pl_dir(t_gm *game);
 
 //support.c
 void	print_map_values(t_gm *game);
@@ -266,7 +265,9 @@ void	get_wall_hit_pos(t_gm *game);
 void	get_render_points(t_gm *game);
 
 //bonus/gun_bonus.c
-void	draw_scaled_gun(t_gm *game, int scale_factor, int img_i);
 void	init_gun_struct(t_gm *game);
+void	draw_gun(t_gm *game);
+void	render_scaled_gun(t_gm *game, int scale_factor, int img_i);
+void	render_aim(t_gm *game);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:29:51 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/03 15:00:12 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:07:44 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	my_mlx_get_pixel(t_gm *game, int x, int y, int index)
 
 	max_txt_height = game->textr->txt_height[index];
 	max_txt_width = game->textr->txt_width[index];
-
 	if (x >= max_txt_width || y >= max_txt_height)
 		return (0);
 	t = game->textr;

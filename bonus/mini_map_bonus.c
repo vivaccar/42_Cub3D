@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:25:05 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 11:55:12 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:11:13 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	render_mini_map_player(t_gm *game)
 		x = -radius;
 		while (x <= radius)
 		{
-			if (x * x + y * y <= radius * radius)// Check if the point is inside the circle
+			if (x * x + y * y <= radius * radius)
 			{
 				my_mlx_pixel_put(game->mlx,
 					(game->ray->plyr_x * game->mm->tile_size) + x,
@@ -96,54 +96,4 @@ void	render_mini_map_player(t_gm *game)
 		}
 		y ++;
 	}
-	//render_mini_map_pl_dir(game);
 }
-
-/**
- * Render Rays 
- */
-/* void render_mini_map_pl_dir(t_gm *game)
-{
-	int ray_count = 100; // Number of rays to draw for FOV
-	double fov = 66 * (M_PI / 180); // FOV in radians (e.g., 60 degrees)
-	double ray_step = fov / ray_count; // Step between each ray
-	double start_angle = atan2(game->ray->dir_y, game->ray->dir_x) - fov / 2; // Start angle of FOV
-
-	for (int i = 0; i < ray_count; i++)
-	{
-		double ray_angle = start_angle + i * ray_step;
-
-		// Calculate ray direction based on the angle
-		double ray_dir_x = cos(ray_angle);
-		double ray_dir_y = sin(ray_angle);
-
-		// Initial position (player's position on the minimap)
-		double ray_pos_x = game->ray->plyr_x;
-		double ray_pos_y = game->ray->plyr_y;
-
-		// Small step size for drawing the ray (in pixel increments)
-		double step_size = 0.1; // Adjust this for finer lines (smaller = smoother)
-		
-		int hit = 0;
-		while (!hit)
-		{
-			// Advance the ray in small steps along the direction vector
-			ray_pos_x += ray_dir_x * step_size;
-			ray_pos_y += ray_dir_y * step_size;
-
-			// Convert the current ray position to minimap pixels
-			int pixel_x = (int)(ray_pos_x * game->mm->tile_size);
-			int pixel_y = (int)(ray_pos_y * game->mm->tile_size);
-
-			// Draw the pixel on the minimap
-			my_mlx_pixel_put(game->mlx, pixel_x, pixel_y, 0x00FF00); // Green ray
-
-			// Check if we hit a wall
-			if (game->map->matriz[(int)ray_pos_y][(int)ray_pos_x] == '1' ||
-				game->map->matriz[(int)ray_pos_y][(int)ray_pos_x] == ' ')
-			{
-				hit = 1; // Wall hit, stop the ray
-			}
-		}
-	}
-} */

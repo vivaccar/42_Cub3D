@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/04 11:42:59 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:16:51 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,22 +90,14 @@ int	raycaster(t_gm *game)
 		game->ray->map_x = (int)game->ray->plyr_x;
 		game->ray->map_y = (int)game->ray->plyr_y;
 		rays_direction(game->ray, x);
-		delta_dstc(game->ray); //amauri que fez
+		delta_dstc(game->ray);
 		step_increment(game->ray);
 		launch_ray(game->ray, game->map);
 		get_wall_height_and_draw(game, game->ray, x);
 		x++;
 	}
 	draw_mini_map(game);
-	if (game->gun->fire > 0 && game->gun->fire <= 7)
-	{
-		draw_scaled_gun(game, 3, 5);
-		game->gun->fire ++;
-		if (game->gun->fire == 30)
-			game->gun->fire = 0;
-	}
-	else	
-		draw_scaled_gun(game, 3, 4);
+	draw_gun(game);
 	mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd,
 		game->mlx->img, 0, 0);
 	return (EXIT_SUCCESS);

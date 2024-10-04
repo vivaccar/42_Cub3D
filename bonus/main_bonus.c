@@ -6,16 +6,20 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:36:04 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 19:28:59 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:10:15 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube_bonus.h"
 
+/**
+ * @brief Run Cub
+ * @attention mlx_mouse_hide() -> function cause leaks
+ */
 void	run_cub(t_gm *game)
 {
 	start_player_position(game);
-	mlx_mouse_hide(game->mlx->cnt, game->mlx->wnd); //function cause leaks
+	mlx_mouse_hide(game->mlx->cnt, game->mlx->wnd);
 	mlx_mouse_hook(game->mlx->wnd, mouse_fire, game);
 	mlx_loop_hook(game->mlx->cnt, &raycaster, game);
 	mlx_hook(game->mlx->wnd, 2, 1L << 0, key_press_handler, game);

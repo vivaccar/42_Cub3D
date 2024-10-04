@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:23:40 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/04 11:44:15 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:15:13 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ bool	can_player_move(t_gm *game, int new_x, int new_y)
 
 void	move_up(t_gm *game)
 {
-	double	new_x;
-	double	new_y;
+	double		new_x;
+	double		new_y;
 	static int	move_delay = 0;
 
 	new_x = game->ray->plyr_x + (game->ray->dir_x * game->ray->mov_speed);
@@ -41,7 +41,7 @@ void	move_up(t_gm *game)
 				game->gun->move = 20;
 			else
 				game->gun->move = 0;
-			move_delay = 0;	
+			move_delay = 0;
 		}
 		move_delay++;
 	}
