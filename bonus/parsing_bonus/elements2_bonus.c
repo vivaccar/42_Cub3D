@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:58:01 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/30 14:30:25 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:32:43 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ bool	is_rgb_valid(t_gm *game)
 	}
 	extract_numbers(game->map->fc_str, game->map->fc_rgb, 0);
 	extract_numbers(game->map->cc_str, game->map->cc_rgb, 0);
+	if (game->map->fc_rgb[0] == -1 || game->map->fc_rgb[1] == -1
+		|| game->map->fc_rgb[2] == -1 || game->map->cc_rgb[0] == -1
+		|| game->map->cc_rgb[1] == -1 || game->map->cc_rgb[2] == -1)
+		return (ft_err_msg("Need to have 3 colors rgb values", false));
 	if (game->map->fc_rgb[0] > 255 || game->map->fc_rgb[1] > 255
 		|| game->map->fc_rgb[2] > 255 || game->map->cc_rgb[0] > 255
 		|| game->map->cc_rgb[1] > 255 || game->map->cc_rgb[2] > 255)

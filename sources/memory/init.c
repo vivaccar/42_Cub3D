@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 15:55:43 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:27:42 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,12 @@ void	init_map_struct(t_gm *game)
 	game->map->plyr_dir = '\0';
 	game->map->plyr_x = 0.0;
 	game->map->plyr_y = 0.0;
-	game->map->fc_rgb[0] = 0;
-	game->map->fc_rgb[1] = 0;
-	game->map->fc_rgb[2] = 0;
-	game->map->cc_rgb[0] = 0;
-	game->map->cc_rgb[1] = 0;
-	game->map->cc_rgb[2] = 0;
+	game->map->fc_rgb[0] = -1;
+	game->map->fc_rgb[1] = -1;
+	game->map->fc_rgb[2] = -1;
+	game->map->cc_rgb[0] = -1;
+	game->map->cc_rgb[1] = -1;
+	game->map->cc_rgb[2] = -1;
 	game->map->fc_hex = 0;
 	game->map->cc_hex = 0;
 	game->map->h = 0;

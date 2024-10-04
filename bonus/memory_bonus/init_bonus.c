@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 15:36:39 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:23:06 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ int	init_game_struct(t_gm *game)
 	ft_bzero(game, sizeof(t_gm));
 	game->map = malloc(sizeof(t_map));
 	ft_bzero(game->map, sizeof(t_map));
+	game->map->cc_rgb[0] = -1;
+	game->map->cc_rgb[1] = -1;
+	game->map->cc_rgb[2] = -1;
+	game->map->fc_rgb[0] = -1;
+	game->map->fc_rgb[1] = -1;
+	game->map->fc_rgb[2] = -1;
 	game->ray = malloc(sizeof(t_ray));
 	ft_bzero(game->ray, sizeof(t_ray));
 	game->ray->mov_speed = 0.07;

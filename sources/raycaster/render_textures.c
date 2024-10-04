@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:48:15 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 15:40:24 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:32:22 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x)
 	t = game->textr;
 	t->r_line_len = (int)(HEIGHT / ray->wall_ppclr_dstc);
 	t->txt_x = (int)(t->wall_hit_pos * (double)txt_w);
-	t->step = 1.0 * txt_h/ t->r_line_len;
+	t->step = 1.0 * txt_h / t->r_line_len;
 	t->text_pos = (t->r_first_point - HEIGHT / 2 + t->r_line_len / 2) * t->step;
 	get_render_points(game);
 	get_wall_hit_pos(game);
