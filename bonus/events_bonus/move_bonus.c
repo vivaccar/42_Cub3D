@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:23:40 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/03 17:07:31 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:44:15 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	move_up(t_gm *game)
 {
 	double	new_x;
 	double	new_y;
-	static int	move = 0;
+	static int	move_delay = 0;
 
 	new_x = game->ray->plyr_x + (game->ray->dir_x * game->ray->mov_speed);
 	new_y = game->ray->plyr_y + (game->ray->dir_y * game->ray->mov_speed);
@@ -35,15 +35,15 @@ void	move_up(t_gm *game)
 	{
 		game->ray->plyr_x = new_x;
 		game->ray->plyr_y = new_y;
-		if (move == 10)
+		if (move_delay == 10)
 		{
-			if (!game->textr->gun_mov)
-				game->textr->gun_mov = 20;
+			if (!game->gun->move)
+				game->gun->move = 20;
 			else
-				game->textr->gun_mov = 0;
-			move = 0;	
+				game->gun->move = 0;
+			move_delay = 0;	
 		}
-		move++;
+		move_delay++;
 	}
 }
 

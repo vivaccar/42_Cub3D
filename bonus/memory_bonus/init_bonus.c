@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 19:32:01 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:39:52 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	init_game_struct(t_gm *game)
 	if (!game->textr)
 		return (ft_err_msg("Error allocating texture struct", EXIT_FAILURE));
 	init_textr_struct(game);
+	init_gun_struct(game);
 	return (EXIT_SUCCESS);
 }
 
@@ -63,8 +64,8 @@ void	init_textr_struct(t_gm *game)
 	game->textr->bits_per_pixel = 0;
 	game->textr->endian = 0;
 	game->textr->line_len = 0;
-	game->textr->gun_mov = 17;
-	game->textr->gun_fire = 0;
+	//game->textr->gun_mov = 17;
+	//game->textr->gun_fire = 0;
 }
 
 void	init_ray_struct(t_gm *game)

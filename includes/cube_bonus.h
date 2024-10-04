@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 19:08:00 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:48:50 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ typedef struct s_minmap
 	int	tile_size;
 }	t_minmap;
 
+//texture from index 0 to 3 -> walls
+//texture index 4 and 5 -> gun
 typedef struct s_texture
 {
 	void	*texture[6];
@@ -134,9 +136,22 @@ typedef struct s_texture
 	int		bits_per_pixel;
 	int		line_len;
 	int		endian;
-	int		gun_mov;
-	int		gun_fire;
 }	t_texture;
+
+typedef struct s_gun
+{
+	t_texture *t;
+	int	move;
+	int	fire;
+	int orig_x;
+    int orig_y;
+    int new_x;
+    int new_y;
+    int start_x;
+    int start_y;
+    int scaled_w;
+    int scaled_h;
+}	t_gun;
 
 //Main Struc gm = GaMe.
 typedef struct s_gm
@@ -146,6 +161,7 @@ typedef struct s_gm
 	t_ray		*ray;
 	t_minmap	*mm;
 	t_texture	*textr;
+	t_gun		*gun;
 }	t_gm;
 
 int		main(int argc, char **argv);
@@ -251,5 +267,6 @@ void	get_render_points(t_gm *game);
 
 //bonus/gun_bonus.c
 void	draw_scaled_gun(t_gm *game, int scale_factor, int img_i);
+void	init_gun_struct(t_gm *game);
 
 #endif

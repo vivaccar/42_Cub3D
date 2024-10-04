@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/03 19:28:14 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:42:59 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,12 @@ int	raycaster(t_gm *game)
 		x++;
 	}
 	draw_mini_map(game);
-	if (game->textr->gun_fire > 0 && game->textr->gun_fire <= 7)
+	if (game->gun->fire > 0 && game->gun->fire <= 7)
 	{
 		draw_scaled_gun(game, 3, 5);
-		game->textr->gun_fire ++;
-		if (game->textr->gun_fire == 30)
-			game->textr->gun_fire = 0;
+		game->gun->fire ++;
+		if (game->gun->fire == 30)
+			game->gun->fire = 0;
 	}
 	else	
 		draw_scaled_gun(game, 3, 4);

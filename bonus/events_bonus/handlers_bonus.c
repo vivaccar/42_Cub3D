@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:28:20 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/03 19:16:41 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:42:15 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	key_press_handler(int keycode, t_gm *game)
 	else if (keycode == KEY_M)
 		game->mm->m_pressed = !game->mm->m_pressed;
 	else if (keycode == KEY_SHIFT)
-		game->textr->gun_fire = 1;
+		game->gun->fire = 1;
 	return (0);
 }
 
@@ -56,9 +56,9 @@ int	mouse_fire(int mousecode, int x, int y, void *param)
 	t_gm *game;
 
 	game = (t_gm *)param;
-	if (!game->textr->gun_fire)
+	if (!game->gun->fire)
 		return (EXIT_FAILURE);
-	game->textr->gun_fire = 1;
+	game->gun->fire = 1;
 	return (EXIT_SUCCESS);
 }
 

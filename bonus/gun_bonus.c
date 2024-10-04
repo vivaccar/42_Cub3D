@@ -6,11 +6,27 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:53:42 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 16:57:02 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:44:34 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube_bonus.h"
+
+void	init_gun_struct(t_gm *game)
+{
+    t_texture *texture;
+
+    texture = game->textr;
+    game->gun = malloc(sizeof(t_gun));
+    if (!game->gun)
+    {
+        ft_err_msg("Error allocating gun struct", 1);
+        return ;
+    }
+    ft_bzero(game->gun, sizeof(t_gun));
+    game->gun->t = texture;
+    game->gun->move = 17;
+}
 
 void draw_scaled_gun(t_gm *game, int scale_factor, int img_i)
 {
@@ -30,7 +46,7 @@ void draw_scaled_gun(t_gm *game, int scale_factor, int img_i)
 
     // Calculate the starting position for the scaled gun
     start_x = (WIDTH - scaled_gun_w) / 2;
-    start_y = (HEIGHT - game->textr->gun_mov) - scaled_gun_h;
+    start_y = (HEIGHT - game->gun->move) - scaled_gun_h;
     new_y = 0;
     // Loop through each pixel in the scaled gun sprite
     while (new_y < scaled_gun_h)
