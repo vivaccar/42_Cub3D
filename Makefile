@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+         #
+#    By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/10/03 14:03:06 by vivaccar         ###   ########.fr        #
+#    Updated: 2024/10/03 16:11:51 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ BONUS_SRC = main_bonus.c memory_bonus/free_bonus.c memory_bonus/init_bonus.c sta
 	  parsing_bonus/map_bonus.c parsing_bonus/map_validations1_bonus.c raycaster_bonus/raycaster_bonus.c\
 	  events_bonus/exit_bonus.c events_bonus/handlers_bonus.c raycaster_bonus/render_textures_bonus.c\
 	  events_bonus/move_bonus.c parsing_bonus/map_validations2_bonus.c mini_map_bonus.c events_bonus/rotate_bonus.c\
-	  utils_bonus/utils_bonus.c
+	  utils_bonus/utils_bonus.c gun_bonus.c
 
 
 ### RULES

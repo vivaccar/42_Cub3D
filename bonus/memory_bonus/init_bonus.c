@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:49:58 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 15:43:18 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/04 12:00:10 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,23 @@ int	init_game_struct(t_gm *game)
 	game->mm = malloc(sizeof(t_minmap));
 	if (!game->mm)
 		return (ft_err_msg("Error allocating MiniMap struct", EXIT_FAILURE));
-	game->mm->m_pressed = 0;
-	game->mm->tile_size = 10;
+	ft_bzero(game->mm, sizeof(t_minmap));
 	game->textr = malloc(sizeof(t_texture));
 	if (!game->textr)
 		return (ft_err_msg("Error allocating texture struct", EXIT_FAILURE));
 	init_textr_struct(game);
+	init_gun_struct(game);
 	return (EXIT_SUCCESS);
 }
 
 void	init_textr_struct(t_gm *game)
 {
-	game->textr->wall_texture[0] = NULL;
-	game->textr->wall_texture[1] = NULL;
-	game->textr->wall_texture[2] = NULL;
-	game->textr->wall_texture[3] = NULL;
+	game->textr->texture[0] = NULL;
+	game->textr->texture[1] = NULL;
+	game->textr->texture[2] = NULL;
+	game->textr->texture[3] = NULL;
+	game->textr->texture[4] = NULL;
+	game->textr->texture[5] = NULL;
 	game->textr->txt_x = 0;
 	game->textr->txt_y = 0;
 	game->textr->text_pos = 0;
@@ -62,6 +64,8 @@ void	init_textr_struct(t_gm *game)
 	game->textr->bits_per_pixel = 0;
 	game->textr->endian = 0;
 	game->textr->line_len = 0;
+	//game->textr->gun_mov = 17;
+	//game->textr->gun_fire = 0;
 }
 
 void	init_ray_struct(t_gm *game)
@@ -124,15 +128,21 @@ void	get_texture_pointers(t_gm *game)
 
 	t = game->textr;
 	cnt = game->mlx->cnt;
-	t->wall_texture[0] = mlx_xpm_file_to_image(cnt, game->map->ntex,
+	t->texture[0] = mlx_xpm_file_to_image(cnt, game->map->ntex,
 			&game->textr->txt_width[0], &game->textr->txt_height[0]);
-	t->wall_texture[1] = mlx_xpm_file_to_image(cnt, game->map->stex,
+	t->texture[1] = mlx_xpm_file_to_image(cnt, game->map->stex,
 			&game->textr->txt_width[1], &game->textr->txt_height[1]);
-	t->wall_texture[2] = mlx_xpm_file_to_image(cnt, game->map->wtex,
+	t->texture[2] = mlx_xpm_file_to_image(cnt, game->map->wtex,
 			&game->textr->txt_width[2], &game->textr->txt_height[2]);
-	t->wall_texture[3] = mlx_xpm_file_to_image(cnt, game->map->etex,
+	t->texture[3] = mlx_xpm_file_to_image(cnt, game->map->etex,
 			&game->textr->txt_width[3], &game->textr->txt_height[3]);
-	if (t->wall_texture[0] == NULL || t->wall_texture[0] == NULL
-		|| t->wall_texture[0] == NULL || t->wall_texture[0] == NULL)
+	t->texture[4] = mlx_xpm_file_to_image(cnt, "textures/gun1.xpm",
+			&game->textr->txt_width[4], &game->textr->txt_height[4]);
+	t->texture[5] = mlx_xpm_file_to_image(cnt, "textures/gun2.xpm",
+			&game->textr->txt_width[5], &game->textr->txt_height[5]);
+	printf("%i\n%i\n", game->textr->txt_height[4], game->textr->txt_width[4]);
+	if (t->texture[0] == NULL || t->texture[1] == NULL
+		|| t->texture[2] == NULL || t->texture[3] == NULL
+		|| t->texture[4] == NULL || t->texture[5] == NULL)
 		ft_err_msg("Failed texture image init", EXIT_FAILURE);
 }

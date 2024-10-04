@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:10:21 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/03 16:44:43 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:58:05 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	raycaster(t_gm *game)
 	int	x;
 
 	x = 0;
+	mlx_mouse_move(game->mlx->cnt, game->mlx->wnd, WIDTH / 2, HEIGHT / 2);
 	draw_floor_ceiling(game);
 	while (x < WIDTH)
 	{
@@ -96,6 +97,15 @@ int	raycaster(t_gm *game)
 		x++;
 	}
 	draw_mini_map(game);
+	if (game->gun->fire > 0 && game->gun->fire <= 7)
+	{
+		draw_scaled_gun(game, 3, 5);
+		game->gun->fire ++;
+		if (game->gun->fire == 30)
+			game->gun->fire = 0;
+	}
+	else	
+		draw_scaled_gun(game, 3, 4);
 	mlx_put_image_to_window(game->mlx->cnt, game->mlx->wnd,
 		game->mlx->img, 0, 0);
 	return (EXIT_SUCCESS);

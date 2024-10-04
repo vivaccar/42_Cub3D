@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 21:39:18 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 15:36:18 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:58:32 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+# define KEY_SHIFT 65505
 
 // Define color codes
 # define RESET   "\033[0m"
@@ -115,13 +116,15 @@ typedef struct s_minmap
 	int	tile_size;
 }	t_minmap;
 
+//texture from index 0 to 3 -> walls
+//texture index 4 and 5 -> gun
 typedef struct s_texture
 {
-	void	*wall_texture[4];
+	void	*texture[6];
 	int		txt_x;
 	int		txt_y;
-	int		txt_width[4];
-	int		txt_height[4];
+	int		txt_width[6];
+	int		txt_height[6];
 	double	text_pos;
 	int		r_line_len;
 	int		r_first_point;
@@ -133,6 +136,21 @@ typedef struct s_texture
 	int		endian;
 }	t_texture;
 
+typedef struct s_gun
+{
+	t_texture *t;
+	int	move;
+	int	fire;
+	int orig_x;
+    int orig_y;
+    int new_x;
+    int new_y;
+    int start_x;
+    int start_y;
+    int scaled_w;
+    int scaled_h;
+}	t_gun;
+
 //Main Struc gm = GaMe.
 typedef struct s_gm
 {
@@ -141,6 +159,7 @@ typedef struct s_gm
 	t_ray		*ray;
 	t_minmap	*mm;
 	t_texture	*textr;
+	t_gun		*gun;
 }	t_gm;
 
 int		main(int argc, char **argv);
@@ -232,6 +251,7 @@ void	move_down(t_gm *game);
 void	move_left(t_gm *game);
 void	move_right(t_gm *game);
 int		mouse_handler(int x, int y, t_gm *game);
+int		mouse_fire(int mousecode, int x, int y, void *param);
 
 //events/rotate.c
 void	rotate_left(t_gm *game, double speed);
@@ -242,5 +262,9 @@ void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x);
 void	draw_texture(t_gm *g, int x, int img_index, int txt_h);
 void	get_wall_hit_pos(t_gm *game);
 void	get_render_points(t_gm *game);
+
+//bonus/gun_bonus.c
+void	draw_scaled_gun(t_gm *game, int scale_factor, int img_i);
+void	init_gun_struct(t_gm *game);
 
 #endif

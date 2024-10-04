@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/03 11:44:10 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:57:31 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	free_mlx(t_mlx *mlx, t_gm *game)
 	i = 0;
 	while (i < 4)
 	{
-		if (game->textr->wall_texture[i])
-			mlx_destroy_image(game->mlx->cnt, game->textr->wall_texture[i]);
+		if (game->textr->texture[i])
+			mlx_destroy_image(game->mlx->cnt, game->textr->texture[i]);
 		i++;
 	}
 	free(game->textr);

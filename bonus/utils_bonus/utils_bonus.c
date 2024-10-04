@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:45:44 by vivaccar          #+#    #+#             */
-/*   Updated: 2024/10/03 14:49:35 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:57:31 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	my_mlx_get_pixel(t_gm *game, int x, int y, int index)
 	if (x >= max_txt_width || y >= max_txt_height)
 		return (0);
 	t = game->textr;
-	data_adr = mlx_get_data_addr(t->wall_texture[index], &t->bits_per_pixel,
+	data_adr = mlx_get_data_addr(t->texture[index], &t->bits_per_pixel,
 			&t->line_len, &t->endian);
 	offset = (y * t->line_len) + (x * (t->bits_per_pixel / 8));
 	return (*(int *)(data_adr + offset));
