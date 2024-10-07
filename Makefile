@@ -6,7 +6,7 @@
 #    By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/10/03 16:11:51 by aconceic         ###   ########.fr        #
+#    Updated: 2024/10/07 16:25:15 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ mlx_compile : download
 	@$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-#@echo "$(CYAN)[!]$(RESET) Creating object $@ ..."
+	@echo "$(ORANGE)[!]$(RESET) Creating object file: $@ from source: $< ..."
 	@mkdir -p $(dir $@) > /dev/null 2>&1
 	@$(GCC) $(CFLAGS) -c $< -o $@
 
@@ -82,11 +82,6 @@ $(NAME) : $(OBJ) $(LIBFT_LIB)
 	@echo "$(ORANGE)[!]$(RESET) Working on project ... "
 	@$(GCC) $(CFLAGS) $(OBJ) $(LIBFT_LIB) $(GNL_LIB) $(MLXFLAGS) -o $(NAME) > /dev/null 2>&1
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Ok!$(RESET) "
-
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
-	#@echo "$(ORANGE)[!]$(RESET) Creating objects ..."
-	@$(GCC) $(CFLAGS) -c $< -o $@
-	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Objects Ok!$(RESET) "
 
 $(LIBFT_LIB) : $(LIBFT_DIR) $(PRINTF_DIR) $(GNL_DIR)
 	@echo "$(ORANGE)[!]$(RESET) Working on LIBFT_LIB ..."
@@ -130,6 +125,7 @@ bonus : download mlx_compile $(BONUS_NAME)
 
 $(BONUS_OBJ_DIR)%.o: $(BONUS_SRC_DIR)%.c
 	@mkdir -p $(dir $@) > /dev/null 2>&1
+	@echo "$(ORANGE)[!]$(RESET) Creating object file: $@ from source: $< ..."
 	@$(GCC) $(CFLAGS) -c $< -o $@
 
 $(BONUS_NAME) : $(BONUS_OBJ) $(LIBFT_LIB)

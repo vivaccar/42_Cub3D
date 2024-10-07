@@ -6,12 +6,15 @@
 /*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:48:15 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 16:32:22 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:19:54 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube.h"
 
+/**
+ * @brief Get the texture HEIGHT and WIDTH
+*/
 void	get_txtr_size(int *height, int *width, t_gm *game)
 {
 	if (game->ray->side_hit == 1 && game->ray->ray_dir_y < 0)
@@ -35,6 +38,19 @@ void	get_txtr_size(int *height, int *width, t_gm *game)
 		*width = game->textr->txt_width[3];
 	}
 }
+
+/**
+ * @brief Calculates the height of the wall segment and draws the 
+ * corresponding texture.
+ * This function determines the height of the wall to be rendered 
+ * based on the distance from the player to the wall 
+ * (ray's wall distance). 
+ * It calculates the appropriate texture coordinates and step size 
+ * for rendering the texture on the wall. The function also 
+ * identifies the side of the wall that was hit by the ray and calls
+ * the drawing function with the correct texture based on the 
+ * ray's direction and side hit.
+ */
 
 void	get_wall_height_and_draw(t_gm *game, t_ray *ray, int x)
 {
@@ -103,7 +119,11 @@ void	get_wall_hit_pos(t_gm *game)
 }
 
 /**
- * @brief Calculate the start and ending point of the line to be rendered
+ * @brief Calculates the vertical points for rendering a wall segment.
+ * This function computes `r_first_point` and `r_last_point` based on the 
+ * wall height and screen dimensions, ensuring they remain within the 
+ * screen boundaries. These points are crucial for correctly mapping 
+ * the wall texture onto the display.
  */
 void	get_render_points(t_gm *game)
 {
