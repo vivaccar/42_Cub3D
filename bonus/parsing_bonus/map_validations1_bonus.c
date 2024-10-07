@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validations1_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 11:49:57 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/30 14:30:28 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/04 15:55:39 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ bool	have_onlyvalid_ch(t_gm *game)
 		j = -1;
 		while (game->map->matriz[i][++ j])
 		{
-			if (!ft_strchr("01NSEWD ", game->map->matriz[i][j]))
+			if (!ft_strchr("01NSEW ", game->map->matriz[i][j]))
 				return (ft_err_msg("Invalid Character on map!", false));
 		}
 	}
