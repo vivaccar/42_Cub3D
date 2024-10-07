@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   gun_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:53:42 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 15:34:05 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/07 13:04:48 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube_bonus.h"
+#include "../../includes/cube_bonus.h"
 
 /**
  * @brief Initializes a gun structure (t_gun) for the game.

@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 11:49:57 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 15:55:39 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:43:35 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,7 @@ bool	have_onlyvalid_ch(t_gm *game)
 bool	is_map_closed(char	**map)
 {
 	int	i;
-	int	last_line;
 
-	last_line = ft_matrizlen(map);
 	if (!is_last_column_closed(map)
 		||!is_line_vertical_valid(map) || !is_first_last_valid(map))
 		return (false);

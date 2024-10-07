@@ -6,7 +6,7 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:11:37 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 16:28:35 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:55:46 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	free_game(t_gm *game, int to_free)
 {
-	int	i;
-
-	i = 0;
 	free_map(game->map);
 	free(game->map);
 	free(game->mm);
