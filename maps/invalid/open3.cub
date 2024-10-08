@@ -1,11 +1,11 @@
-NO textures/test1.xpm
+NO textures/wolfstein/eagle.xpm
 
 
 
-            SO textures/test2.xpm
+            SO textures/wolfstein/eagle.xpm
 
-    WE textures/test3.xpm
-EA textures/test4.xpm
+    WE textures/wolfstein/eagle.xpm
+EA textures/wolfstein/eagle.xpm
 
 F 0,0,0
 

@@ -6,11 +6,11 @@
 /*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:25:05 by aconceic          #+#    #+#             */
-/*   Updated: 2024/10/04 16:24:17 by vivaccar         ###   ########.fr       */
+/*   Updated: 2024/10/07 13:04:52 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube_bonus.h"
+#include "../../includes/cube_bonus.h"
 
 /**
  * Renders the entire mini-map based on the game's map matrix.

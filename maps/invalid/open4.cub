@@ -1,11 +1,11 @@
-NO textures/test1.xpm
+NO textures/wolfstein/eagle.xpm
 
 
 
-            SO textures/test2.xpm
+            SO textures/wolfstein/eagle.xpm
 
-    WE textures/test3.xpm
-EA textures/test4.xpm
+    WE textures/wolfstein/eagle.xpm
+EA textures/wolfstein/eagle.xpm
 
 F 0,0,0
 
@@ -15,7 +15,7 @@ C 225, 255, 255
         10101 11111111 10000000001
         10001 10000001100000000001
 1111 11110000100000010000000001111
-1001 100000000000001 0000000001
+1001 100000000000001 00000000001
 1001 10000000000000010000000001
 1S00100000000000000000000000001
 1100000000000000000000000000001

@@ -6,7 +6,7 @@
 #    By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 21:54:54 by aconceic          #+#    #+#              #
-#    Updated: 2024/10/07 16:25:15 by aconceic         ###   ########.fr        #
+#    Updated: 2024/10/08 09:38:30 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ NAME = cub3D
 OBJ_DIR = ./objs/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 SRC_DIR = ./sources/
-SRC = main.c memory/free.c memory/init.c start/start_game.c support.c \
+SRC = main.c memory/free.c memory/init.c start/start_game.c parsing/support.c \
 	  parsing/scene.c parsing/elements.c parsing/elements2.c \
 	  parsing/map.c parsing/map_validations1.c raycaster/raycaster.c\
 	  events/exit.c events/handlers.c raycaster/render_textures.c\
@@ -58,12 +58,12 @@ BONUS_NAME = cub3D_bonus
 BONUS_OBJ_DIR = ./objs_bonus/
 BONUS_OBJ = $(addprefix $(BONUS_OBJ_DIR), $(BONUS_SRC:.c=.o))
 BONUS_SRC_DIR = ./bonus/
-BONUS_SRC = main_bonus.c memory_bonus/free_bonus.c memory_bonus/init_bonus.c start_bonus/start_game_bonus.c support_bonus.c \
+BONUS_SRC = main_bonus.c memory_bonus/free_bonus.c memory_bonus/init_bonus.c start_bonus/start_game_bonus.c parsing_bonus/support_bonus.c \
 	  parsing_bonus/scene_bonus.c parsing_bonus/elements_bonus.c parsing_bonus/elements2_bonus.c \
 	  parsing_bonus/map_bonus.c parsing_bonus/map_validations1_bonus.c raycaster_bonus/raycaster_bonus.c\
 	  events_bonus/exit_bonus.c events_bonus/handlers_bonus.c raycaster_bonus/render_textures_bonus.c\
-	  events_bonus/move_bonus.c parsing_bonus/map_validations2_bonus.c mini_map_bonus.c events_bonus/rotate_bonus.c\
-	  utils_bonus/utils_bonus.c gun_bonus.c
+	  events_bonus/move_bonus.c parsing_bonus/map_validations2_bonus.c bonus/mini_map_bonus.c events_bonus/rotate_bonus.c\
+	  utils_bonus/utils_bonus.c bonus/gun_bonus.c
 
 
 ### RULES

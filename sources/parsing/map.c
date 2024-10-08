@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:40:39 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 15:05:05 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:52:28 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@
 void	extract_map(t_gm *game, char **scene)
 {
 	int	start;
-	int	lines;
 
 	start = find_starting_point(scene);
-	lines = ft_matrizlen(&scene[start]);
 	game->map->matriz = ft_matrizdup(&scene[start]);
 	if (game->map->matriz[0] == NULL)
 		return ;

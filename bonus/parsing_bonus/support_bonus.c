@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   support.c                                          :+:      :+:    :+:   */
+/*   support_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: vivaccar <vivaccar@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:20:16 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/25 19:56:02 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/10/07 13:05:01 by vivaccar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube.h"
+#include "../../includes/cube_bonus.h"
 
+/**
+ * @brief Function constructed mainly for debug.
+ * Print some values on STDIN_FILENO.
+ */
 void	print_map_values(t_gm *game)
 {
 	printf("\n" BLUE "========= MAP INFORMATION =========" RESET "\n");
@@ -41,8 +45,8 @@ void	print_map_values(t_gm *game)
 }
 
 /**
- * @brief Move a characther of is a space
- * If have backwards, decrement j value.
+ * @brief Move a characther if is a space
+ * If have int backwards, decrement j value.
  * If dont, acrecent.
 */
 bool	jump_spaces(char ch, int *j, int backwards)
@@ -62,7 +66,7 @@ bool	jump_spaces(char ch, int *j, int backwards)
 
 /**
  * @brief Check some file has a specific extention and if its an openble file
- * if nothing is passed on extention, just check if its an openble file
+ * if NULL is passed on extention, just check if its an openble file
 */
 bool	is_openble_file(char *path, char *extention, int ext_len)
 {
