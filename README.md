@@ -77,6 +77,48 @@ The program must take as a first argument a scene description file with the `.cu
    ```
    - Identifier: `C`
    - RGB Values: `225, 30, 0`
+  
+## Raycaster
+Raycasting is a rendering technique used in 2D games to create a 3D perspective. The basic idea is to cast rays from the player's point of view into the game world, one for each vertical line of the screen. Each ray travels until it hits a wall, determining the distance to that wall. This distance is then used to draw vertical strips on the screen, simulating the depth and perspective of a 3D environment.
+
+## Key Variables before start
+Before diving into the code, let's understand the key variables used in the raycaster:
+
+- **dir_x** and **dir_y**: These represent the player's viewing direction in the 2D space. If the player is looking north, `dir_y` will be `-1` (since y-coordinates decrease as you move up), and `dir_x` will be `0` (no horizontal movement). If the player is looking east, `dir_x` will be `1`, and `dir_y` will be `0`.
+- **plane_x** and **plane_y**: These define the camera plane perpendicular to the direction vector, controlling the field of view. For example, if the player is facing north, `plane_x` is `0.66` and `plane_y` is `0` (extending left and right horizontally). If the player is facing east, `plane_x` is `0` and `plane_y` is `0.66` (extending up and down vertically).
+- **cam_x**: This variable represents the x-coordinate of the camera for each vertical screen line, ranging from -1 (left) to 1 (right). It's used to calculate the direction of each ray.
+
+After that, we perform the following sequence of calculations for each column x of the screen:
+
+### 1. `rays_direction(t_ray *ray, int x)`
+This function calculates the direction of the ray for each vertical strip (`x`) on the screen:
+
+```c
+void rays_direction(t_ray *ray, int x)
+{
+    ray->cam_x = 2 * x / (double)WIDTH - 1;
+    ray->ray_dir_x = ray->dir_x + ray->plane_x * ray->cam_x;
+    ray->ray_dir_y = ray->dir_y + ray->plane_y * ray->cam_x;
+}
+```
+### 2. delta_dstc(t_ray *ray)
+This function calculates the distance the ray must travel in the x and y directions before crossing a grid line:
+
+```c
+void delta_dstc(t_ray *ray)
+{
+    if (ray->ray_dir_x == 0)
+        ray->delta_dstc_x = INT_MAX;
+    else
+        ray->delta_dstc_x = fabs(1 / ray->ray_dir_x);
+
+    if (ray->ray_dir_y == 0)
+        ray->delta_dstc_y = INT_MAX;
+    else
+        ray->delta_dstc_y = fabs(1 / ray->ray_dir_y);
+}
+```
+The function sets delta_dstc_x and delta_dstc_y to the absolute value of the reciprocal of the ray direction. This represents the distance a ray needs to travel horizontally or vertically to cross a grid line. If the ray direction is zero, it prevents division by zero by setting the distance to the maximum integer value (INT_MAX).
 
 
 //https://github.com/abdeljalil-salhi/cub3d/tree/main
