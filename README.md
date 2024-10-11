@@ -10,7 +10,7 @@ You can check more information about MiniLibx in this documentation: https://har
 ## Technologies
 - **Programming Language**: C
 - **Library**: MiniLibX (provided by the 42 school)
-- **Ambient**: Linux.
+- **Environment**: Linux.
 
 ## Map Configuration
 
