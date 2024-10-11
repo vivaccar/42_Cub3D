@@ -179,7 +179,7 @@ while (!hit)
 - **side_hit** indicates whether the ray hit a vertical EAST/WEST or horizontal NORTH/SOUTH wall.
 -  The ray moves through the grid in steps defined by step_x and step_y. It increments its distance (side_dstc_x or side_dstc_y) until it hits a wall.
 
-5. **Calculate Wall Height and Draw**: The height of the wall segment to be drawn is calculated using the formula:
+### 5. **Calculate Wall Height and Draw**: The height of the wall segment to be drawn is calculated using the formula:
 
    \[
    \text{r\_line\_len} = \frac{\text{HEIGHT}}{\text{ray->wall\_ppclr\_dstc}}
@@ -236,5 +236,5 @@ In the cub3D game, the following controls are implemented for player movement an
 - **D**: Move the player to the right (strafe right).
 - **Arrow Keys (Left and Right)**: Rotate the player's view left or right, allowing for easier navigation of the environment.
 - **Mouse Movement (Left and Right)**: Similar to the arrow keys, moving the mouse left or right also rotates the player's view.
-- **Shift**: Fires the weapon, allowing the player to interact with the game environment or enemies.
+- **Shift**: Fires the weapon.
 
