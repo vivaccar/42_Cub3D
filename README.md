@@ -83,7 +83,7 @@ The program must take as a first argument a scene description file with the `.cu
    - RGB Values: `225, 30, 0`
   
 ## Raycaster
-Raycasting is a rendering technique used in 2D games to create a 3D perspective. The basic idea is to cast rays from the player's point of view into the game world, one for each vertical line of the screen. Each ray travels until it hits a wall, determining the distance to that wall. This distance is then used to draw vertical strips on the screen, simulating the depth and perspective of a 3D environment.
+Raycasting is a rendering technique used in 2D maps to create a 3D perspective. The basic idea is to cast rays from the player's point of view into the game world, one for each vertical line of the screen. Each ray travels until it hits a wall, determining the distance to that wall. This distance is then used to draw vertical strips on the screen, simulating the depth and perspective of a 3D environment.
 
 ### Key Variables before start
 Before diving into the code, let's understand the key variables used in the raycaster:
