@@ -3,6 +3,8 @@
 ## Introduction
 The Cub3D project at 42 is an introduction to 3D graphics development using the technique of raycasting. The goal is to create a first-person game similar to the classic Wolfenstein 3D, where the player navigates through a maze and views the environment in a 3D perspective, even though the map is represented as a 2D grid. This project provides a practical way to learn the fundamentals of 3D rendering and graphics manipulation using MiniLibX, a small graphical library provided by the school. The implementation involves setting up a raycasting system that simulates the 3D effect by casting rays from the player's position to detect walls and render them accordingly.
 
+![cub3d](mandatory.png)
+
 ## Technologies
 - **Programming Language**: C
 - **Library**: MiniLibX (provided by the 42 school)
@@ -218,6 +220,9 @@ make bonus
 ```bash
 ./cub3D_bonus "path_to_map_file"
 ```
+Example of the Bonus Implementations:
+
+![bonus](bonus.png)
 
 ## Usability of cub3D
 
