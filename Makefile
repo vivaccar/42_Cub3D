@@ -114,7 +114,7 @@ re : fclean all
 download:
 ifeq ($(shell test -d $(MLX_DIR) && echo yes),)
 	@echo "$(ORANGE)[!]$(RESET) Downloading MiniLibX..."
-	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz
+	@wget https://cdn.intra.42.fr/document/document/32396/minilibx-linux.tgz
 	@tar -xzf minilibx-linux.tgz -C libraries
 	@rm minilibx-linux.tgz
 else
